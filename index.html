@@ -4,877 +4,526 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZEN SPA CENTER</title>
-  <meta name="description" content="ZEN SPA CENTER in Kemer, Antalya. Luxury spa rituals, premium packages, and direct WhatsApp booking." />
+  <meta name="description" content="ZEN SPA CENTER in Kemer, Antalya. Luxury spa rituals with instant WhatsApp booking." />
   <style>
     :root {
       --bg: #050505;
-      --bg-soft: #0d0d0d;
+      --bg-soft: #0b0b0b;
       --card: rgba(255, 255, 255, 0.04);
       --border: rgba(255, 255, 255, 0.1);
-      --gold: #cdb57a;
-      --gold-strong: #b79b58;
+      --gold: #cfb87c;
+      --gold-deep: #b79553;
       --text: #ffffff;
-      --muted: rgba(255, 255, 255, 0.72);
-      --muted-2: rgba(255, 255, 255, 0.52);
-      --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+      --muted: rgba(255, 255, 255, 0.75);
+      --radius: 20px;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(205, 181, 122, 0.1), transparent 26%),
-        linear-gradient(180deg, #040404 0%, #070707 40%, #000000 100%);
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
       color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(207, 184, 124, 0.14), transparent 30%),
+        linear-gradient(180deg, #020202 0%, #080808 45%, #030303 100%);
+      line-height: 1.45;
+      padding-bottom: 90px;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
 
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 88px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-title {
-      font-size: clamp(30px, 5vw, 56px);
-      line-height: 1.08;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      margin: 14px 0 0;
-    }
-
+    .container { width: min(1140px, calc(100% - 28px)); margin: 0 auto; }
+    .section { padding: 58px 0; border-bottom: 1px solid var(--border); }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
       color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .section-title {
+      font-size: clamp(28px, 6vw, 52px);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      margin: 10px 0 0;
+      line-height: 1.08;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--gold);
-      display: inline-block;
-    }
-
-    .hero {
-      padding: 32px 0 88px;
-      position: relative;
-      overflow: hidden;
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(8px);
+      background: rgba(3, 3, 3, 0.82);
       border-bottom: 1px solid var(--border);
     }
-
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      padding: 20px 0;
-      margin-bottom: 28px;
+      min-height: 74px;
     }
-
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand-logo {
-      width: 58px;
-      height: 58px;
-      border-radius: 14px;
-      object-fit: cover;
-      border: 1px solid rgba(205, 181, 122, 0.34);
-      background: rgba(255, 255, 255, 0.03);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
-      padding: 6px;
-    }
-
     .brand {
-      font-size: clamp(20px, 2vw, 30px);
-      letter-spacing: 0.22em;
-      font-weight: 300;
-      margin: 0;
-      line-height: 1;
-    }
-
-    .brand span,
-    .hero-brand-text span {
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .hero-brand {
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      margin: 14px 0 0;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(205, 181, 122, 0.24);
-      background: rgba(255, 255, 255, 0.03);
     }
-
-    .hero-brand .brand-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      box-shadow: none;
-      padding: 5px;
+    .brand-logo {
+      width: auto;
+      height: 34px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55)) saturate(1.05) brightness(1.02);
     }
+    .brand-text {
+      margin: 0;
+      font-size: clamp(18px, 4vw, 28px);
+      letter-spacing: 0.17em;
+      font-weight: 300;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .brand-text span { color: var(--gold); }
 
-    .hero-brand-text {
-      letter-spacing: 0.2em;
-      font-size: 14px;
+    .nav-links {
+      display: none;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
-    .hero-title {
-      font-size: clamp(48px, 8vw, 90px);
+    .hero { padding: 34px 0 56px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .hero h2 {
+      margin: 12px 0 0;
+      font-size: clamp(40px, 13vw, 92px);
       line-height: 0.94;
+      letter-spacing: 0.14em;
       font-weight: 300;
-      letter-spacing: 0.16em;
-      margin: 20px 0 0;
+      text-transform: uppercase;
     }
-
-    .hero-title span {
-      display: block;
-      color: var(--gold);
-      margin-top: 10px;
-    }
-
-    .hero-text {
-      margin: 20px 0 0;
-      max-width: 560px;
+    .hero h2 span { color: var(--gold); }
+    .hero-sub {
+      margin: 14px 0 0;
+      font-size: 16px;
       color: var(--muted);
-      font-size: 17px;
-      line-height: 1.7;
+      max-width: 480px;
+    }
+    .hero-meta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .meta-pill {
+      border: 1px solid rgba(207, 184, 124, 0.35);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: 12px;
+      color: #f1e2bd;
+      letter-spacing: 0.06em;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel {
+      padding: 20px;
+      border: 1px solid rgba(207, 184, 124, 0.32);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    }
+    .hero-panel h3 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+    }
+    .hero-panel p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 28px;
+      gap: 12px;
+      margin-top: 22px;
     }
-
     .btn {
+      min-height: 52px;
+      padding: 13px 18px;
+      border-radius: 14px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 16px 24px;
-      border-radius: 18px;
-      font-size: 13px;
-      letter-spacing: 0.2em;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
       border: 1px solid transparent;
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      flex: 1 1 190px;
     }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
+    .btn:hover { transform: translateY(-2px); }
     .btn-primary {
-      background: linear-gradient(180deg, #cdb57a 0%, #ae9150 100%);
-      color: #050505;
-      border-color: rgba(205, 181, 122, 0.4);
-      font-weight: 700;
+      color: #080808;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      border-color: rgba(207, 184, 124, 0.4);
     }
-
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.04);
       border-color: var(--border);
-      color: white;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
     }
 
-    .highlights {
-      margin-top: 28px;
+    .quick-grid,
+    .packages-grid,
+    .services-grid,
+    .reviews-grid,
+    .gallery-grid,
+    .contact-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 14px;
+      margin-top: 24px;
     }
 
-    .chip-card,
-    .card {
-      border: 1px solid var(--border);
-      background: var(--card);
-      backdrop-filter: blur(8px);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .chip-card {
-      padding: 16px 18px;
-      color: var(--muted);
-      line-height: 1.5;
-      font-size: 14px;
-    }
-
-    .hero-panel {
-      padding: 18px;
-      border-radius: 34px;
-      border: 1px solid rgba(205, 181, 122, 0.22);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-      box-shadow: var(--shadow);
-    }
-
-    .hero-panel-inner {
-      border-radius: 28px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at top, rgba(205, 181, 122, 0.15), transparent 32%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
-      padding: 28px;
-    }
-
-    .small-label {
-      font-size: 11px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .hours {
-      font-size: 38px;
-      margin: 10px 0 0;
-      font-weight: 300;
-    }
-
-    .panel-box {
-      border: 1px solid var(--border);
-      background: rgba(0, 0, 0, 0.32);
-      border-radius: 22px;
-      padding: 18px;
-      margin-top: 16px;
-    }
-
-    .panel-box p {
+    .quick-card { padding: 18px; }
+    .quick-title {
       margin: 0;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .quick-note {
+      margin: 6px 0 0;
       color: var(--muted);
-      line-height: 1.6;
+      font-size: 13px;
     }
 
-    .panel-box strong {
-      display: block;
-      margin-bottom: 8px;
-      color: white;
-      font-size: 22px;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 26px;
-      align-items: start;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .info-card {
-      padding: 24px;
-    }
-
-    .info-card h3 {
-      margin: 0;
-      color: var(--gold);
-      font-size: 18px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .info-card p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .packages-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 32px;
-    }
-
-    .package-card {
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .package-image {
-      aspect-ratio: 16/10;
+    .media {
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       border-bottom: 1px solid var(--border);
     }
-
-    .package-body {
-      padding: 24px;
-    }
-
-    .package-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 18px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .package-no {
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-    }
-
-    .package-card h3 {
-      margin: 10px 0 0;
-      font-size: 28px;
-      letter-spacing: 0.06em;
+    .body { padding: 18px; }
+    h3 {
+      margin: 0;
+      font-size: 23px;
       font-weight: 300;
+      letter-spacing: 0.05em;
     }
-
-    .tag {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(205, 181, 122, 0.28);
-      color: var(--gold);
-      font-size: 10px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      white-space: nowrap;
+    .small {
+      color: var(--muted);
+      margin: 8px 0 0;
+      font-size: 13px;
     }
-
-    .list {
-      margin: 18px 0 0;
+    ul.compact {
+      margin: 14px 0 0;
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 10px;
+      gap: 8px;
     }
-
-    .list li {
-      padding: 12px 14px 12px 30px;
+    ul.compact li {
+      padding: 9px 12px;
+      border-radius: 11px;
+      background: rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 16px;
-      color: var(--muted);
-      line-height: 1.45;
-      position: relative;
-      font-size: 14px;
-    }
-
-    .list li::before {
-      content: "";
-      position: absolute;
-      left: 14px;
-      top: 17px;
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--gold);
-    }
-
-    .services-grid,
-    .visual-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 34px;
-    }
-
-    .service-card {
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .service-image {
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .service-body {
-      padding: 24px;
-    }
-
-    .service-card h3 {
-      margin: 0;
-      font-size: 28px;
-      font-weight: 300;
-      letter-spacing: 0.05em;
+      font-size: 13px;
+      color: #f1f1f1;
     }
 
     .pills {
+      margin-top: 12px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
+      gap: 8px;
     }
-
     .pill {
-      padding: 9px 12px;
+      border: 1px solid rgba(207, 184, 124, 0.35);
+      background: rgba(207, 184, 124, 0.08);
+      color: #edd9a7;
       border-radius: 999px;
-      border: 1px solid rgba(205, 181, 122, 0.25);
-      background: rgba(205, 181, 122, 0.08);
-      color: #e5d4a4;
-      font-size: 13px;
+      font-size: 12px;
+      padding: 6px 10px;
     }
 
-    .visual-card {
-      min-height: 250px;
-      padding: 0;
+    .gallery-card {
       position: relative;
       overflow: hidden;
+      min-height: 210px;
     }
-
-    .visual-card img {
+    .gallery-card img {
       width: 100%;
       height: 100%;
-      min-height: 250px;
       object-fit: cover;
+      transition: transform 0.4s ease;
     }
-
-    .visual-card::after {
+    .gallery-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
-      pointer-events: none;
+      background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.72));
     }
-
-    .visual-card .content {
+    .scene-label {
       position: absolute;
-      inset: 0;
+      left: 14px;
+      bottom: 12px;
       z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 20px;
-      gap: 8px;
-    }
-
-    .scene {
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 22px;
-      margin-top: 34px;
-    }
-
-    .contact-stack {
-      display: grid;
-      gap: 18px;
-    }
-
-    .contact-card {
-      padding: 24px;
-    }
-
-    .contact-card h3 {
-      margin: 0;
-      font-size: 12px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 400;
-    }
-
-    .contact-card p {
-      margin: 14px 0 0;
-      color: white;
-      font-size: 26px;
-      line-height: 1.4;
-      font-weight: 300;
-      word-break: break-word;
-    }
-
-    .contact-card small {
-      display: block;
-      margin-top: 10px;
-      color: var(--muted);
-      line-height: 1.5;
-      font-size: 14px;
-    }
-
-    .map-shell {
-      padding: 14px;
-      overflow: hidden;
-    }
-
-    .map-frame {
-      width: 100%;
-      height: 100%;
-      min-height: 510px;
-      border: 0;
-      border-radius: 24px;
-      filter: grayscale(1) contrast(1.08) brightness(0.85);
-    }
-
-    .footer-cta {
-      padding: 34px;
-      border-radius: 36px;
-      border: 1px solid rgba(205, 181, 122, 0.22);
-      background:
-        radial-gradient(circle at top, rgba(205, 181, 122, 0.18), transparent 30%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-    }
-
-    .footer-cta-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: rgba(0, 0, 0, 0.28);
-    }
-
-    .stat .k {
+      color: #f3e5bf;
       font-size: 11px;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--muted-2);
     }
 
-    .stat .v {
-      margin-top: 8px;
-      font-size: 24px;
-      font-weight: 300;
+    .review-card { padding: 18px; }
+    .stars {
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      font-size: 12px;
+    }
+    .review-text {
+      margin: 10px 0 0;
+      color: #f3f3f3;
+      font-size: 14px;
     }
 
-    .wa-float {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 99;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: linear-gradient(180deg, #cdb57a 0%, #ae9150 100%);
-      color: #050505;
-      padding: 14px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(205, 181, 122, 0.5);
-      font-size: 13px;
-      letter-spacing: 0.18em;
+    .contact-box { padding: 18px; }
+    .contact-box h3 {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      font-weight: 700;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      font-weight: 500;
+    }
+    .contact-box p {
+      margin: 10px 0 0;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .contact-box small {
+      color: var(--muted);
+      display: block;
+      margin-top: 7px;
     }
 
-    .wa-float .icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
+    .map {
+      min-height: 330px;
+      width: 100%;
+      border: 0;
+      border-radius: 16px;
+      filter: grayscale(1) brightness(0.86) contrast(1.05);
+    }
+
+    .final-cta {
+      padding: 28px;
+      border-radius: 26px;
+      border: 1px solid rgba(207, 184, 124, 0.3);
+      background: radial-gradient(circle at top, rgba(207, 184, 124, 0.16), transparent 34%), rgba(255, 255, 255, 0.02);
+    }
+
+    .mobile-bar {
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      z-index: 60;
+      border: 1px solid rgba(207, 184, 124, 0.38);
+      border-radius: 16px;
+      background: rgba(8, 8, 8, 0.95);
+      backdrop-filter: blur(8px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 8px;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.55);
+    }
+    .mobile-link {
+      min-height: 48px;
+      border-radius: 10px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       display: grid;
       place-items: center;
-      background: #050505;
-      color: var(--gold);
-      font-size: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .mobile-link.primary {
+      border-color: rgba(207, 184, 124, 0.45);
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: #050505;
       font-weight: 700;
     }
 
-    @media (max-width: 980px) {
-      .hero-grid,
-      .two-col,
-      .contact-grid,
-      .footer-cta-grid,
+    @media (min-width: 700px) {
+      body { padding-bottom: 0; }
+      .brand-logo { height: 40px; }
+      .quick-grid,
+      .reviews-grid,
+      .gallery-grid,
+      .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .packages-grid,
-      .services-grid,
-      .visual-grid,
-      .highlights {
-        grid-template-columns: 1fr;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .mobile-bar { display: none; }
     }
 
-    @media (max-width: 640px) {
-      .section,
-      .hero {
-        padding: 62px 0;
-      }
-
-      .hero {
-        padding-top: 18px;
-      }
-
-      .brand-logo {
-        width: 48px;
-        height: 48px;
-      }
-
-      .hero-brand .brand-logo {
-        width: 38px;
-        height: 38px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .wa-float {
-        right: 14px;
-        left: 14px;
-        justify-content: center;
-      }
-
-      .contact-card p {
-        font-size: 22px;
-      }
+    @media (min-width: 1024px) {
+      .section { padding: 82px 0; }
+      .nav-links { display: flex; }
+      .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 28px; }
+      .quick-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .contact-grid { grid-template-columns: 0.95fr 1.05fr; }
+      .gallery-card:hover img { transform: scale(1.04); }
     }
   </style>
 </head>
 <body>
-  <a class="wa-float" href="https://wa.me/905010399572?text=Hello%20ZEN%20SPA%20CENTER%2C%20I%20want%20to%20book%20a%20spa%20session." target="_blank" rel="noreferrer">
-    <span class="icon">✦</span>
-    WhatsApp Booking
-  </a>
-
-  <header class="hero" id="top">
-    <div class="container">
-      <div class="nav">
-        <div class="brand-wrap">
-          <img class="brand-logo" src="./logo.png" alt="ZEN SPA CENTER logo" />
-          <h1 class="brand">ZEN <span>SPA</span> CENTER</h1>
-        </div>
-        <nav class="nav-links">
-          <a href="#about">About</a>
-          <a href="#packages">Packages</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">Kemer, Antalya</div>
-          <div class="hero-brand">
-            <img class="brand-logo" src="./logo.png" alt="ZEN SPA CENTER mark" />
-            <div class="hero-brand-text">ZEN <span>SPA</span> CENTER</div>
-          </div>
-          <h2 class="hero-title">ZEN SPA <span>CENTER</span></h2>
-          <p class="hero-text">Quiet luxury. Signature rituals. Instant booking.</p>
-
-          <div class="actions">
-            <a class="btn btn-primary" href="https://wa.me/905010399572?text=Hello%20ZEN%20SPA%20CENTER%2C%20I%20want%20to%20book%20a%20spa%20session." target="_blank" rel="noreferrer">WhatsApp Booking</a>
-            <a class="btn btn-secondary" href="#contact">Contact & Map</a>
-          </div>
-
-          <div class="highlights">
-            <div class="chip-card">Turkish Hammam Rituals</div>
-            <div class="chip-card">Massage & Wellness</div>
-            <div class="chip-card">Open Daily 08:00 — 20:00</div>
-            <div class="chip-card">Premium Black & Gold Mood</div>
-          </div>
-        </div>
-
-        <div class="hero-panel">
-          <div class="hero-panel-inner">
-            <div class="small-label">Opening Hours</div>
-            <div class="hours">08:00 — 20:00</div>
-
-            <div class="panel-box">
-              <strong>Luxury Spa Rituals</strong>
-              <p>Hammam, massage, face and body care.</p>
-            </div>
-
-            <div class="panel-box">
-              <div class="small-label">Fast Booking</div>
-              <p style="margin-top: 12px;">Book in seconds via WhatsApp.</p>
-            </div>
-
-            <div class="panel-box">
-              <div class="small-label">Location</div>
-              <p style="margin-top: 12px;">Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <header class="nav-wrap" id="top">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="ZEN SPA CENTER Home">
+        <img class="brand-logo" src="./logo.png" alt="ZEN SPA CENTER logo" />
+        <h1 class="brand-text">ZEN <span>SPA</span> CENTER</h1>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#packages">Packages</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <section class="section" id="about">
-    <div class="container">
-      <div class="two-col">
-        <div>
-          <div class="eyebrow">About The Spa</div>
-          <h2 class="section-title">Calm. Gold. Deep reset.</h2>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Kemer, Antalya</p>
+        <h2>ZEN SPA <span>CENTER</span></h2>
+        <p class="hero-sub">Luxury spa rituals in Kemer. Quiet luxury. Instant booking.</p>
+        <div class="hero-meta">
+          <span class="meta-pill">Open Daily 08:00 – 20:00</span>
+          <span class="meta-pill">Hammam, Massage, Wellness</span>
         </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer">WhatsApp Booking</a>
+          <a class="btn btn-secondary" href="#contact">Contact / Map</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h3>Hotel guest friendly</h3>
+        <p>Fast booking, clear location, premium comfort.</p>
+        <div class="actions" style="margin-top:16px;">
+          <a class="btn btn-secondary" href="tel:+905010399572">Call Now</a>
+          <a class="btn btn-secondary" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer">Open Map</a>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-        <div class="info-grid">
-          <div class="card info-card">
-            <h3>Location</h3>
-            <p>Kemer, Antalya.</p>
-          </div>
-          <div class="card info-card">
-            <h3>Atmosphere</h3>
-            <p>Dark luxury hotel style.</p>
-          </div>
-          <div class="card info-card" style="grid-column: 1 / -1;">
-            <h3>Focus</h3>
-            <p>Rituals, wellness, premium comfort.</p>
-          </div>
-        </div>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Why Guests Choose Us</p>
+      <div class="quick-grid">
+        <article class="card quick-card">
+          <p class="quick-title">Fast WhatsApp Booking</p>
+          <p class="quick-note">Reply in minutes.</p>
+        </article>
+        <article class="card quick-card">
+          <p class="quick-title">Open Daily 08:00 – 20:00</p>
+          <p class="quick-note">Easy to fit your trip.</p>
+        </article>
+        <article class="card quick-card">
+          <p class="quick-title">Near Hotels in Kemer</p>
+          <p class="quick-note">Quick access by taxi.</p>
+        </article>
+        <article class="card quick-card">
+          <p class="quick-title">Hammam, Massage & Wellness</p>
+          <p class="quick-note">Complete spa journey.</p>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="section" id="packages">
     <div class="container">
-      <div class="eyebrow">Spa Packages</div>
-      <h2 class="section-title">Choose your package</h2>
-
+      <p class="eyebrow">Packages</p>
+      <h2 class="section-title">Choose your ritual</h2>
       <div class="packages-grid">
-        <article class="card package-card">
-          <img class="package-image" src="./Welcome.png" alt="Welcome Package" />
-          <div class="package-body">
-            <div class="package-top">
-              <div>
-                <div class="package-no">Package 01</div>
-                <h3>Welcome Package</h3>
-              </div>
-              <div class="tag">Premium</div>
-            </div>
-            <ul class="list">
+        <article class="card">
+          <img class="media" src="./Welcome.png" alt="Welcome Package" />
+          <div class="body">
+            <h3>Welcome Package</h3>
+            <ul class="compact">
               <li>Sauna & Steam</li>
               <li>Turkish Bath & Peeling</li>
               <li>Foam + Classic Massage</li>
               <li>Face Mask</li>
             </ul>
+            <div class="actions"><a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer">Book this package</a></div>
           </div>
         </article>
 
-        <article class="card package-card">
-          <img class="package-image" src="./Bronze.png" alt="Bronze Package" />
-          <div class="package-body">
-            <div class="package-top">
-              <div>
-                <div class="package-no">Package 02</div>
-                <h3>Bronze Package</h3>
-              </div>
-              <div class="tag">Premium</div>
-            </div>
-            <ul class="list">
+        <article class="card">
+          <img class="media" src="./Bronze.png" alt="Bronze Package" />
+          <div class="body">
+            <h3>Bronze Package</h3>
+            <ul class="compact">
               <li>Sauna & Steam</li>
               <li>Coffee Peeling</li>
               <li>Foam + Bronze Oil Massage</li>
               <li>Face Mask</li>
             </ul>
+            <div class="actions"><a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer">Book this package</a></div>
           </div>
         </article>
 
-        <article class="card package-card">
-          <img class="package-image" src="./Medical.png" alt="Medical Package" />
-          <div class="package-body">
-            <div class="package-top">
-              <div>
-                <div class="package-no">Package 03</div>
-                <h3>Medical Package</h3>
-              </div>
-              <div class="tag">Premium</div>
-            </div>
-            <ul class="list">
+        <article class="card">
+          <img class="media" src="./Medical.png" alt="Medical Package" />
+          <div class="body">
+            <h3>Medical Package</h3>
+            <ul class="compact">
               <li>Sauna & Steam</li>
               <li>Sea Salt Peeling</li>
               <li>Foam + Medical Massage</li>
               <li>Face Mask</li>
             </ul>
+            <div class="actions"><a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer">Book this package</a></div>
           </div>
         </article>
 
-        <article class="card package-card">
-          <img class="package-image" src="./vip.png" alt="V.I.P Package" />
-          <div class="package-body">
-            <div class="package-top">
-              <div>
-                <div class="package-no">Package 04</div>
-                <h3>V.I.P Package</h3>
-              </div>
-              <div class="tag">Luxury</div>
-            </div>
-            <ul class="list">
+        <article class="card">
+          <img class="media" src="./vip.png" alt="V.I.P Package" />
+          <div class="body">
+            <h3>V.I.P Package</h3>
+            <ul class="compact">
               <li>Full Hammam Ritual</li>
               <li>Hot Stone + Reflex Massage</li>
-              <li>Jakuzi & Herbal Tea</li>
+              <li>Jacuzzi & Herbal Tea</li>
+              <li>Premium Care Touch</li>
             </ul>
+            <div class="actions"><a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer">Book this package</a></div>
           </div>
         </article>
       </div>
@@ -883,102 +532,76 @@
 
   <section class="section" id="services">
     <div class="container">
-      <div class="eyebrow">Services Inside</div>
-      <h2 class="section-title">Signature treatments</h2>
-
+      <p class="eyebrow">Services</p>
+      <h2 class="section-title">Inside the spa</h2>
       <div class="services-grid">
-        <article class="card service-card">
-          <img class="service-image" src="./Turkishbath.png" alt="Turkish Bath Rituals" />
-          <div class="service-body">
+        <article class="card">
+          <img class="media" src="./Turkishbath.png" alt="Turkish Bath Rituals" />
+          <div class="body">
             <h3>Turkish Bath Rituals</h3>
-            <div class="pills">
-              <span class="pill">Hammam</span>
-              <span class="pill">Peeling</span>
-              <span class="pill">Foam</span>
-            </div>
+            <p class="small">Traditional cleansing with a luxury touch.</p>
+            <div class="pills"><span class="pill">Hammam</span><span class="pill">Peeling</span><span class="pill">Foam</span><span class="pill">Steam</span></div>
           </div>
         </article>
-
-        <article class="card service-card">
-          <img class="service-image" src="./Massage.png" alt="Massage and Wellness" />
-          <div class="service-body">
+        <article class="card">
+          <img class="media" src="./Massage.png" alt="Massage and Wellness" />
+          <div class="body">
             <h3>Massage & Wellness</h3>
-            <div class="pills">
-              <span class="pill">Classic</span>
-              <span class="pill">Medical</span>
-              <span class="pill">Hot Stone</span>
-            </div>
+            <p class="small">Restore body balance and deep calm.</p>
+            <div class="pills"><span class="pill">Classic</span><span class="pill">Medical</span><span class="pill">Hot Stone</span><span class="pill">Aroma</span></div>
           </div>
         </article>
-
-        <article class="card service-card">
-          <img class="service-image" src="./Face.png" alt="Face and Body Care" />
-          <div class="service-body">
+        <article class="card">
+          <img class="media" src="./Face.png" alt="Face and Body Care" />
+          <div class="body">
             <h3>Face & Body Care</h3>
-            <div class="pills">
-              <span class="pill">Face Mask</span>
-              <span class="pill">Body Care</span>
-              <span class="pill">Wellness</span>
-            </div>
+            <p class="small">Fresh skin, relaxed body, light mind.</p>
+            <div class="pills"><span class="pill">Face Mask</span><span class="pill">Body Care</span><span class="pill">Hydration</span></div>
           </div>
         </article>
-
-        <article class="card service-card">
-          <img class="service-image" src="./Special.png" alt="Special Therapies" />
-          <div class="service-body">
+        <article class="card">
+          <img class="media" src="./Special.png" alt="Special Therapies" />
+          <div class="body">
             <h3>Special Therapies</h3>
-            <div class="pills">
-              <span class="pill">Acupuncture</span>
-              <span class="pill">Steam</span>
-              <span class="pill">Jakuzi</span>
-            </div>
+            <p class="small">Therapeutic options for deeper recovery.</p>
+            <div class="pills"><span class="pill">Reflex</span><span class="pill">Therapy</span><span class="pill">Jacuzzi</span></div>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="gallery">
     <div class="container">
-      <div class="eyebrow">Visual Mood</div>
+      <p class="eyebrow">Visual Mood</p>
       <h2 class="section-title">Scene gallery</h2>
+      <div class="gallery-grid">
+        <article class="card gallery-card"><img src="./scene1.png" alt="Scene 01" /><div class="scene-label">Scene 01</div></article>
+        <article class="card gallery-card"><img src="./scene2.png" alt="Scene 02" /><div class="scene-label">Scene 02</div></article>
+        <article class="card gallery-card"><img src="./scene3.png" alt="Scene 03" /><div class="scene-label">Scene 03</div></article>
+        <article class="card gallery-card"><img src="./scene4.png" alt="Scene 04" /><div class="scene-label">Scene 04</div></article>
+        <article class="card gallery-card"><img src="./scene5.png" alt="Scene 05" /><div class="scene-label">Scene 05</div></article>
+        <article class="card gallery-card"><img src="./scene6.png" alt="Scene 06" /><div class="scene-label">Scene 06</div></article>
+      </div>
+    </div>
+  </section>
 
-      <div class="visual-grid">
-        <article class="card visual-card">
-          <img src="./scene1.png" alt="Scene 01" />
-          <div class="content">
-            <div class="scene">Scene 01</div>
-          </div>
+  <section class="section" id="reviews">
+    <div class="container">
+      <p class="eyebrow">Reviews</p>
+      <h2 class="section-title">Guests trust us</h2>
+      <div class="reviews-grid">
+        <article class="card review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">Very relaxing atmosphere and beautiful design.</p>
         </article>
-        <article class="card visual-card">
-          <img src="./scene2.png" alt="Scene 02" />
-          <div class="content">
-            <div class="scene">Scene 02</div>
-          </div>
+        <article class="card review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">Professional massage and genuinely friendly staff.</p>
         </article>
-        <article class="card visual-card">
-          <img src="./scene3.png" alt="Scene 03" />
-          <div class="content">
-            <div class="scene">Scene 03</div>
-          </div>
-        </article>
-        <article class="card visual-card">
-          <img src="./scene4.png" alt="Scene 04" />
-          <div class="content">
-            <div class="scene">Scene 04</div>
-          </div>
-        </article>
-        <article class="card visual-card">
-          <img src="./scene5.png" alt="Scene 05" />
-          <div class="content">
-            <div class="scene">Scene 05</div>
-          </div>
-        </article>
-        <article class="card visual-card">
-          <img src="./scene6.png" alt="Scene 06" />
-          <div class="content">
-            <div class="scene">Scene 06</div>
-          </div>
+        <article class="card review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">One of the best spa experiences during our holiday.</p>
         </article>
       </div>
     </div>
@@ -986,79 +609,61 @@
 
   <section class="section" id="contact">
     <div class="container">
-      <div class="eyebrow">Contact & Location</div>
-      <h2 class="section-title">Book your time</h2>
-
+      <p class="eyebrow">Contact + Map</p>
+      <h2 class="section-title">Book in one minute</h2>
       <div class="contact-grid">
-        <div class="contact-stack">
-          <div class="card contact-card">
+        <div style="display:grid; gap:12px;">
+          <article class="card contact-box">
             <h3>Address</h3>
-            <p>Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, Kemer</p>
-            <small>Antalya, Türkiye.</small>
-          </div>
-
-          <div class="card contact-card">
+            <p>Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya</p>
+          </article>
+          <article class="card contact-box">
             <h3>Phone / WhatsApp</h3>
-            <p><a href="https://wa.me/905010399572?text=Hello%20ZEN%20SPA%20CENTER%2C%20I%20want%20to%20book%20a%20spa%20session." target="_blank" rel="noreferrer">+905010399572</a></p>
-            <small>Instant booking line.</small>
-          </div>
-
-          <div class="card contact-card">
+            <p><a href="tel:+905010399572">+905010399572</a></p>
+            <small>Instant booking support.</small>
+          </article>
+          <article class="card contact-box">
             <h3>Opening Hours</h3>
-            <p>08:00 – 20:00</p>
-            <small>Every day.</small>
+            <p>Daily 08:00 – 20:00</p>
+          </article>
+          <div class="actions" style="margin-top:0;">
+            <a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer">WhatsApp Booking</a>
+            <a class="btn btn-secondary" href="tel:+905010399572">Call Now</a>
+            <a class="btn btn-secondary" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer">Open Map</a>
           </div>
         </div>
 
-        <div class="card map-shell">
+        <article class="card" style="padding:12px;">
           <iframe
-            class="map-frame"
-            src="https://www.google.com/maps?q=36.661962,30.559502&z=16&output=embed"
+            class="map"
+            src="https://www.google.com/maps?q=G%C3%B6yn%C3%BCk%20mh.%20Ba%C5%9Fkomutan%2C%20Atat%C3%BCrk%20Cd.%20No%3A147-1%20D%3A1%2C%2007981%20Kemer%2FAntalya&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="ZEN SPA CENTER Map"
           ></iframe>
-        </div>
-      </div>
-
-      <div class="actions" style="margin-top: 24px;">
-        <a class="btn btn-primary" href="https://wa.me/905010399572?text=Hello%20ZEN%20SPA%20CENTER%2C%20I%20want%20to%20book%20a%20spa%20session." target="_blank" rel="noreferrer">Book on WhatsApp</a>
-        <a class="btn btn-secondary" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer">Open Google Maps</a>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section" style="border-bottom: 0;">
+  <section class="section" style="border-bottom:0;">
     <div class="container">
-      <div class="footer-cta">
-        <div class="footer-cta-grid">
-          <div>
-            <div class="eyebrow">ZEN SPA CENTER</div>
-            <h2 class="section-title" style="margin-top: 16px;">Luxury wellness in Kemer</h2>
-            <p class="hero-text" style="margin-top: 18px; max-width: 620px;">Premium rituals. Direct booking. Immediate relaxation.</p>
-          </div>
-
-          <div class="stat-grid">
-            <div class="stat">
-              <div class="k">Hours</div>
-              <div class="v">08:00 – 20:00</div>
-            </div>
-            <div class="stat">
-              <div class="k">Location</div>
-              <div class="v">Kemer</div>
-            </div>
-            <div class="stat">
-              <div class="k">Booking</div>
-              <div class="v">WhatsApp</div>
-            </div>
-            <div class="stat">
-              <div class="k">Mood</div>
-              <div class="v">Black & Gold</div>
-            </div>
-          </div>
+      <div class="final-cta">
+        <p class="eyebrow">Final CTA</p>
+        <h2 class="section-title" style="margin-top:8px;">Ready to relax?</h2>
+        <p class="hero-sub" style="margin-top:10px;">Book your spa session today.</p>
+        <div class="actions" style="margin-top:16px;">
+          <a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer">WhatsApp Booking</a>
+          <a class="btn btn-secondary" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer">Open Map</a>
         </div>
       </div>
     </div>
   </section>
+
+  <nav class="mobile-bar" aria-label="Quick actions">
+    <a class="mobile-link primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer">WhatsApp</a>
+    <a class="mobile-link" href="tel:+905010399572">Call</a>
+    <a class="mobile-link" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer">Map</a>
+  </nav>
 </body>
 </html>
