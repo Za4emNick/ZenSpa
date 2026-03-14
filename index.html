@@ -4,20 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZEN SPA CENTER</title>
-  <meta name="description" content="ZEN SPA CENTER in Kemer, Antalya. Luxury spa experiences, hammam rituals, massage packages, wellness treatments and direct WhatsApp booking." />
+  <meta name="description" content="ZEN SPA CENTER in Kemer, Antalya. Luxury spa rituals, premium packages, and direct WhatsApp booking." />
   <style>
     :root {
       --bg: #050505;
       --bg-soft: #0d0d0d;
-      --card: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.10);
+      --card: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.1);
       --gold: #cdb57a;
       --gold-strong: #b79b58;
       --text: #ffffff;
-      --muted: rgba(255,255,255,0.70);
-      --muted-2: rgba(255,255,255,0.52);
-      --shadow: 0 18px 60px rgba(0,0,0,0.45);
-      --radius: 28px;
+      --muted: rgba(255, 255, 255, 0.72);
+      --muted-2: rgba(255, 255, 255, 0.52);
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
     }
 
     * {
@@ -32,7 +31,7 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, rgba(205,181,122,0.10), transparent 26%),
+        radial-gradient(circle at top, rgba(205, 181, 122, 0.1), transparent 26%),
         linear-gradient(180deg, #040404 0%, #070707 40%, #000000 100%);
       color: var(--text);
     }
@@ -40,6 +39,12 @@
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     .container {
@@ -53,10 +58,10 @@
     }
 
     .section-title {
-      font-size: clamp(34px, 5vw, 58px);
+      font-size: clamp(30px, 5vw, 56px);
       line-height: 1.08;
       font-weight: 300;
-      letter-spacing: 0.10em;
+      letter-spacing: 0.1em;
       margin: 14px 0 0;
     }
 
@@ -80,7 +85,7 @@
     }
 
     .hero {
-      padding: 36px 0 88px;
+      padding: 32px 0 88px;
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
@@ -95,13 +100,33 @@
       margin-bottom: 28px;
     }
 
-    .brand {
-      font-size: 28px;
-      letter-spacing: 0.22em;
-      font-weight: 300;
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
-    .brand span {
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid rgba(205, 181, 122, 0.34);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+      padding: 6px;
+    }
+
+    .brand {
+      font-size: clamp(20px, 2vw, 30px);
+      letter-spacing: 0.22em;
+      font-weight: 300;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .brand span,
+    .hero-brand-text span {
       color: var(--gold);
     }
 
@@ -113,24 +138,49 @@
 
     .nav-links a {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 30px;
       align-items: center;
     }
 
+    .hero-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin: 14px 0 0;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(205, 181, 122, 0.24);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .hero-brand .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      box-shadow: none;
+      padding: 5px;
+    }
+
+    .hero-brand-text {
+      letter-spacing: 0.2em;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
     .hero-title {
-      font-size: clamp(52px, 8vw, 94px);
+      font-size: clamp(48px, 8vw, 90px);
       line-height: 0.94;
       font-weight: 300;
       letter-spacing: 0.16em;
-      margin: 0;
+      margin: 20px 0 0;
     }
 
     .hero-title span {
@@ -140,18 +190,18 @@
     }
 
     .hero-text {
-      margin: 28px 0 0;
-      max-width: 760px;
+      margin: 20px 0 0;
+      max-width: 560px;
       color: var(--muted);
-      font-size: 18px;
-      line-height: 1.9;
+      font-size: 17px;
+      line-height: 1.7;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      margin-top: 34px;
+      margin-top: 28px;
     }
 
     .btn {
@@ -161,10 +211,10 @@
       padding: 16px 24px;
       border-radius: 18px;
       font-size: 13px;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       border: 1px solid transparent;
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
 
     .btn:hover {
@@ -174,24 +224,25 @@
     .btn-primary {
       background: linear-gradient(180deg, #cdb57a 0%, #ae9150 100%);
       color: #050505;
-      border-color: rgba(205,181,122,0.4);
+      border-color: rgba(205, 181, 122, 0.4);
       font-weight: 700;
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.04);
       border-color: var(--border);
       color: white;
     }
 
     .highlights {
-      margin-top: 34px;
+      margin-top: 28px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .chip-card, .card {
+    .chip-card,
+    .card {
       border: 1px solid var(--border);
       background: var(--card);
       backdrop-filter: blur(8px);
@@ -200,16 +251,17 @@
     }
 
     .chip-card {
-      padding: 18px 18px;
+      padding: 16px 18px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.5;
+      font-size: 14px;
     }
 
     .hero-panel {
       padding: 18px;
       border-radius: 34px;
-      border: 1px solid rgba(205,181,122,0.22);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(205, 181, 122, 0.22);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
       box-shadow: var(--shadow);
     }
 
@@ -217,14 +269,14 @@
       border-radius: 28px;
       border: 1px solid var(--border);
       background:
-        radial-gradient(circle at top, rgba(205,181,122,0.15), transparent 32%),
-        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+        radial-gradient(circle at top, rgba(205, 181, 122, 0.15), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
       padding: 28px;
     }
 
     .small-label {
       font-size: 11px;
-      letter-spacing: 0.30em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--gold);
     }
@@ -237,30 +289,30 @@
 
     .panel-box {
       border: 1px solid var(--border);
-      background: rgba(0,0,0,0.32);
+      background: rgba(0, 0, 0, 0.32);
       border-radius: 22px;
       padding: 18px;
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
     .panel-box p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.75;
+      line-height: 1.6;
     }
 
     .panel-box strong {
       display: block;
       margin-bottom: 8px;
       color: white;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 300;
       letter-spacing: 0.05em;
     }
 
     .two-col {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 0.95fr 1.05fr;
       gap: 26px;
       align-items: start;
     }
@@ -280,12 +332,14 @@
       color: var(--gold);
       font-size: 18px;
       font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .info-card p {
-      margin: 14px 0 0;
+      margin: 10px 0 0;
       color: var(--muted);
-      line-height: 1.8;
+      line-height: 1.55;
     }
 
     .packages-grid {
@@ -296,15 +350,26 @@
     }
 
     .package-card {
-      padding: 28px;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .package-image {
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .package-body {
+      padding: 24px;
     }
 
     .package-top {
       display: flex;
       justify-content: space-between;
-      align-items: start;
+      align-items: flex-start;
       gap: 18px;
-      padding-bottom: 18px;
+      padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -316,7 +381,7 @@
     }
 
     .package-card h3 {
-      margin: 12px 0 0;
+      margin: 10px 0 0;
       font-size: 28px;
       letter-spacing: 0.06em;
       font-weight: 300;
@@ -325,45 +390,46 @@
     .tag {
       padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(205,181,122,0.28);
+      border: 1px solid rgba(205, 181, 122, 0.28);
       color: var(--gold);
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .list {
-      margin: 22px 0 0;
+      margin: 18px 0 0;
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .list li {
-      padding: 14px 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(0,0,0,0.20);
-      border-radius: 18px;
+      padding: 12px 14px 12px 30px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 16px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.45;
       position: relative;
-      padding-left: 34px;
+      font-size: 14px;
     }
 
     .list li::before {
       content: "";
       position: absolute;
-      left: 16px;
-      top: 21px;
-      width: 8px;
-      height: 8px;
+      left: 14px;
+      top: 17px;
+      width: 7px;
+      height: 7px;
       border-radius: 999px;
       background: var(--gold);
     }
 
-    .services-grid, .visual-grid {
+    .services-grid,
+    .visual-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
@@ -371,78 +437,81 @@
     }
 
     .service-card {
-      padding: 28px;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .service-image {
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .service-body {
+      padding: 24px;
     }
 
     .service-card h3 {
       margin: 0;
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 300;
       letter-spacing: 0.05em;
-    }
-
-    .service-card p {
-      margin: 14px 0 0;
-      color: var(--muted);
-      line-height: 1.85;
     }
 
     .pills {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 22px;
+      margin-top: 16px;
     }
 
     .pill {
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(205,181,122,0.25);
-      background: rgba(205,181,122,0.08);
+      border: 1px solid rgba(205, 181, 122, 0.25);
+      background: rgba(205, 181, 122, 0.08);
       color: #e5d4a4;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .visual-card {
-      min-height: 220px;
-      padding: 24px;
+      min-height: 250px;
+      padding: 0;
       position: relative;
       overflow: hidden;
-      background:
-        radial-gradient(circle at top left, rgba(205,181,122,0.20), transparent 30%),
-        linear-gradient(160deg, #101010, #050505 70%);
+    }
+
+    .visual-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      object-fit: cover;
     }
 
     .visual-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.75));
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
       pointer-events: none;
     }
 
     .visual-card .content {
-      position: relative;
+      position: absolute;
+      inset: 0;
       z-index: 1;
       display: flex;
-      height: 100%;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-end;
+      padding: 20px;
+      gap: 8px;
     }
 
     .scene {
       color: var(--gold);
       font-size: 11px;
-      letter-spacing: 0.30em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-    }
-
-    .visual-card h3 {
-      margin: 0;
-      max-width: 260px;
-      font-size: 30px;
-      line-height: 1.3;
-      font-weight: 300;
     }
 
     .contact-grid {
@@ -473,18 +542,18 @@
     .contact-card p {
       margin: 14px 0 0;
       color: white;
-      font-size: 28px;
-      line-height: 1.45;
+      font-size: 26px;
+      line-height: 1.4;
       font-weight: 300;
       word-break: break-word;
     }
 
     .contact-card small {
       display: block;
-      margin-top: 12px;
+      margin-top: 10px;
       color: var(--muted);
-      line-height: 1.8;
-      font-size: 15px;
+      line-height: 1.5;
+      font-size: 14px;
     }
 
     .map-shell {
@@ -504,15 +573,15 @@
     .footer-cta {
       padding: 34px;
       border-radius: 36px;
-      border: 1px solid rgba(205,181,122,0.22);
+      border: 1px solid rgba(205, 181, 122, 0.22);
       background:
-        radial-gradient(circle at top, rgba(205,181,122,0.18), transparent 30%),
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+        radial-gradient(circle at top, rgba(205, 181, 122, 0.18), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
     }
 
     .footer-cta-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 24px;
       align-items: center;
     }
@@ -527,7 +596,7 @@
       padding: 18px;
       border-radius: 20px;
       border: 1px solid var(--border);
-      background: rgba(0,0,0,0.28);
+      background: rgba(0, 0, 0, 0.28);
     }
 
     .stat .k {
@@ -539,7 +608,7 @@
 
     .stat .v {
       margin-top: 8px;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 300;
     }
 
@@ -555,12 +624,12 @@
       color: #050505;
       padding: 14px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(205,181,122,0.5);
+      border: 1px solid rgba(205, 181, 122, 0.5);
       font-size: 13px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       font-weight: 700;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
     }
 
     .wa-float .icon {
@@ -582,7 +651,8 @@
       .footer-cta-grid,
       .packages-grid,
       .services-grid,
-      .visual-grid {
+      .visual-grid,
+      .highlights {
         grid-template-columns: 1fr;
       }
 
@@ -590,23 +660,30 @@
         grid-template-columns: 1fr;
       }
 
-      .highlights {
-        grid-template-columns: 1fr;
-      }
-
       .nav {
         flex-direction: column;
-        align-items: start;
+        align-items: flex-start;
       }
     }
 
     @media (max-width: 640px) {
-      .section, .hero {
-        padding: 64px 0;
+      .section,
+      .hero {
+        padding: 62px 0;
       }
 
       .hero {
-        padding-top: 20px;
+        padding-top: 18px;
+      }
+
+      .brand-logo {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero-brand .brand-logo {
+        width: 38px;
+        height: 38px;
       }
 
       .btn {
@@ -634,7 +711,10 @@
   <header class="hero" id="top">
     <div class="container">
       <div class="nav">
-        <div class="brand">ZEN <span>SPA</span> CENTER</div>
+        <div class="brand-wrap">
+          <img class="brand-logo" src="./logo.png" alt="ZEN SPA CENTER logo" />
+          <h1 class="brand">ZEN <span>SPA</span> CENTER</h1>
+        </div>
         <nav class="nav-links">
           <a href="#about">About</a>
           <a href="#packages">Packages</a>
@@ -646,11 +726,12 @@
       <div class="hero-grid">
         <div>
           <div class="eyebrow">Kemer, Antalya</div>
-          <h1 class="hero-title">ZEN SPA <span>CENTER</span></h1>
-          <p class="hero-text">
-            Luxury black-and-gold spa website inspired by your flyer. Elegant sections, hotel-style presentation,
-            direct booking and a premium atmosphere for guests looking for hammam rituals, massage treatments and full-body wellness.
-          </p>
+          <div class="hero-brand">
+            <img class="brand-logo" src="./logo.png" alt="ZEN SPA CENTER mark" />
+            <div class="hero-brand-text">ZEN <span>SPA</span> CENTER</div>
+          </div>
+          <h2 class="hero-title">ZEN SPA <span>CENTER</span></h2>
+          <p class="hero-text">Quiet luxury. Signature rituals. Instant booking.</p>
 
           <div class="actions">
             <a class="btn btn-primary" href="https://wa.me/905010399572?text=Hello%20ZEN%20SPA%20CENTER%2C%20I%20want%20to%20book%20a%20spa%20session." target="_blank" rel="noreferrer">WhatsApp Booking</a>
@@ -658,10 +739,10 @@
           </div>
 
           <div class="highlights">
-            <div class="chip-card">Premium spa atmosphere in Kemer, Antalya</div>
-            <div class="chip-card">Turkish bath, sauna, steam room and luxury massage rituals</div>
-            <div class="chip-card">Body treatments, face care and curated wellness packages</div>
-            <div class="chip-card">Open daily from 08:00 to 20:00</div>
+            <div class="chip-card">Turkish Hammam Rituals</div>
+            <div class="chip-card">Massage & Wellness</div>
+            <div class="chip-card">Open Daily 08:00 — 20:00</div>
+            <div class="chip-card">Premium Black & Gold Mood</div>
           </div>
         </div>
 
@@ -671,18 +752,18 @@
             <div class="hours">08:00 — 20:00</div>
 
             <div class="panel-box">
-              <strong>Luxury Hammam & Massage Rituals</strong>
-              <p>Refined body care, premium comfort and a darker visual identity closer to a hotel spa experience.</p>
+              <strong>Luxury Spa Rituals</strong>
+              <p>Hammam, massage, face and body care.</p>
             </div>
 
             <div class="panel-box">
               <div class="small-label">Fast Booking</div>
-              <p style="margin-top:12px;">Guests can book instantly through WhatsApp for a quick and convenient contact flow.</p>
+              <p style="margin-top: 12px;">Book in seconds via WhatsApp.</p>
             </div>
 
             <div class="panel-box">
               <div class="small-label">Location</div>
-              <p style="margin-top:12px;">Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya</p>
+              <p style="margin-top: 12px;">Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1</p>
             </div>
           </div>
         </div>
@@ -695,21 +776,21 @@
       <div class="two-col">
         <div>
           <div class="eyebrow">About The Spa</div>
-          <h2 class="section-title">Calm design. Deep relaxation. Premium rituals.</h2>
+          <h2 class="section-title">Calm. Gold. Deep reset.</h2>
         </div>
 
         <div class="info-grid">
           <div class="card info-card">
             <h3>Location</h3>
-            <p>ZEN SPA CENTER is presented as a premium spa destination in Kemer, Antalya with a clean luxury structure and dark visual mood.</p>
+            <p>Kemer, Antalya.</p>
           </div>
           <div class="card info-card">
-            <h3>Style</h3>
-            <p>Minimal black background, warm gold accents, separated content blocks and a more expensive visual direction.</p>
+            <h3>Atmosphere</h3>
+            <p>Dark luxury hotel style.</p>
           </div>
           <div class="card info-card" style="grid-column: 1 / -1;">
-            <h3>What guests discover</h3>
-            <p>Hammam rituals, peeling, foam massage, face care, body treatments, acupuncture-inspired wellness, sauna, steam room, jakuzi and signature spa packages.</p>
+            <h3>Focus</h3>
+            <p>Rituals, wellness, premium comfort.</p>
           </div>
         </div>
       </div>
@@ -719,77 +800,82 @@
   <section class="section" id="packages">
     <div class="container">
       <div class="eyebrow">Spa Packages</div>
-      <h2 class="section-title">Signature journeys for every guest</h2>
+      <h2 class="section-title">Choose your package</h2>
 
       <div class="packages-grid">
         <article class="card package-card">
-          <div class="package-top">
-            <div>
-              <div class="package-no">Package 01</div>
-              <h3>Welcome Package</h3>
+          <img class="package-image" src="./Welcome.png" alt="Welcome Package" />
+          <div class="package-body">
+            <div class="package-top">
+              <div>
+                <div class="package-no">Package 01</div>
+                <h3>Welcome Package</h3>
+              </div>
+              <div class="tag">Premium</div>
             </div>
-            <div class="tag">Premium</div>
+            <ul class="list">
+              <li>Sauna & Steam</li>
+              <li>Turkish Bath & Peeling</li>
+              <li>Foam + Classic Massage</li>
+              <li>Face Mask</li>
+            </ul>
           </div>
-          <ul class="list">
-            <li>Sauna / Steam Room</li>
-            <li>Turkish Bath / Peeling</li>
-            <li>Foam Massage</li>
-            <li>Classic Massage — 30 min</li>
-            <li>Face Mask</li>
-          </ul>
         </article>
 
         <article class="card package-card">
-          <div class="package-top">
-            <div>
-              <div class="package-no">Package 02</div>
-              <h3>Bronze Package</h3>
+          <img class="package-image" src="./Bronze.png" alt="Bronze Package" />
+          <div class="package-body">
+            <div class="package-top">
+              <div>
+                <div class="package-no">Package 02</div>
+                <h3>Bronze Package</h3>
+              </div>
+              <div class="tag">Premium</div>
             </div>
-            <div class="tag">Premium</div>
+            <ul class="list">
+              <li>Sauna & Steam</li>
+              <li>Coffee Peeling</li>
+              <li>Foam + Bronze Oil Massage</li>
+              <li>Face Mask</li>
+            </ul>
           </div>
-          <ul class="list">
-            <li>Sauna / Steam Room</li>
-            <li>Turkish Bath / Coffee Peeling</li>
-            <li>Foam Massage</li>
-            <li>Bronze Oil Massage — 45 min</li>
-            <li>Face Mask</li>
-          </ul>
         </article>
 
         <article class="card package-card">
-          <div class="package-top">
-            <div>
-              <div class="package-no">Package 03</div>
-              <h3>Medical Package</h3>
+          <img class="package-image" src="./Medical.png" alt="Medical Package" />
+          <div class="package-body">
+            <div class="package-top">
+              <div>
+                <div class="package-no">Package 03</div>
+                <h3>Medical Package</h3>
+              </div>
+              <div class="tag">Premium</div>
             </div>
-            <div class="tag">Premium</div>
+            <ul class="list">
+              <li>Sauna & Steam</li>
+              <li>Sea Salt Peeling</li>
+              <li>Foam + Medical Massage</li>
+              <li>Face Mask</li>
+            </ul>
           </div>
-          <ul class="list">
-            <li>Sauna / Steam Room</li>
-            <li>Turkish Bath / Sea Salt Peeling</li>
-            <li>Foam Massage</li>
-            <li>Medical Massage — 60 min</li>
-            <li>Face Mask</li>
-          </ul>
         </article>
 
         <article class="card package-card">
-          <div class="package-top">
-            <div>
-              <div class="package-no">Package 04</div>
-              <h3>V.I.P Package</h3>
+          <img class="package-image" src="./vip.png" alt="V.I.P Package" />
+          <div class="package-body">
+            <div class="package-top">
+              <div>
+                <div class="package-no">Package 04</div>
+                <h3>V.I.P Package</h3>
+              </div>
+              <div class="tag">Luxury</div>
             </div>
-            <div class="tag">Luxury</div>
+            <ul class="list">
+              <li>Full Hammam Ritual</li>
+              <li>Hot Stone + Reflex Massage</li>
+              <li>Jakuzi & Herbal Tea</li>
+            </ul>
           </div>
-          <ul class="list">
-            <li>Sauna / Steam Room</li>
-            <li>Turkish Bath / Peeling</li>
-            <li>Scrub / Foam Massage</li>
-            <li>Hot Stone Massage</li>
-            <li>Therapeutic Reflex Massage — 90 min</li>
-            <li>Jakuzi — 20 min</li>
-            <li>Herbal Tea Offer</li>
-          </ul>
         </article>
       </div>
     </div>
@@ -798,55 +884,54 @@
   <section class="section" id="services">
     <div class="container">
       <div class="eyebrow">Services Inside</div>
-      <h2 class="section-title">Treatments rebuilt from your flyer into a luxury web layout</h2>
+      <h2 class="section-title">Signature treatments</h2>
 
       <div class="services-grid">
         <article class="card service-card">
-          <h3>Turkish Bath Rituals</h3>
-          <p>Traditional hammam experiences with peeling, foam rituals and elegant cleansing treatments.</p>
-          <div class="pills">
-            <span class="pill">Turkish Bath</span>
-            <span class="pill">Peeling</span>
-            <span class="pill">Coffee Peeling</span>
-            <span class="pill">Sea Salt Peeling</span>
-            <span class="pill">Peeling + Foam Massage</span>
+          <img class="service-image" src="./Turkishbath.png" alt="Turkish Bath Rituals" />
+          <div class="service-body">
+            <h3>Turkish Bath Rituals</h3>
+            <div class="pills">
+              <span class="pill">Hammam</span>
+              <span class="pill">Peeling</span>
+              <span class="pill">Foam</span>
+            </div>
           </div>
         </article>
 
         <article class="card service-card">
-          <h3>Massage & Wellness</h3>
-          <p>Comforting therapies designed for deep relaxation, body renewal and premium recovery.</p>
-          <div class="pills">
-            <span class="pill">Classic Massage</span>
-            <span class="pill">Foam Massage</span>
-            <span class="pill">Bronze Oil Massage</span>
-            <span class="pill">Medical Massage</span>
-            <span class="pill">Hot Stone Massage</span>
-            <span class="pill">Reflex Massage</span>
+          <img class="service-image" src="./Massage.png" alt="Massage and Wellness" />
+          <div class="service-body">
+            <h3>Massage & Wellness</h3>
+            <div class="pills">
+              <span class="pill">Classic</span>
+              <span class="pill">Medical</span>
+              <span class="pill">Hot Stone</span>
+            </div>
           </div>
         </article>
 
         <article class="card service-card">
-          <h3>Face & Body Care</h3>
-          <p>Soft skincare rituals and body treatments inspired by the services shown in the brochure.</p>
-          <div class="pills">
-            <span class="pill">Face Mask</span>
-            <span class="pill">Ice Mask for Face</span>
-            <span class="pill">Body Treatments</span>
-            <span class="pill">Body Massage</span>
-            <span class="pill">Wellness Care</span>
+          <img class="service-image" src="./Face.png" alt="Face and Body Care" />
+          <div class="service-body">
+            <h3>Face & Body Care</h3>
+            <div class="pills">
+              <span class="pill">Face Mask</span>
+              <span class="pill">Body Care</span>
+              <span class="pill">Wellness</span>
+            </div>
           </div>
         </article>
 
         <article class="card service-card">
-          <h3>Special Therapies</h3>
-          <p>Additional services for guests wanting a fuller recovery experience and a richer spa program.</p>
-          <div class="pills">
-            <span class="pill">Acupuncture</span>
-            <span class="pill">Sauna</span>
-            <span class="pill">Steam Room</span>
-            <span class="pill">Jakuzi</span>
-            <span class="pill">Herbal Tea</span>
+          <img class="service-image" src="./Special.png" alt="Special Therapies" />
+          <div class="service-body">
+            <h3>Special Therapies</h3>
+            <div class="pills">
+              <span class="pill">Acupuncture</span>
+              <span class="pill">Steam</span>
+              <span class="pill">Jakuzi</span>
+            </div>
           </div>
         </article>
       </div>
@@ -856,43 +941,43 @@
   <section class="section">
     <div class="container">
       <div class="eyebrow">Visual Mood</div>
-      <h2 class="section-title">A more expensive hotel-style spa direction</h2>
+      <h2 class="section-title">Scene gallery</h2>
 
       <div class="visual-grid">
         <article class="card visual-card">
+          <img src="./scene1.png" alt="Scene 01" />
           <div class="content">
             <div class="scene">Scene 01</div>
-            <h3>Warm candle-lit rituals</h3>
           </div>
         </article>
         <article class="card visual-card">
+          <img src="./scene2.png" alt="Scene 02" />
           <div class="content">
             <div class="scene">Scene 02</div>
-            <h3>Elegant massage rooms</h3>
           </div>
         </article>
         <article class="card visual-card">
+          <img src="./scene3.png" alt="Scene 03" />
           <div class="content">
             <div class="scene">Scene 03</div>
-            <h3>Traditional hammam care</h3>
           </div>
         </article>
         <article class="card visual-card">
+          <img src="./scene4.png" alt="Scene 04" />
           <div class="content">
             <div class="scene">Scene 04</div>
-            <h3>Deep relaxation moments</h3>
           </div>
         </article>
         <article class="card visual-card">
+          <img src="./scene5.png" alt="Scene 05" />
           <div class="content">
             <div class="scene">Scene 05</div>
-            <h3>Premium wellness therapies</h3>
           </div>
         </article>
         <article class="card visual-card">
+          <img src="./scene6.png" alt="Scene 06" />
           <div class="content">
             <div class="scene">Scene 06</div>
-            <h3>Calm black & gold aesthetic</h3>
           </div>
         </article>
       </div>
@@ -902,26 +987,26 @@
   <section class="section" id="contact">
     <div class="container">
       <div class="eyebrow">Contact & Location</div>
-      <h2 class="section-title">Easy booking, clear contacts and direct map access</h2>
+      <h2 class="section-title">Book your time</h2>
 
       <div class="contact-grid">
         <div class="contact-stack">
           <div class="card contact-card">
             <h3>Address</h3>
-            <p>Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya</p>
-            <small>Premium contact block prepared for direct location access and guest navigation.</small>
+            <p>Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, Kemer</p>
+            <small>Antalya, Türkiye.</small>
           </div>
 
           <div class="card contact-card">
             <h3>Phone / WhatsApp</h3>
             <p><a href="https://wa.me/905010399572?text=Hello%20ZEN%20SPA%20CENTER%2C%20I%20want%20to%20book%20a%20spa%20session." target="_blank" rel="noreferrer">+905010399572</a></p>
-            <small>Tap to contact the spa instantly through WhatsApp booking.</small>
+            <small>Instant booking line.</small>
           </div>
 
           <div class="card contact-card">
             <h3>Opening Hours</h3>
             <p>08:00 – 20:00</p>
-            <small>Daily wellness sessions, massages and hammam rituals.</small>
+            <small>Every day.</small>
           </div>
         </div>
 
@@ -943,17 +1028,14 @@
     </div>
   </section>
 
-  <section class="section" style="border-bottom:0;">
+  <section class="section" style="border-bottom: 0;">
     <div class="container">
       <div class="footer-cta">
         <div class="footer-cta-grid">
           <div>
             <div class="eyebrow">ZEN SPA CENTER</div>
-            <h2 class="section-title" style="margin-top:16px;">Luxury spa landing page ready to use</h2>
-            <p class="hero-text" style="margin-top:20px; max-width:760px;">
-              This HTML version already includes your WhatsApp number, real address and a map section.
-              Next upgrade points can be real spa photos, multilingual switcher, package prices and guest reviews.
-            </p>
+            <h2 class="section-title" style="margin-top: 16px;">Luxury wellness in Kemer</h2>
+            <p class="hero-text" style="margin-top: 18px; max-width: 620px;">Premium rituals. Direct booking. Immediate relaxation.</p>
           </div>
 
           <div class="stat-grid">
@@ -963,15 +1045,15 @@
             </div>
             <div class="stat">
               <div class="k">Location</div>
-              <div class="v">Kemer, Antalya</div>
+              <div class="v">Kemer</div>
             </div>
             <div class="stat">
               <div class="k">Booking</div>
               <div class="v">WhatsApp</div>
             </div>
             <div class="stat">
-              <div class="k">Style</div>
-              <div class="v">Luxury Black</div>
+              <div class="k">Mood</div>
+              <div class="v">Black & Gold</div>
             </div>
           </div>
         </div>
