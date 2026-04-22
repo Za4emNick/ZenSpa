@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZEN SPA CENTER</title>
-  <meta name="description" content="ZEN SPA CENTER in Kemer, Antalya — minimalist premium spa with easy WhatsApp reservation." />
+  <title>Premium spa procedures in Kemer</title>
+  <meta name="description" content="Premium spa procedures in Kemer with multilingual booking and hotel-specific WhatsApp contacts." />
   <style>
     :root {
       --bg: #000000;
@@ -199,18 +199,16 @@
 
     .gallery-card { overflow: hidden; }
     .gallery-card img { aspect-ratio: 4 / 3; object-fit: cover; min-height: 100%; }
+    .gallery-open { width: 100%; border: 0; background: transparent; padding: 0; cursor: pointer; }
 
     .review-card { padding: 16px; }
-    .review-text { margin: 0; font-size: 15px; line-height: 1.6; }
+    .review-text { margin: 0; font-size: 14px; line-height: 1.55; }
     .review-meta { margin-top: 8px; color: var(--muted); font-size: 13px; }
 
     .contact-grid { margin-top: 18px; display: grid; grid-template-columns: 1fr; gap: 10px; }
     .contact-card { padding: 14px; }
     .contact-label { margin: 0; color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
     .contact-value { margin: 8px 0 0; font-size: 16px; line-height: 1.45; }
-
-    .map-wrap { padding: 8px; }
-    .map { width: 100%; min-height: 280px; border: 0; border-radius: 12px; }
 
     .final-cta { padding: 20px; }
 
@@ -225,6 +223,74 @@
     }
 
     #services .card { background: #121212; border-color: #2a2622; }
+
+
+
+    .clickable-service {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      text-align: left;
+      cursor: pointer;
+      align-items: center;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-card {
+      width: min(640px, 100%);
+      max-height: 86vh;
+      overflow: auto;
+      border: 1px solid var(--line);
+      background: #13110e;
+      border-radius: 16px;
+      padding: 18px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #1a1713;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .hotel-options { margin-top: 14px; display: grid; gap: 8px; }
+    .hotel-option { width: 100%; justify-content: space-between; text-align: left; }
+    .hotel-option small { color: var(--muted); font-size: 12px; }
+
+    .service-modal-title { margin: 0 32px 8px 0; font-size: 22px; }
+    .service-modal-meta { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+
+    .gallery-lightbox { width: min(940px, 100%); }
+    .gallery-stage { margin-top: 14px; }
+    .gallery-stage img { width: 100%; max-height: 72vh; object-fit: contain; border-radius: 12px; }
+    .gallery-nav { margin-top: 12px; display: flex; justify-content: space-between; gap: 10px; }
 
     @media (max-width: 359px) {
       .service-groups,
@@ -305,7 +371,7 @@
         <h2 class="hero-title" data-i18n="hero.title"></h2>
         <p class="hero-sub" data-i18n="hero.subtitle"></p>
         <div class="actions">
-          <a class="btn btn-primary wa-link" data-wa-kind="general" data-i18n="buttons.bookNow"></a>
+          <button type="button" class="btn btn-primary wa-picker-trigger" data-i18n="buttons.bookNow"></button>
           <a class="btn btn-secondary" href="#packages" data-i18n="buttons.viewPackages"></a>
         </div>
       </div>
@@ -351,28 +417,16 @@
     <section class="section" id="contact">
       <div class="container">
         <h2 class="section-title" data-i18n="contact.title"></h2>
-        <div class="contact-grid">
-          <div style="display:grid; gap:12px;">
-            <article class="card contact-card">
-              <p class="contact-label" data-i18n="contact.addressLabel"></p>
-              <p class="contact-value" data-i18n="contact.address"></p>
-            </article>
-            <article class="card contact-card">
-              <p class="contact-label" data-i18n="contact.phoneLabel"></p>
-              <p class="contact-value"><a href="tel:+905010399572">+90 501 039 95 72</a></p>
-            </article>
+        <div class="contact-grid" style="grid-template-columns:1fr;">
+          <div style="display:grid; gap:12px; max-width:560px;">
             <article class="card contact-card">
               <p class="contact-label" data-i18n="contact.hoursLabel"></p>
               <p class="contact-value" data-i18n="contact.hours"></p>
             </article>
             <div class="actions" style="margin-top:0;">
-              <a class="btn btn-primary wa-link" data-wa-kind="general" data-i18n="buttons.whatsapp"></a>
-              <a class="btn btn-secondary" target="_blank" rel="noreferrer" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" data-i18n="buttons.maps"></a>
+              <button type="button" class="btn btn-primary wa-picker-trigger" data-i18n="buttons.whatsapp"></button>
             </div>
           </div>
-          <article class="card map-wrap">
-            <iframe class="map" src="https://www.google.com/maps?q=G%C3%B6yn%C3%BCk%20mh.%20Ba%C5%9Fkomutan%2C%20Atat%C3%BCrk%20Cd.%20No%3A147-1%20D%3A1%2C%2007981%20Kemer%2FAntalya&output=embed" loading="lazy" title="ZEN SPA CENTER Map"></iframe>
-          </article>
         </div>
       </div>
     </section>
@@ -383,36 +437,79 @@
           <h2 class="section-title" data-i18n="final.title"></h2>
           <p class="section-subtitle" data-i18n="final.subtitle"></p>
           <div class="actions">
-            <a class="btn btn-primary wa-link" data-wa-kind="general" data-i18n="buttons.getInTouch"></a>
+            <button type="button" class="btn btn-primary wa-picker-trigger" data-i18n="buttons.getInTouch"></button>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <a class="btn btn-primary floating-wa wa-link" data-wa-kind="general" aria-label="Book now" data-i18n="buttons.bookNow"></a>
+  <a class="btn btn-primary floating-wa wa-picker-trigger" aria-label="Book now" data-i18n="buttons.bookNow"></a>
+
+  <div class="modal-overlay" id="waPicker" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="waPickerTitle">
+      <button class="modal-close" type="button" data-close-modal="waPicker">×</button>
+      <h3 id="waPickerTitle" class="service-modal-title" data-i18n="waPicker.title"></h3>
+      <p class="service-modal-meta" data-i18n="waPicker.subtitle"></p>
+      <div class="hotel-options" id="hotelOptions"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="serviceModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" type="button" data-close-modal="serviceModal">×</button>
+      <h3 class="service-modal-title" id="serviceModalTitle"></h3>
+      <p class="service-modal-meta" id="serviceModalMeta"></p>
+      <p id="serviceModalDescription"></p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="galleryModal" aria-hidden="true">
+    <div class="modal-card gallery-lightbox" role="dialog" aria-modal="true">
+      <button class="modal-close" type="button" data-close-modal="galleryModal">×</button>
+      <h3 class="service-modal-title" data-i18n="gallery.modalTitle"></h3>
+      <div class="gallery-stage"><img id="lightboxImage" alt="Spa gallery image" /></div>
+      <div class="gallery-nav">
+        <button type="button" class="btn btn-secondary" id="galleryPrev" data-i18n="gallery.prev"></button>
+        <button type="button" class="btn btn-secondary" id="galleryNext" data-i18n="gallery.next"></button>
+      </div>
+    </div>
+  </div>
 
   <script>
-    const whatsappPhone = '905010399572';
+    const hotelWhatsApp = [
+      { key: 'baia', phone: '905010399572' },
+      { key: 'dosinia', phone: '905353756969' },
+      { key: 'gipsofila', phone: '905370176311' }
+    ];
 
     const translations = {
       en: {
         nav: { packages: 'Packages', why: 'Benefits', services: 'Services', reviews: 'Reviews', contact: 'Contact' },
         hero: {
-          title: 'Premium SPA rituals in Kemer.',
+          title: 'Premium spa procedures in Kemer.',
           subtitle: 'Private hammam, expert massage and a calm atmosphere for deep relaxation.'
         },
         buttons: {
           bookNow: 'Book now',
           viewPackages: 'View packages',
           whatsapp: 'WhatsApp',
-          maps: 'Open in Maps',
+          
           getInTouch: 'Reserve now',
           packageCta: 'Book this package'
         },
         wa: {
           general: 'Hello, I would like to make a reservation.',
           service: 'Hello, I am interested in: '
+        },
+        waPicker: {
+          title: 'Choose a hotel for WhatsApp',
+          subtitle: 'Select a hotel and continue to the right WhatsApp number.',
+          hotels: {
+            baia: 'Baia Salima Kemer',
+            dosinia: 'Dosinia Luxury Hotel',
+            gipsofila: 'Gipsofila Club Marine Kemer'
+          }
         },
         services: {
           title: 'Services',
@@ -505,7 +602,7 @@
           title: 'Why Choose Us',
           items: ['Clean and private atmosphere', 'Professional therapists', 'Comfortable experience', 'Family-friendly environment', 'Easy reservation', 'Premium service']
         },
-        gallery: { title: 'Gallery', items: ['./Welcome.png', './Turkishbath.png', './Massage.png', './Bronze.png', './Face.png', './vip.png'] },
+        gallery: { title: 'Gallery', modalTitle: 'Gallery viewer', prev: 'Previous', next: 'Next', items: ['./Welcome.png', './Turkishbath.png', './Massage.png', './Bronze.png', './Face.png', './vip.png'] },
         reviews: {
           title: 'Reviews',
           items: [
@@ -516,12 +613,9 @@
           ]
         },
         contact: {
-          title: 'Contact / Location',
-          addressLabel: 'Address',
-          address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya',
-          phoneLabel: 'Phone',
+          title: 'Working Hours',
           hoursLabel: 'Working Hours',
-          hours: 'Daily 08:00 – 20:00'
+          hours: 'Daily 08:00 – 20:30'
         },
         final: {
           title: 'Ready to relax?',
@@ -531,20 +625,29 @@
       ru: {
         nav: { packages: 'Пакеты', why: 'Преимущества', services: 'Услуги', reviews: 'Отзывы', contact: 'Контакты' },
         hero: {
-          title: 'Премиальные SPA-ритуалы в Кемере.',
+          title: 'Премиальные спа процеры в Кемере.',
           subtitle: 'Приватный хаммам, профессиональный массаж и спокойная атмосфера для глубокого отдыха.'
         },
         buttons: {
           bookNow: 'Забронировать',
           viewPackages: 'Смотреть пакеты',
           whatsapp: 'WhatsApp',
-          maps: 'Открыть карту',
+          
           getInTouch: 'Забронировать сейчас',
           packageCta: 'Забронировать пакет'
         },
         wa: {
           general: 'Здравствуйте, хочу сделать резервацию.',
           service: 'Здравствуйте, интересует услуга: '
+        },
+        waPicker: {
+          title: 'Выберите отель для WhatsApp',
+          subtitle: 'Нажмите кнопку отеля, чтобы перейти в нужный WhatsApp.',
+          hotels: {
+            baia: 'Baia Salima Kemer',
+            dosinia: 'Dosinia Luxury Hotel',
+            gipsofila: 'Gipsofila Club Marine Kemer'
+          }
         },
         services: {
           title: 'Услуги',
@@ -637,7 +740,7 @@
           title: 'Почему выбирают нас',
           items: ['Чистая и приватная атмосфера', 'Профессиональные терапевты', 'Комфортный опыт', 'Подходит для семей', 'Удобная резервация', 'Премиальный сервис']
         },
-        gallery: { title: 'Галерея', items: ['./Welcome.png', './Turkishbath.png', './Massage.png', './Bronze.png', './Face.png', './vip.png'] },
+        gallery: { title: 'Галерея', modalTitle: 'Просмотр галереи', prev: 'Назад', next: 'Вперед', items: ['./Welcome.png', './Turkishbath.png', './Massage.png', './Bronze.png', './Face.png', './vip.png'] },
         reviews: {
           title: 'Отзывы',
           items: [
@@ -648,12 +751,9 @@
           ]
         },
         contact: {
-          title: 'Контакты / Локация',
-          addressLabel: 'Адрес',
-          address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya',
-          phoneLabel: 'Телефон',
+          title: 'Часы работы',
           hoursLabel: 'Часы работы',
-          hours: 'Ежедневно 08:00 – 20:00'
+          hours: 'Ежедневно 08:00 – 20:30'
         },
         final: {
           title: 'Готовы расслабиться?',
@@ -663,20 +763,29 @@
       tr: {
         nav: { packages: 'Paketler', why: 'Avantajlar', services: 'Hizmetler', reviews: 'Yorumlar', contact: 'İletişim' },
         hero: {
-          title: 'Kemer’de premium SPA ritüelleri.',
+          title: 'Kemer’de premium spa bakımları.',
           subtitle: 'Özel hamam, uzman masaj ve derin rahatlama için sakin atmosfer.'
         },
         buttons: {
           bookNow: 'Hemen rezervasyon',
           viewPackages: 'Paketleri gör',
           whatsapp: 'WhatsApp',
-          maps: 'Haritada Aç',
+          
           getInTouch: 'Şimdi rezervasyon',
           packageCta: 'Paketi rezerve et'
         },
         wa: {
           general: 'Merhaba, rezervasyon yapmak istiyorum.',
           service: 'Merhaba, şu hizmetle ilgileniyorum: '
+        },
+        waPicker: {
+          title: 'WhatsApp için otel seçin',
+          subtitle: 'Doğru WhatsApp numarasına gitmek için otel düğmesine basın.',
+          hotels: {
+            baia: 'Baia Salima Kemer',
+            dosinia: 'Dosinia Luxury Hotel',
+            gipsofila: 'Gipsofila Club Marine Kemer'
+          }
         },
         services: {
           title: 'Hizmetler',
@@ -769,7 +878,7 @@
           title: 'Neden Bizi Seçmelisiniz',
           items: ['Temiz ve özel atmosfer', 'Profesyonel terapistler', 'Konforlu deneyim', 'Aile dostu ortam', 'Kolay rezervasyon', 'Premium hizmet']
         },
-        gallery: { title: 'Galeri', items: ['./Welcome.png', './Turkishbath.png', './Massage.png', './Bronze.png', './Face.png', './vip.png'] },
+        gallery: { title: 'Galeri', modalTitle: 'Galeri görüntüleyici', prev: 'Önceki', next: 'Sonraki', items: ['./Welcome.png', './Turkishbath.png', './Massage.png', './Bronze.png', './Face.png', './vip.png'] },
         reviews: {
           title: 'Yorumlar',
           items: [
@@ -780,12 +889,9 @@
           ]
         },
         contact: {
-          title: 'İletişim / Konum',
-          addressLabel: 'Adres',
-          address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya',
-          phoneLabel: 'Telefon',
+          title: 'Çalışma Saatleri',
           hoursLabel: 'Çalışma Saatleri',
-          hours: 'Her gün 08:00 – 20:00'
+          hours: 'Her gün 08:00 – 20:30'
         },
         final: {
           title: 'Rahatlamaya hazır mısınız?',
@@ -794,41 +900,44 @@
       },
       de: {
         nav: { packages: 'Pakete', why: 'Vorteile', services: 'Leistungen', reviews: 'Bewertungen', contact: 'Kontakt' },
-        hero: { title: 'Premium-SPA-Rituale in Kemer.', subtitle: 'Privates Hamam, professionelle Massagen und eine ruhige Atmosphäre für tiefe Entspannung.' },
-        buttons: { bookNow: 'Jetzt buchen', viewPackages: 'Pakete ansehen', whatsapp: 'WhatsApp', maps: 'In Maps öffnen', getInTouch: 'Jetzt reservieren', packageCta: 'Paket buchen' },
+        hero: { title: 'Premium-Spa-Anwendungen in Kemer.', subtitle: 'Privates Hamam, professionelle Massagen und eine ruhige Atmosphäre für tiefe Entspannung.' },
+        buttons: { bookNow: 'Jetzt buchen', viewPackages: 'Pakete ansehen', whatsapp: 'WhatsApp',  getInTouch: 'Jetzt reservieren', packageCta: 'Paket buchen' },
         wa: { general: 'Hallo, ich möchte eine Reservierung machen.', service: 'Hallo, ich interessiere mich für: ' },
+        waPicker: { title: 'Hotel für WhatsApp wählen', subtitle: 'Wählen Sie ein Hotel und öffnen Sie die passende WhatsApp-Nummer.', hotels: { baia: 'Baia Salima Kemer', dosinia: 'Dosinia Luxury Hotel', gipsofila: 'Gipsofila Club Marine Kemer' } },
         services: { title: 'Leistungen', subtitle: 'Detailliertes Menü für individuelle Behandlungen.' },
         packages: { title: 'SPA-Programme', subtitle: 'Beliebte Komplettprogramme für schnelle Reservierung.' },
         why: { title: 'Warum wir' },
-        gallery: { title: 'Galerie' },
+        gallery: { title: 'Galerie', modalTitle: 'Galerieansicht', prev: 'Zurück', next: 'Weiter' },
         reviews: { title: 'Bewertungen' },
-        contact: { title: 'Kontakt / Standort', addressLabel: 'Adresse', address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya', phoneLabel: 'Telefon', hoursLabel: 'Öffnungszeiten', hours: 'Täglich 08:00 – 20:00' },
+        contact: { title: 'Öffnungszeiten', hoursLabel: 'Öffnungszeiten', hours: 'Täglich 08:00 – 20:30' },
         final: { title: 'Bereit zu entspannen?', subtitle: 'Schreiben Sie uns und wir helfen bei Zeit und Programm.' }
       },
       pl: {
         nav: { packages: 'Pakiety', why: 'Zalety', services: 'Usługi', reviews: 'Opinie', contact: 'Kontakt' },
-        hero: { title: 'Premium rytuały SPA w Kemer.', subtitle: 'Prywatny hamam, profesjonalny masaż i spokojna atmosfera pełnego relaksu.' },
-        buttons: { bookNow: 'Rezerwuj', viewPackages: 'Zobacz pakiety', whatsapp: 'WhatsApp', maps: 'Otwórz w mapach', getInTouch: 'Zarezerwuj teraz', packageCta: 'Rezerwuj pakiet' },
+        hero: { title: 'Premium zabiegi spa w Kemer.', subtitle: 'Prywatny hamam, profesjonalny masaż i spokojna atmosfera pełnego relaksu.' },
+        buttons: { bookNow: 'Rezerwuj', viewPackages: 'Zobacz pakiety', whatsapp: 'WhatsApp',  getInTouch: 'Zarezerwuj teraz', packageCta: 'Rezerwuj pakiet' },
         wa: { general: 'Dzień dobry, chcę dokonać rezerwacji.', service: 'Dzień dobry, interesuje mnie: ' },
+        waPicker: { title: 'Wybierz hotel do WhatsApp', subtitle: 'Wybierz hotel i przejdź do właściwego numeru WhatsApp.', hotels: { baia: 'Baia Salima Kemer', dosinia: 'Dosinia Luxury Hotel', gipsofila: 'Gipsofila Club Marine Kemer' } },
         services: { title: 'Usługi', subtitle: 'Szczegółowe menu zabiegów dla indywidualnego wyboru.' },
         packages: { title: 'Programy SPA', subtitle: 'Najpopularniejsze gotowe programy dla szybkiej rezerwacji.' },
         why: { title: 'Dlaczego my' },
-        gallery: { title: 'Galeria' },
+        gallery: { title: 'Galeria', modalTitle: 'Podgląd galerii', prev: 'Poprzednie', next: 'Następne' },
         reviews: { title: 'Opinie' },
-        contact: { title: 'Kontakt / Lokalizacja', addressLabel: 'Adres', address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya', phoneLabel: 'Telefon', hoursLabel: 'Godziny pracy', hours: 'Codziennie 08:00 – 20:00' },
+        contact: { title: 'Godziny pracy', hoursLabel: 'Godziny pracy', hours: 'Codziennie 08:00 – 20:30' },
         final: { title: 'Gotowi na relaks?', subtitle: 'Napisz do nas — pomożemy wybrać najlepszy pakiet i godzinę.' }
       },
       fr: {
         nav: { packages: 'Forfaits', why: 'Avantages', services: 'Services', reviews: 'Avis', contact: 'Contact' },
-        hero: { title: 'Rituels SPA premium à Kemer.', subtitle: 'Hammam privé, massages experts et atmosphère calme pour une détente profonde.' },
-        buttons: { bookNow: 'Réserver', viewPackages: 'Voir les forfaits', whatsapp: 'WhatsApp', maps: 'Ouvrir Maps', getInTouch: 'Réserver maintenant', packageCta: 'Réserver ce forfait' },
+        hero: { title: 'Soins spa premium à Kemer.', subtitle: 'Hammam privé, massages experts et atmosphère calme pour une détente profonde.' },
+        buttons: { bookNow: 'Réserver', viewPackages: 'Voir les forfaits', whatsapp: 'WhatsApp',  getInTouch: 'Réserver maintenant', packageCta: 'Réserver ce forfait' },
         wa: { general: 'Bonjour, je souhaite faire une réservation.', service: 'Bonjour, je suis intéressé par : ' },
+        waPicker: { title: 'Choisissez un hôtel pour WhatsApp', subtitle: 'Sélectionnez un hôtel pour ouvrir le bon numéro WhatsApp.', hotels: { baia: 'Baia Salima Kemer', dosinia: 'Dosinia Luxury Hotel', gipsofila: 'Gipsofila Club Marine Kemer' } },
         services: { title: 'Services', subtitle: 'Menu détaillé des soins pour un choix personnalisé.' },
         packages: { title: 'Programmes SPA', subtitle: 'Offres complètes populaires pour une réservation rapide.' },
         why: { title: 'Pourquoi nous choisir' },
-        gallery: { title: 'Galerie' },
+        gallery: { title: 'Galerie', modalTitle: 'Visionneuse de galerie', prev: 'Précédent', next: 'Suivant' },
         reviews: { title: 'Avis' },
-        contact: { title: 'Contact / Localisation', addressLabel: 'Adresse', address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya', phoneLabel: 'Téléphone', hoursLabel: 'Horaires', hours: 'Tous les jours 08:00 – 20:00' },
+        contact: { title: 'Horaires', hoursLabel: 'Horaires', hours: 'Tous les jours 08:00 – 20:30' },
         final: { title: 'Prêt à vous détendre ?', subtitle: 'Envoyez-nous un message et nous vous aidons à choisir votre programme.' }
       }
     };
@@ -847,6 +956,16 @@
     const galleryGrid = document.getElementById('galleryGrid');
     const reviewsGrid = document.getElementById('reviewsGrid');
     const languageOverlay = document.getElementById('languageOverlay');
+    const waPicker = document.getElementById('waPicker');
+    const hotelOptions = document.getElementById('hotelOptions');
+    const serviceModal = document.getElementById('serviceModal');
+    const serviceModalTitle = document.getElementById('serviceModalTitle');
+    const serviceModalMeta = document.getElementById('serviceModalMeta');
+    const serviceModalDescription = document.getElementById('serviceModalDescription');
+    const galleryModal = document.getElementById('galleryModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
 
     let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
 
@@ -854,18 +973,35 @@
       return key.split('.').reduce((acc, item) => (acc ? acc[item] : ''), obj);
     }
 
-    function buildWaLink(message) {
-      return `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}`;
+    let currentGalleryItems = [];
+    let currentGalleryIndex = 0;
+
+    function buildWaLink(phone, message) {
+      return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     }
 
-    function updateWhatsAppLinks() {
+    function closeModal(modal) {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    function openModal(modal) {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function openWaPicker() {
+      openModal(waPicker);
+    }
+
+    function renderWaPicker() {
       const t = translations[currentLanguage];
-      document.querySelectorAll('.wa-link').forEach((link) => {
-        const kind = link.dataset.waKind || 'general';
-        link.href = buildWaLink(t.wa[kind] || t.wa.general);
-        link.target = '_blank';
-        link.rel = 'noreferrer';
-      });
+      hotelOptions.innerHTML = hotelWhatsApp.map((hotel) => `
+        <a class="btn btn-secondary hotel-option" target="_blank" rel="noreferrer" href="${buildWaLink(hotel.phone, t.wa.general)}">
+          <span>${t.waPicker.hotels[hotel.key]}</span>
+          <small>+${hotel.phone}</small>
+        </a>
+      `).join('');
     }
 
     function renderServices() {
@@ -876,8 +1012,10 @@
           <ul class="service-list">
             ${group.items.map((item) => `
               <li class="service-item">
-                <span>${item[0]}</span>
-                <span class="duration">${item[1]}</span>
+                <button type="button" class="clickable-service" data-service-name="${item[0]}" data-service-duration="${item[1]}" data-service-category="${group.category}">
+                  <span>${item[0]}</span>
+                  <span class="duration">${item[1]}</span>
+                </button>
               </li>
             `).join('')}
           </ul>
@@ -899,7 +1037,7 @@
           <ul class="package-list">
             ${item.list.slice(0, 5).map((line) => `<li>${line}</li>`).join('')}
           </ul>
-          <a class="btn btn-primary wa-link package-cta" data-wa-kind="general">${t.buttons.packageCta}</a>
+          <button type="button" class="btn btn-primary wa-picker-trigger package-cta">${t.buttons.packageCta}</button>
         </article>
       `).join('');
     }
@@ -911,7 +1049,8 @@
 
     function renderGallery() {
       const items = translations[currentLanguage].gallery.items;
-      galleryGrid.innerHTML = items.map((img) => `<article class="card gallery-card"><img src="${img}" alt="Spa photo" loading="lazy" /></article>`).join('');
+      currentGalleryItems = items;
+      galleryGrid.innerHTML = items.map((img, index) => `<article class="card gallery-card"><button type="button" class="gallery-open" data-gallery-index="${index}"><img src="${img}" alt="Spa photo" loading="lazy" /></button></article>`).join('');
     }
 
     function renderReviews() {
@@ -922,6 +1061,36 @@
           <p class="review-meta">${item.by}</p>
         </article>
       `).join('');
+    }
+
+
+    function getServiceDescription(name, category) {
+      const descriptions = {
+        en: `${name} is a focused ${category.toLowerCase()} treatment designed to relax muscles, improve circulation, and support recovery.`,
+        ru: `${name} — это процедура категории «${category}», направленная на расслабление мышц, улучшение кровообращения и восстановление.`,
+        tr: `${name}, kasları gevşetmek, dolaşımı desteklemek ve toparlanmayı hızlandırmak için uygulanan ${category.toLowerCase()} odaklı bir bakımdır.`,
+        de: `${name} ist eine gezielte Anwendung aus der Kategorie ${category}, die Muskeln entspannt und die Regeneration unterstützt.`,
+        pl: `${name} to zabieg z kategorii ${category}, który rozluźnia mięśnie, wspiera krążenie i regenerację.`,
+        fr: `${name} est un soin ciblé de la catégorie ${category}, conçu pour détendre les muscles et soutenir la récupération.`
+      };
+      return descriptions[currentLanguage] || descriptions.en;
+    }
+
+    function openServiceModal(name, duration, category) {
+      serviceModalTitle.textContent = name;
+      serviceModalMeta.textContent = `${category} • ${duration}`;
+      serviceModalDescription.textContent = getServiceDescription(name, category);
+      openModal(serviceModal);
+    }
+
+    function updateGalleryImage() {
+      lightboxImage.src = currentGalleryItems[currentGalleryIndex] || '';
+    }
+
+    function openGallery(index) {
+      currentGalleryIndex = index;
+      updateGalleryImage();
+      openModal(galleryModal);
     }
 
     function updateStaticText() {
@@ -945,7 +1114,7 @@
       renderWhy();
       renderGallery();
       renderReviews();
-      updateWhatsAppLinks();
+      renderWaPicker();
     }
 
     document.querySelectorAll('[data-lang-switch]').forEach((btn) => {
@@ -957,6 +1126,47 @@
         applyLanguage(btn.dataset.langPick);
         languageOverlay.classList.add('hidden');
       });
+    });
+
+
+    document.addEventListener('click', (event) => {
+      const waTrigger = event.target.closest('.wa-picker-trigger');
+      if (waTrigger) {
+        event.preventDefault();
+        openWaPicker();
+      }
+
+      const serviceTrigger = event.target.closest('[data-service-name]');
+      if (serviceTrigger) {
+        openServiceModal(serviceTrigger.dataset.serviceName, serviceTrigger.dataset.serviceDuration, serviceTrigger.dataset.serviceCategory);
+      }
+
+      const galleryTrigger = event.target.closest('[data-gallery-index]');
+      if (galleryTrigger) {
+        openGallery(Number(galleryTrigger.dataset.galleryIndex));
+      }
+    });
+
+    [waPicker, serviceModal, galleryModal].forEach((modal) => {
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal(modal);
+      });
+    });
+
+    document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+      btn.addEventListener('click', () => closeModal(document.getElementById(btn.dataset.closeModal)));
+    });
+
+    galleryPrev.addEventListener('click', () => {
+      if (!currentGalleryItems.length) return;
+      currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryItems.length) % currentGalleryItems.length;
+      updateGalleryImage();
+    });
+
+    galleryNext.addEventListener('click', () => {
+      if (!currentGalleryItems.length) return;
+      currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryItems.length;
+      updateGalleryImage();
     });
 
     applyLanguage(currentLanguage);
