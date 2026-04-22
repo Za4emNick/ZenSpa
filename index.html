@@ -4,345 +4,243 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZEN SPA CENTER</title>
-  <meta name="description" content="ZEN SPA CENTER in Kemer, Antalya. Luxury spa rituals with instant WhatsApp booking." />
+  <meta name="description" content="ZEN SPA CENTER in Kemer, Antalya — transparent prices and instant WhatsApp booking." />
   <style>
     :root {
-      --bg: #050505;
-      --card: rgba(255, 255, 255, 0.04);
-      --border: rgba(255, 255, 255, 0.12);
-      --gold: #cfb87c;
-      --gold-deep: #b79553;
-      --text: #fff;
-      --muted: rgba(255, 255, 255, 0.74);
-      --radius: 18px;
-      --shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+      --bg: #f8f6f1;
+      --surface: #ffffff;
+      --surface-soft: #f2efe8;
+      --text: #1f1f1c;
+      --muted: #66635d;
+      --line: #ded9cc;
+      --accent: #1f8f5f;
+      --accent-strong: #17774f;
+      --radius: 16px;
+      --shadow: 0 10px 28px rgba(32, 28, 18, 0.08);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      background: radial-gradient(circle at top, rgba(207, 184, 124, 0.15), transparent 30%), linear-gradient(180deg, #020202 0%, #080808 46%, #020202 100%);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
       line-height: 1.45;
-      padding-bottom: 90px;
     }
 
+    img { display: block; width: 100%; }
     a { color: inherit; text-decoration: none; }
-    img { width: 100%; display: block; }
-    .container { width: min(1140px, calc(100% - 28px)); margin: 0 auto; }
-    .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
-    .eyebrow { color: var(--gold); font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; margin: 0; }
-    .section-title { margin: 10px 0 0; font-size: clamp(28px, 6vw, 52px); font-weight: 300; letter-spacing: 0.08em; line-height: 1.08; }
-
-    .app-shell { opacity: 0; pointer-events: none; transition: opacity 0.45s ease; }
-    .app-shell.ready { opacity: 1; pointer-events: auto; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+    .section-title { margin: 0; font-size: clamp(28px, 7vw, 48px); line-height: 1.07; letter-spacing: -0.02em; }
+    .section-subtitle { margin: 10px 0 0; color: var(--muted); max-width: 720px; }
 
     .nav-wrap {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 30;
+      background: rgba(248, 246, 241, 0.92);
       backdrop-filter: blur(8px);
-      background: rgba(3, 3, 3, 0.84);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--line);
     }
-    .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { display: inline-flex; align-items: center; gap: 14px; }
-    .brand-logo { width: auto; height: 34px; object-fit: contain; filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.6)) saturate(1.05); }
-    .brand-text { margin: 0; font-size: clamp(18px, 4vw, 28px); font-weight: 300; letter-spacing: 0.16em; white-space: nowrap; text-transform: uppercase; }
-    .brand-text span { color: var(--gold); }
-    .nav-right { display: flex; align-items: center; gap: 10px; }
-    .nav-links { display: none; gap: 16px; font-size: 12px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; }
+    .brand-logo { height: 34px; width: auto; }
+    .brand-text { margin: 0; font-size: 15px; letter-spacing: 0.12em; font-weight: 600; }
+
+    .nav-links { display: none; gap: 14px; font-size: 13px; color: var(--muted); }
 
     .lang-switch {
       display: inline-flex;
-      border: 1px solid rgba(207, 184, 124, 0.35);
+      border: 1px solid var(--line);
       border-radius: 999px;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.03);
+      background: #fff;
     }
     .lang-btn {
+      min-width: 42px;
+      min-height: 34px;
       border: 0;
       background: transparent;
+      font-size: 12px;
+      cursor: pointer;
       color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      min-width: 40px;
-      min-height: 34px;
-      cursor: pointer;
     }
-    .lang-btn.active { color: #080808; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); font-weight: 700; }
-
-    .hero { padding: 32px 0 54px; }
-    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-    .hero h2 { margin: 12px 0 0; font-size: clamp(40px, 13vw, 90px); line-height: 0.95; font-weight: 300; letter-spacing: 0.14em; }
-    .hero h2 span { color: var(--gold); }
-    .hero-sub { margin: 14px 0 0; max-width: 500px; color: var(--muted); font-size: 16px; }
-    .hero-meta { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
-    .meta-pill { border: 1px solid rgba(207, 184, 124, 0.34); color: #f2e4be; background: rgba(255, 255, 255, 0.03); border-radius: 999px; font-size: 12px; padding: 8px 12px; }
-
-    .card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); overflow: hidden; }
-
-    .hero-panel { padding: 20px; border-radius: 22px; border: 1px solid rgba(207, 184, 124, 0.32); background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)); }
-    .hero-panel h3 { margin: 0; font-size: 24px; font-weight: 300; letter-spacing: 0.08em; }
-    .hero-panel p { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
-
-    .actions { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn { min-height: 50px; flex: 1 1 180px; display: inline-flex; align-items: center; justify-content: center; border-radius: 14px; border: 1px solid transparent; padding: 12px 16px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.13em; font-weight: 600; transition: transform 0.2s ease; }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { color: #080808; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); border-color: rgba(207, 184, 124, 0.45); }
-    .btn-secondary { border-color: var(--border); background: rgba(255, 255, 255, 0.03); }
-
-    .quick-grid, .reviews-grid, .contact-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
-    .quick-card { padding: 16px; }
-    .quick-title { margin: 0; font-size: 15px; }
-    .quick-note { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
-
-    .packages-grid, .services-grid, .gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
-    .preview-card, .service-tile, .gallery-card {
-      cursor: pointer;
-      border-radius: 15px;
-      overflow: hidden;
-      position: relative;
-      border: 1px solid var(--border);
-      background: #111;
-      min-height: 148px;
+    .lang-btn.active {
+      background: var(--surface-soft);
+      color: var(--text);
+      font-weight: 600;
     }
-    .preview-card img, .service-tile img, .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
-    .tile-overlay { position: absolute; inset: auto 0 0 0; padding: 10px; background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.82) 80%); z-index: 1; }
-    .tile-title { margin: 0; font-size: 14px; font-weight: 500; letter-spacing: 0.03em; }
-    .tile-tags { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
-    .tile-tag { border-radius: 999px; border: 1px solid rgba(207, 184, 124, 0.35); background: rgba(207, 184, 124, 0.12); color: #f0dcab; font-size: 10px; padding: 4px 7px; white-space: nowrap; }
-    .scene-label { position: absolute; left: 10px; bottom: 10px; z-index: 1; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #f0deaf; }
 
-    .review-card { padding: 18px; }
-    .stars { color: var(--gold); letter-spacing: 0.2em; font-size: 12px; }
-    .review-text { margin: 8px 0 0; font-size: 14px; color: #f4f4f4; }
+    .hero { padding: 48px 0 52px; }
+    .hero-title { margin: 0; font-size: clamp(34px, 11vw, 72px); line-height: 0.98; letter-spacing: -0.03em; }
+    .hero-sub { margin: 16px 0 0; max-width: 680px; color: var(--muted); font-size: clamp(16px, 3.8vw, 20px); }
 
-    .contact-box { padding: 18px; }
-    .contact-box h3 { margin: 0; color: var(--gold); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
-    .contact-box p { margin: 10px 0 0; font-size: 20px; font-weight: 300; line-height: 1.35; }
-    .contact-box small { margin-top: 7px; display: block; color: var(--muted); }
-    .map { width: 100%; min-height: 330px; border: 0; border-radius: 16px; filter: grayscale(1) brightness(0.85) contrast(1.05); }
-
-    .final-cta { padding: 28px; border: 1px solid rgba(207, 184, 124, 0.3); border-radius: 24px; background: radial-gradient(circle at top, rgba(207, 184, 124, 0.14), transparent 34%), rgba(255, 255, 255, 0.02); }
-
-    .mobile-bar {
-      position: fixed;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      z-index: 50;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      padding: 8px;
-      border-radius: 16px;
-      border: 1px solid rgba(207, 184, 124, 0.4);
-      background: rgba(8, 8, 8, 0.95);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.56);
-    }
-    .mobile-link { min-height: 48px; display: grid; place-items: center; border-radius: 10px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
-    .mobile-link.primary { color: #050505; font-weight: 700; border-color: rgba(207, 184, 124, 0.45); background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%); }
-
-    .modal, .intro-screen {
-      position: fixed;
-      inset: 0;
-      z-index: 90;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 12px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .intro-screen { z-index: 120; align-items: center; background: radial-gradient(circle at center, rgba(207, 184, 124, 0.16), rgba(0, 0, 0, 0.94) 45%, #000 100%); opacity: 1; pointer-events: auto; }
-    .intro-screen.hide { opacity: 0; pointer-events: none; }
-    .intro-inner { text-align: center; animation: introIn 1s ease both; }
-    .intro-logo { height: clamp(84px, 18vw, 140px); width: auto; margin: 0 auto; filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.7)); }
-    .intro-welcome { margin: 16px 0 0; color: #f3e2bb; font-size: clamp(20px, 5vw, 34px); letter-spacing: 0.18em; font-weight: 300; }
-    .intro-welcome.ru { letter-spacing: 0.06em; text-transform: none; }
-    @keyframes introIn { from { transform: scale(0.97); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-    .modal.open { opacity: 1; pointer-events: auto; }
-    .modal-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(2px); }
-    .modal-panel, .lang-modal {
-      position: relative;
-      z-index: 1;
-      width: min(700px, 100%);
-      max-height: 88vh;
-      overflow: auto;
-      border-radius: 20px;
-      border: 1px solid rgba(207, 184, 124, 0.38);
-      background: linear-gradient(180deg, #111 0%, #0b0b0b 100%);
-      transform: translateY(20px);
-      transition: transform 0.25s ease;
-      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6);
-    }
-    .modal.open .modal-panel, .modal.open .lang-modal { transform: translateY(0); }
-    .modal-close {
-      position: sticky;
-      top: 10px;
-      margin-left: auto;
-      margin-right: 10px;
-      margin-top: 10px;
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: rgba(8, 8, 8, 0.84);
-      cursor: pointer;
-      font-size: 18px;
-      color: #fff;
-    }
-    .modal-media { aspect-ratio: 4 / 3; object-fit: cover; }
-    .modal-body { padding: 16px; }
-    .modal-title { margin: 0; font-size: 24px; font-weight: 300; letter-spacing: 0.05em; }
-    .modal-text { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
-    .modal-tags { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 7px; }
-    .modal-list { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; }
-    .modal-list li { border: 1px solid rgba(255, 255, 255, 0.09); background: rgba(255, 255, 255, 0.03); padding: 9px 10px; border-radius: 10px; font-size: 13px; }
-
-    .language-modal { z-index: 125; align-items: center; }
-    .lang-modal { width: min(430px, 100%); padding: 22px; }
-    .lang-title { margin: 0; text-align: center; font-weight: 300; letter-spacing: 0.08em; font-size: 24px; }
-    .lang-grid { margin-top: 16px; display: grid; gap: 10px; }
-    .lang-pick {
-      min-height: 52px;
+    .actions { margin-top: 24px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      min-height: 48px;
       border-radius: 12px;
-      border: 1px solid rgba(207, 184, 124, 0.34);
-      background: rgba(255, 255, 255, 0.03);
-      color: #fff;
+      border: 1px solid transparent;
+      padding: 12px 16px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       font-size: 14px;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.2s ease;
+      font-weight: 600;
+      transition: 0.2s ease;
     }
-    .lang-pick:hover, .lang-pick:focus-visible { background: rgba(207, 184, 124, 0.14); transform: translateY(-1px); outline: none; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-strong); }
+    .btn-secondary { border-color: var(--line); background: #fff; color: var(--text); }
 
-    @media (min-width: 700px) {
-      body { padding-bottom: 0; }
-      .brand-logo { height: 40px; }
-      .quick-grid, .reviews-grid, .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .packages-grid, .services-grid { gap: 14px; }
-      .preview-card, .service-tile, .gallery-card { min-height: 210px; }
-      .mobile-bar { display: none; }
-      .modal, .language-modal { align-items: center; }
-      .modal-panel, .lang-modal { border-radius: 24px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
-    @media (min-width: 1024px) {
-      .section { padding: 80px 0; }
-      .nav-links { display: flex; }
-      .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 28px; }
-      .quick-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .packages-grid, .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .services-grid,
+    .benefits-grid,
+    .gallery-grid,
+    .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+
+    .service-card { padding: 16px; display: grid; gap: 10px; }
+    .service-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+    .service-name { margin: 0; font-size: 18px; }
+    .service-price { font-weight: 700; font-size: 18px; white-space: nowrap; }
+    .service-meta { color: var(--muted); font-size: 14px; }
+
+    .price-groups { margin-top: 20px; display: grid; gap: 14px; }
+    .price-group { padding: 14px; }
+    .price-group h3 { margin: 0 0 10px; font-size: 18px; }
+    .price-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 10px;
+      padding: 9px 0;
+      border-top: 1px dashed var(--line);
+      font-size: 14px;
+      align-items: center;
+    }
+    .price-row:first-of-type { border-top: 0; padding-top: 0; }
+    .muted { color: var(--muted); }
+
+    .benefit-item { padding: 16px; font-size: 15px; }
+
+    .gallery-card { overflow: hidden; }
+    .gallery-card img { aspect-ratio: 4/3; object-fit: cover; }
+
+    .review-card { padding: 16px; }
+    .review-text { margin: 0; font-size: 15px; }
+    .review-meta { margin-top: 8px; color: var(--muted); font-size: 13px; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
+    .contact-card { padding: 16px; }
+    .contact-label { margin: 0; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .contact-value { margin: 10px 0 0; font-size: 17px; }
+
+    .map-wrap { padding: 10px; }
+    .map { border: 0; width: 100%; min-height: 280px; border-radius: 12px; }
+
+    .final-cta { padding: 24px; }
+
+    .floating-wa {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 40;
+      min-height: 52px;
+      min-width: 52px;
+      border-radius: 999px;
+      padding: 0 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    @media (min-width: 720px) {
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .benefits-grid, .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .contact-grid { grid-template-columns: 0.95fr 1.05fr; }
-      .preview-card:hover img, .service-tile:hover img, .gallery-card:hover img { transform: scale(1.04); }
+    }
+
+    @media (min-width: 1000px) {
+      .section { padding: 72px 0; }
+      .nav-links { display: inline-flex; }
+      .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .benefits-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .reviews-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
   </style>
 </head>
 <body>
-  <div class="intro-screen" id="introScreen">
-    <div class="intro-inner">
-      <img class="intro-logo" src="./logo.png" alt="ZEN SPA CENTER logo" />
-      <p class="intro-welcome" id="introWelcome">WELCOME</p>
-    </div>
-  </div>
-
-  <div class="modal language-modal" id="languageModal" aria-hidden="true">
-    <div class="modal-overlay"></div>
-    <div class="lang-modal">
-      <h2 class="lang-title" id="languageTitle">Choose your language</h2>
-      <div class="lang-grid">
-        <button class="lang-pick" data-pick-lang="ru">Русский</button>
-        <button class="lang-pick" data-pick-lang="en">English</button>
-        <button class="lang-pick" data-pick-lang="tr">Türkçe</button>
+  <header class="nav-wrap">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="ZEN SPA CENTER">
+        <img class="brand-logo" src="./logo.png" alt="ZEN SPA CENTER logo" />
+        <h1 class="brand-text">ZEN SPA CENTER</h1>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services" data-i18n="nav.services"></a>
+        <a href="#prices" data-i18n="nav.prices"></a>
+        <a href="#reviews" data-i18n="nav.reviews"></a>
+        <a href="#contact" data-i18n="nav.contact"></a>
+      </nav>
+      <div class="lang-switch" aria-label="Language switcher">
+        <button class="lang-btn" data-lang-switch="en">EN</button>
+        <button class="lang-btn" data-lang-switch="ru">RU</button>
+        <button class="lang-btn" data-lang-switch="tr">TR</button>
       </div>
     </div>
-  </div>
+  </header>
 
-  <div class="app-shell" id="appShell">
-    <header class="nav-wrap" id="top">
-      <div class="container nav">
-        <a class="brand" href="#top" aria-label="ZEN SPA CENTER Home">
-          <img class="brand-logo" src="./logo.png" alt="ZEN SPA CENTER logo" />
-          <h1 class="brand-text">ZEN <span>SPA</span> CENTER</h1>
-        </a>
-        <div class="nav-right">
-          <nav class="nav-links" aria-label="Primary">
-            <a href="#about" data-i18n="nav.about"></a>
-            <a href="#packages" data-i18n="nav.packages"></a>
-            <a href="#services" data-i18n="nav.services"></a>
-            <a href="#contact" data-i18n="nav.contact"></a>
-          </nav>
-          <div class="lang-switch" aria-label="Language switcher">
-            <button class="lang-btn" data-lang-switch="ru">RU</button>
-            <button class="lang-btn" data-lang-switch="en">EN</button>
-            <button class="lang-btn" data-lang-switch="tr">TR</button>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow" data-i18n="hero.location"></p>
-          <h2>ZEN SPA <span>CENTER</span></h2>
-          <p class="hero-sub" data-i18n="hero.subtitle"></p>
-          <div class="hero-meta">
-            <span class="meta-pill" data-i18n="hero.hours"></span>
-            <span class="meta-pill" data-i18n="hero.meta"></span>
-          </div>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer" data-i18n="buttons.whatsapp"></a>
-            <a class="btn btn-secondary" href="#contact" data-i18n="buttons.contactMap"></a>
-          </div>
-        </div>
-        <aside class="hero-panel">
-          <h3 data-i18n="hero.panelTitle"></h3>
-          <p data-i18n="hero.panelText"></p>
-          <div class="actions" style="margin-top:16px;">
-            <a class="btn btn-secondary" href="tel:+905010399572" data-i18n="buttons.call"></a>
-            <a class="btn btn-secondary" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer" data-i18n="buttons.openMap"></a>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="about">
+  <main id="top">
+    <section class="hero section" style="border-top:0;">
       <div class="container">
-        <p class="eyebrow" data-i18n="quick.eyebrow"></p>
-        <div class="quick-grid" id="quickGrid"></div>
-      </div>
-    </section>
-
-    <section class="section" id="packages">
-      <div class="container">
-        <p class="eyebrow" data-i18n="packages.eyebrow"></p>
-        <h2 class="section-title" data-i18n="packages.title"></h2>
-        <div class="packages-grid" id="packagesGrid"></div>
+        <h2 class="hero-title" data-i18n="hero.title"></h2>
+        <p class="hero-sub" data-i18n="hero.subtitle"></p>
+        <div class="actions">
+          <a class="btn btn-primary wa-link" data-wa-kind="general" target="_blank" rel="noreferrer" data-i18n="buttons.bookWhatsapp"></a>
+          <a class="btn btn-secondary" href="#services" data-i18n="buttons.viewServices"></a>
+        </div>
       </div>
     </section>
 
     <section class="section" id="services">
       <div class="container">
-        <p class="eyebrow" data-i18n="services.eyebrow"></p>
-        <h2 class="section-title" data-i18n="services.title"></h2>
-        <div class="services-grid" id="servicesGrid"></div>
+        <h2 class="section-title" data-i18n="popular.title"></h2>
+        <p class="section-subtitle" data-i18n="popular.subtitle"></p>
+        <div class="services-grid" id="popularGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="prices">
+      <div class="container">
+        <h2 class="section-title" data-i18n="priceList.title"></h2>
+        <p class="section-subtitle" data-i18n="priceList.subtitle"></p>
+        <div class="price-groups" id="priceGroups"></div>
+        <div class="actions">
+          <a class="btn btn-primary wa-link" data-wa-kind="price" target="_blank" rel="noreferrer" data-i18n="buttons.askPriceOnWhatsapp"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-us">
+      <div class="container">
+        <h2 class="section-title" data-i18n="why.title"></h2>
+        <div class="benefits-grid" id="benefitsGrid"></div>
       </div>
     </section>
 
     <section class="section" id="gallery">
       <div class="container">
-        <p class="eyebrow" data-i18n="gallery.eyebrow"></p>
         <h2 class="section-title" data-i18n="gallery.title"></h2>
         <div class="gallery-grid" id="galleryGrid"></div>
       </div>
@@ -350,7 +248,6 @@
 
     <section class="section" id="reviews">
       <div class="container">
-        <p class="eyebrow" data-i18n="reviews.eyebrow"></p>
         <h2 class="section-title" data-i18n="reviews.title"></h2>
         <div class="reviews-grid" id="reviewsGrid"></div>
       </div>
@@ -358,180 +255,403 @@
 
     <section class="section" id="contact">
       <div class="container">
-        <p class="eyebrow" data-i18n="contact.eyebrow"></p>
         <h2 class="section-title" data-i18n="contact.title"></h2>
         <div class="contact-grid">
           <div style="display:grid; gap:12px;">
-            <article class="card contact-box"><h3 data-i18n="contact.addressLabel"></h3><p data-i18n="contact.addressValue"></p></article>
-            <article class="card contact-box"><h3 data-i18n="contact.phoneLabel"></h3><p><a href="tel:+905010399572">+905010399572</a></p><small data-i18n="contact.phoneSub"></small></article>
-            <article class="card contact-box"><h3 data-i18n="contact.hoursLabel"></h3><p data-i18n="contact.hoursValue"></p></article>
+            <article class="card contact-card"><p class="contact-label" data-i18n="contact.addressLabel"></p><p class="contact-value" data-i18n="contact.address"></p></article>
+            <article class="card contact-card"><p class="contact-label" data-i18n="contact.phoneLabel"></p><p class="contact-value"><a href="tel:+905010399572">+90 501 039 95 72</a></p></article>
+            <article class="card contact-card"><p class="contact-label" data-i18n="contact.hoursLabel"></p><p class="contact-value" data-i18n="contact.hours"></p></article>
             <div class="actions" style="margin-top:0;">
-              <a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer" data-i18n="buttons.whatsapp"></a>
-              <a class="btn btn-secondary" href="tel:+905010399572" data-i18n="buttons.call"></a>
-              <a class="btn btn-secondary" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer" data-i18n="buttons.openMap"></a>
+              <a class="btn btn-primary wa-link" data-wa-kind="general" target="_blank" rel="noreferrer" data-i18n="buttons.bookWhatsapp"></a>
+              <a class="btn btn-secondary" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer" data-i18n="buttons.openMaps"></a>
             </div>
           </div>
-          <article class="card" style="padding:12px;"><iframe class="map" src="https://www.google.com/maps?q=G%C3%B6yn%C3%BCk%20mh.%20Ba%C5%9Fkomutan%2C%20Atat%C3%BCrk%20Cd.%20No%3A147-1%20D%3A1%2C%2007981%20Kemer%2FAntalya&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ZEN SPA CENTER Map"></iframe></article>
+          <article class="card map-wrap">
+            <iframe class="map" src="https://www.google.com/maps?q=G%C3%B6yn%C3%BCk%20mh.%20Ba%C5%9Fkomutan%2C%20Atat%C3%BCrk%20Cd.%20No%3A147-1%20D%3A1%2C%2007981%20Kemer%2FAntalya&output=embed" loading="lazy" title="ZEN SPA CENTER Map"></iframe>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section" style="border-bottom:0;">
       <div class="container">
-        <div class="final-cta">
-          <p class="eyebrow" data-i18n="final.eyebrow"></p>
-          <h2 class="section-title" style="margin-top:8px;" data-i18n="final.title"></h2>
-          <p class="hero-sub" style="margin-top:10px;" data-i18n="final.subtitle"></p>
-          <div class="actions" style="margin-top:16px;">
-            <a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer" data-i18n="buttons.whatsapp"></a>
-            <a class="btn btn-secondary" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer" data-i18n="buttons.openMap"></a>
+        <div class="card final-cta">
+          <h2 class="section-title" data-i18n="final.title"></h2>
+          <p class="section-subtitle" data-i18n="final.subtitle"></p>
+          <div class="actions">
+            <a class="btn btn-primary wa-link" data-wa-kind="general" target="_blank" rel="noreferrer" data-i18n="buttons.bookWhatsapp"></a>
           </div>
         </div>
       </div>
     </section>
+  </main>
 
-    <nav class="mobile-bar" aria-label="Quick actions">
-      <a class="mobile-link primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer" data-i18n="mobile.whatsapp"></a>
-      <a class="mobile-link" href="tel:+905010399572" data-i18n="mobile.call"></a>
-      <a class="mobile-link" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer" data-i18n="mobile.map"></a>
-    </nav>
-  </div>
-
-  <div class="modal" id="detailModal" aria-hidden="true">
-    <div class="modal-overlay" data-close="true"></div>
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Details">
-      <button class="modal-close" type="button" aria-label="Close" data-close="true">×</button>
-      <img class="modal-media" id="modalImage" src="" alt="" />
-      <div class="modal-body">
-        <h3 class="modal-title" id="modalTitle"></h3>
-        <p class="modal-text" id="modalText"></p>
-        <div class="modal-tags" id="modalTags"></div>
-        <ul class="modal-list" id="modalList"></ul>
-        <div class="actions" id="modalActions"></div>
-      </div>
-    </div>
-  </div>
+  <a class="btn btn-primary floating-wa wa-link" data-wa-kind="general" target="_blank" rel="noreferrer" aria-label="WhatsApp">WhatsApp</a>
 
   <script>
+    const whatsappPhone = '905010399572';
+
     const translations = {
       en: {
-        introWelcome: 'WELCOME', languageTitle: 'Choose your language',
-        nav: { about: 'About', packages: 'Packages', services: 'Services', contact: 'Contact' },
-        hero: { location: 'Kemer, Antalya', subtitle: 'Luxury spa rituals in Kemer. Quiet luxury. Instant booking.', hours: 'Open Daily 08:00 – 20:00', meta: 'Hammam, Massage, Wellness', panelTitle: 'Hotel guest friendly', panelText: 'Fast booking, clear location, premium comfort.' },
-        buttons: { whatsapp: 'WhatsApp Booking', contactMap: 'Contact / Map', call: 'Call Now', openMap: 'Open Map', bookPackage: 'Book this package', askWhatsapp: 'Ask on WhatsApp' },
-        mobile: { whatsapp: 'WhatsApp', call: 'Call', map: 'Map' },
-        quick: { eyebrow: 'Why Guests Choose Us', cards: [['Fast WhatsApp Booking', 'Reply in minutes.'], ['Open Daily 08:00 – 20:00', 'Easy to fit your trip.'], ['Near Hotels in Kemer', 'Quick access by taxi.'], ['Hammam, Massage & Wellness', 'Complete spa journey.']] },
-        packages: { eyebrow: 'Packages', title: 'Choose your ritual', items: [
-          { title: 'Welcome Package', image: './Welcome.png', description: 'A balanced intro ritual for first-time guests.', tags: ['Sauna', 'Steam', 'Hammam'], list: ['Sauna & Steam', 'Turkish Bath & Peeling', 'Foam + Classic Massage', 'Face Mask'] },
-          { title: 'Bronze Package', image: './Bronze.png', description: 'Comfort ritual with coffee peeling and bronze oils.', tags: ['Coffee', 'Massage', 'Mask'], list: ['Sauna & Steam', 'Coffee Peeling', 'Foam + Bronze Oil Massage', 'Face Mask'] },
-          { title: 'Medical Package', image: './Medical.png', description: 'Recovery-focused session with deeper therapeutic pressure.', tags: ['Medical', 'Sea Salt', 'Wellness'], list: ['Sauna & Steam', 'Sea Salt Peeling', 'Foam + Medical Massage', 'Face Mask'] },
-          { title: 'V.I.P Package', image: './vip.png', description: 'Signature luxury route with premium recovery elements.', tags: ['VIP', 'Hot Stone', 'Jacuzzi'], list: ['Full Hammam Ritual', 'Hot Stone + Reflex Massage', 'Jacuzzi & Herbal Tea', 'Premium Care Touch'] }
-        ] },
-        services: { eyebrow: 'Services Inside', title: 'Explore treatments', items: [
-          { short: 'Turkish Bath', title: 'Turkish Bath Rituals', image: './Turkishbath.png', description: 'Traditional cleansing ritual for a full-body reset.', tags: ['Hammam', 'Peeling', 'Foam'] },
-          { short: 'Massage', title: 'Massage & Wellness', image: './Massage.png', description: 'Therapeutic and relaxing techniques for deep recovery.', tags: ['Classic', 'Medical', 'Hot Stone'] },
-          { short: 'Face & Body', title: 'Face & Body Care', image: './Face.png', description: 'Hydrating face and body care to restore glow.', tags: ['Mask', 'Body Care', 'Hydration'] },
-          { short: 'Special', title: 'Special Therapies', image: './Special.png', description: 'Focused therapies for stress release and balance.', tags: ['Reflex', 'Therapy', 'Jacuzzi'] }
-        ] },
-        gallery: { eyebrow: 'Visual Mood', title: 'Scene gallery', items: [
-          { title: 'Scene 01', image: './scene1.png', description: 'Calm ambience and warm textures.' },
-          { title: 'Scene 02', image: './scene2.png', description: 'Quiet premium details in black and gold.' },
-          { title: 'Scene 03', image: './scene3.png', description: 'Spa atmosphere designed for deep relaxation.' },
-          { title: 'Scene 04', image: './scene4.png', description: 'Minimal luxury and soft lighting.' },
-          { title: 'Scene 05', image: './scene5.png', description: 'Comfort spaces for post-treatment calm.' },
-          { title: 'Scene 06', image: './scene6.png', description: 'Hotel-level premium spa mood.' }
-        ] },
-        reviews: { eyebrow: 'Reviews', title: 'Guests trust us', items: ['Very relaxing atmosphere and beautiful design.', 'Professional massage and genuinely friendly staff.', 'One of the best spa experiences during our holiday.'] },
-        contact: { eyebrow: 'Contact + Map', title: 'Book in one minute', addressLabel: 'Address', addressValue: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya', phoneLabel: 'Phone / WhatsApp', phoneSub: 'Instant booking support.', hoursLabel: 'Opening Hours', hoursValue: 'Daily 08:00 – 20:00' },
-        final: { eyebrow: 'Final CTA', title: 'Ready to relax?', subtitle: 'Book your spa session today.' }
+        nav: { services: 'Services', prices: 'Prices', reviews: 'Reviews', contact: 'Contact' },
+        hero: {
+          title: 'Premium SPA in Kemer with clear prices and instant booking.',
+          subtitle: 'Massage, hammam and packages in one clean place. Book your session in 1 minute on WhatsApp.'
+        },
+        buttons: {
+          bookWhatsapp: 'Book on WhatsApp',
+          viewServices: 'View Services',
+          openMaps: 'Open in Maps',
+          askPriceOnWhatsapp: 'Ask about a package on WhatsApp'
+        },
+        wa: {
+          general: 'Hello, I want to book a massage.',
+          price: 'Hello, I saw your price list and want to book a service.',
+          service: 'Hello, I want to book: '
+        },
+        popular: {
+          title: 'Popular Services',
+          subtitle: 'Most requested treatments with duration and price.',
+          items: [
+            { name: 'Balinese Massage', desc: 'Deep relaxing full body massage', duration: '60 min', price: '€45' },
+            { name: 'Deep Tissue Massage', desc: 'Targeted pressure for tension relief', duration: '60 min', price: '€50' },
+            { name: 'Couple Massage', desc: 'Two therapists, one relaxing session', duration: '60 min', price: '€95' },
+            { name: 'Classic Hammam Ritual', desc: 'Steam, peeling and foam ritual', duration: '45 min', price: '€35' },
+            { name: 'Hammam + Massage Package', desc: 'Complete cleansing and body recovery', duration: '90 min', price: '€70' },
+            { name: 'Hot Stone Massage', desc: 'Warm stone therapy for full reset', duration: '60 min', price: '€55' }
+          ]
+        },
+        priceList: {
+          title: 'Full Price List',
+          subtitle: 'No hidden pricing. See all key treatments before booking.',
+          groups: [
+            {
+              title: 'Massage',
+              rows: [
+                ['Classic Massage', '60 min', '€40'],
+                ['Balinese Massage', '60 min', '€45'],
+                ['Deep Tissue Massage', '60 min', '€50'],
+                ['Hot Stone Massage', '60 min', '€55']
+              ]
+            },
+            {
+              title: 'Hammam',
+              rows: [
+                ['Turkish Bath + Foam', '30 min', '€25'],
+                ['Classic Hammam Ritual', '45 min', '€35'],
+                ['Hammam Deluxe', '60 min', '€45']
+              ]
+            },
+            {
+              title: 'Packages',
+              rows: [
+                ['Welcome Package', '90 min', '€65'],
+                ['Bronze Package', '90 min', '€75'],
+                ['Medical Package', '90 min', '€85'],
+                ['VIP Package', '120 min', '€110']
+              ]
+            },
+            {
+              title: 'Other Treatments',
+              rows: [
+                ['Face Mask', '20 min', '€20'],
+                ['Reflexology', '30 min', '€30'],
+                ['Body Peeling', '25 min', '€22']
+              ]
+            }
+          ]
+        },
+        why: { title: 'Why Choose Us', items: ['Professional therapists', 'Clean and relaxing atmosphere', 'Easy WhatsApp reservation', 'Convenient location in Kemer'] },
+        gallery: { title: 'Gallery', items: ['./Welcome.png', './Massage.png', './Turkishbath.png', './Bronze.png', './Face.png', './vip.png'] },
+        reviews: {
+          title: 'Reviews',
+          items: [
+            { text: 'Very clean spa and great massage quality.', by: 'Anna · Germany' },
+            { text: 'Fast WhatsApp booking and friendly team.', by: 'Michael · UK' },
+            { text: 'Perfect hammam experience during vacation.', by: 'Irina · Russia' },
+            { text: 'Clear prices, no surprises, very professional.', by: 'Emre · Türkiye' }
+          ]
+        },
+        contact: {
+          title: 'Location & Contact',
+          addressLabel: 'Address',
+          address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya',
+          phoneLabel: 'Phone / WhatsApp',
+          hoursLabel: 'Working Hours',
+          hours: 'Daily 08:00 – 20:00'
+        },
+        final: {
+          title: 'Ready to book your treatment?',
+          subtitle: 'Contact us on WhatsApp and reserve your session in minutes.'
+        }
       },
       ru: {
-        introWelcome: 'Добро Пожаловать', languageTitle: 'Выберите язык',
-        nav: { about: 'О нас', packages: 'Пакеты', services: 'Услуги', contact: 'Контакты' },
-        hero: { location: 'Кемер, Анталья', subtitle: 'Премиальные SPA-ритуалы в Кемере. Тихая роскошь и мгновенная запись.', hours: 'Ежедневно 08:00 – 20:00', meta: 'Хаммам, массаж, wellness', panelTitle: 'Удобно для гостей отелей', panelText: 'Быстрая запись, понятная локация, премиальный комфорт.' },
-        buttons: { whatsapp: 'Запись в WhatsApp', contactMap: 'Контакты / Карта', call: 'Позвонить', openMap: 'Открыть карту', bookPackage: 'Забронировать пакет', askWhatsapp: 'Спросить в WhatsApp' },
-        mobile: { whatsapp: 'WhatsApp', call: 'Звонок', map: 'Карта' },
-        quick: { eyebrow: 'Почему гости выбирают нас', cards: [['Быстрая запись в WhatsApp', 'Ответ в течение минут.'], ['Открыто ежедневно 08:00 – 20:00', 'Легко вписать в отдых.'], ['Рядом с отелями в Кемере', 'Быстрый доступ на такси.'], ['Хаммам, массаж и wellness', 'Полный SPA-ритуал.']] },
-        packages: { eyebrow: 'Пакеты', title: 'Выберите ваш ритуал', items: [
-          { title: 'Welcome Package', image: './Welcome.png', description: 'Сбалансированный стартовый ритуал для первого визита.', tags: ['Сауна', 'Пар', 'Хаммам'], list: ['Сауна и пар', 'Турецкая баня и пилинг', 'Пена + классический массаж', 'Маска для лица'] },
-          { title: 'Bronze Package', image: './Bronze.png', description: 'Комфортный ритуал с кофейным пилингом и маслом bronze.', tags: ['Кофе', 'Массаж', 'Маска'], list: ['Сауна и пар', 'Кофейный пилинг', 'Пена + массаж с bronze маслом', 'Маска для лица'] },
-          { title: 'Medical Package', image: './Medical.png', description: 'Фокус на восстановление с более глубокой терапией.', tags: ['Medical', 'Морская соль', 'Wellness'], list: ['Сауна и пар', 'Пилинг морской солью', 'Пена + медицинский массаж', 'Маска для лица'] },
-          { title: 'V.I.P Package', image: './vip.png', description: 'Фирменный luxury-маршрут с премиальным восстановлением.', tags: ['VIP', 'Hot Stone', 'Джакузи'], list: ['Полный хаммам-ритуал', 'Hot stone + рефлекс массаж', 'Джакузи и травяной чай', 'Премиальный уход'] }
-        ] },
-        services: { eyebrow: 'Услуги внутри', title: 'Изучите процедуры', items: [
-          { short: 'Турецкая баня', title: 'Ритуалы турецкой бани', image: './Turkishbath.png', description: 'Традиционное очищение для полного перезапуска тела.', tags: ['Хаммам', 'Пилинг', 'Пена'] },
-          { short: 'Массаж', title: 'Массаж и wellness', image: './Massage.png', description: 'Терапевтические и расслабляющие техники для восстановления.', tags: ['Классика', 'Medical', 'Hot Stone'] },
-          { short: 'Лицо и тело', title: 'Уход за лицом и телом', image: './Face.png', description: 'Увлажняющий уход для свежести и сияния.', tags: ['Маска', 'Body Care', 'Hydration'] },
-          { short: 'Спец', title: 'Специальные терапии', image: './Special.png', description: 'Целевые терапии для снятия стресса и баланса.', tags: ['Reflex', 'Therapy', 'Джакузи'] }
-        ] },
-        gallery: { eyebrow: 'Визуальное настроение', title: 'Галерея сцен', items: [
-          { title: 'Сцена 01', image: './scene1.png', description: 'Спокойная атмосфера и теплые текстуры.' },
-          { title: 'Сцена 02', image: './scene2.png', description: 'Премиальные детали в черно-золотой гамме.' },
-          { title: 'Сцена 03', image: './scene3.png', description: 'Атмосфера глубокого расслабления.' },
-          { title: 'Сцена 04', image: './scene4.png', description: 'Минимализм, мягкий свет и luxury-стиль.' },
-          { title: 'Сцена 05', image: './scene5.png', description: 'Комфортное пространство после процедур.' },
-          { title: 'Сцена 06', image: './scene6.png', description: 'SPA-настроение уровня premium-отеля.' }
-        ] },
-        reviews: { eyebrow: 'Отзывы', title: 'Нам доверяют гости', items: ['Очень расслабляющая атмосфера и красивый интерьер.', 'Профессиональный массаж и дружелюбная команда.', 'Один из лучших SPA-опытов за весь отпуск.'] },
-        contact: { eyebrow: 'Контакты + Карта', title: 'Запишитесь за минуту', addressLabel: 'Адрес', addressValue: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya', phoneLabel: 'Телефон / WhatsApp', phoneSub: 'Мгновенная линия записи.', hoursLabel: 'Часы работы', hoursValue: 'Ежедневно 08:00 – 20:00' },
-        final: { eyebrow: 'Финальный CTA', title: 'Готовы расслабиться?', subtitle: 'Запишитесь на SPA уже сегодня.' }
+        nav: { services: 'Услуги', prices: 'Цены', reviews: 'Отзывы', contact: 'Контакты' },
+        hero: {
+          title: 'Премиальный SPA в Кемере с прозрачными ценами и быстрой записью.',
+          subtitle: 'Массаж, хаммам и пакеты услуг в одном месте. Запишитесь в WhatsApp за 1 минуту.'
+        },
+        buttons: {
+          bookWhatsapp: 'Записаться в WhatsApp',
+          viewServices: 'Смотреть услуги',
+          openMaps: 'Открыть в Картах',
+          askPriceOnWhatsapp: 'Спросить о пакете в WhatsApp'
+        },
+        wa: {
+          general: 'Здравствуйте, хочу забронировать массаж.',
+          price: 'Здравствуйте, посмотрел(а) прайс и хочу записаться.',
+          service: 'Здравствуйте, хочу забронировать: '
+        },
+        popular: {
+          title: 'Популярные услуги',
+          subtitle: 'Самые востребованные процедуры с длительностью и ценой.',
+          items: [
+            { name: 'Балийский массаж', desc: 'Глубокое расслабление всего тела', duration: '60 мин', price: '€45' },
+            { name: 'Deep Tissue массаж', desc: 'Проработка напряжённых зон', duration: '60 мин', price: '€50' },
+            { name: 'Парный массаж', desc: 'Сеанс для двоих одновременно', duration: '60 мин', price: '€95' },
+            { name: 'Классический хаммам', desc: 'Пар, пилинг и пенная процедура', duration: '45 мин', price: '€35' },
+            { name: 'Хаммам + массаж', desc: 'Полное очищение и восстановление', duration: '90 мин', price: '€70' },
+            { name: 'Hot Stone массаж', desc: 'Терапия горячими камнями', duration: '60 мин', price: '€55' }
+          ]
+        },
+        priceList: {
+          title: 'Полный прайс-лист',
+          subtitle: 'Все ключевые процедуры и цены до бронирования.',
+          groups: [
+            {
+              title: 'Массаж',
+              rows: [
+                ['Классический массаж', '60 мин', '€40'],
+                ['Балийский массаж', '60 мин', '€45'],
+                ['Deep Tissue массаж', '60 мин', '€50'],
+                ['Hot Stone массаж', '60 мин', '€55']
+              ]
+            },
+            {
+              title: 'Хаммам',
+              rows: [
+                ['Турецкая баня + пена', '30 мин', '€25'],
+                ['Классический хаммам', '45 мин', '€35'],
+                ['Хаммам Deluxe', '60 мин', '€45']
+              ]
+            },
+            {
+              title: 'Пакеты',
+              rows: [
+                ['Welcome Package', '90 мин', '€65'],
+                ['Bronze Package', '90 мин', '€75'],
+                ['Medical Package', '90 мин', '€85'],
+                ['VIP Package', '120 мин', '€110']
+              ]
+            },
+            {
+              title: 'Другие процедуры',
+              rows: [
+                ['Маска для лица', '20 мин', '€20'],
+                ['Рефлексология', '30 мин', '€30'],
+                ['Пилинг тела', '25 мин', '€22']
+              ]
+            }
+          ]
+        },
+        why: { title: 'Почему выбирают нас', items: ['Профессиональные терапевты', 'Чистая и спокойная атмосфера', 'Удобная запись через WhatsApp', 'Удобная локация в Кемере'] },
+        gallery: { title: 'Галерея', items: ['./Welcome.png', './Massage.png', './Turkishbath.png', './Bronze.png', './Face.png', './vip.png'] },
+        reviews: {
+          title: 'Отзывы',
+          items: [
+            { text: 'Очень чисто и отличный уровень массажа.', by: 'Анна · Германия' },
+            { text: 'Быстрый ответ в WhatsApp и вежливая команда.', by: 'Майкл · Великобритания' },
+            { text: 'Лучший хаммам за весь отпуск.', by: 'Ирина · Россия' },
+            { text: 'Понятные цены и очень профессионально.', by: 'Эмре · Türkiye' }
+          ]
+        },
+        contact: {
+          title: 'Локация и контакты',
+          addressLabel: 'Адрес',
+          address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya',
+          phoneLabel: 'Телефон / WhatsApp',
+          hoursLabel: 'Часы работы',
+          hours: 'Ежедневно 08:00 – 20:00'
+        },
+        final: {
+          title: 'Готовы забронировать процедуру?',
+          subtitle: 'Напишите нам в WhatsApp и закрепите удобное время за несколько минут.'
+        }
       },
       tr: {
-        introWelcome: 'HOŞ GELDİNİZ', languageTitle: 'Dilinizi seçin',
-        nav: { about: 'Hakkımızda', packages: 'Paketler', services: 'Hizmetler', contact: 'İletişim' },
-        hero: { location: 'Kemer, Antalya', subtitle: 'Kemer’de lüks spa ritüelleri. Sade lüks, anında rezervasyon.', hours: 'Her gün 08:00 – 20:00', meta: 'Hamam, masaj, wellness', panelTitle: 'Otel misafirleri için ideal', panelText: 'Hızlı rezervasyon, net konum, premium konfor.' },
-        buttons: { whatsapp: 'WhatsApp Rezervasyon', contactMap: 'İletişim / Harita', call: 'Hemen Ara', openMap: 'Haritayı Aç', bookPackage: 'Bu paketi ayırt', askWhatsapp: 'WhatsApp ile sor' },
-        mobile: { whatsapp: 'WhatsApp', call: 'Ara', map: 'Harita' },
-        quick: { eyebrow: 'Misafirler neden bizi seçiyor', cards: [['Hızlı WhatsApp rezervasyonu', 'Dakikalar içinde dönüş.'], ['Her gün 08:00 – 20:00 açık', 'Tatil planına kolayca uyar.'], ['Kemer otellerine yakın', 'Taksiyle hızlı ulaşım.'], ['Hamam, masaj ve wellness', 'Tam bir spa yolculuğu.']] },
-        packages: { eyebrow: 'Paketler', title: 'Ritüelinizi seçin', items: [
-          { title: 'Welcome Package', image: './Welcome.png', description: 'İlk ziyaretçiler için dengeli başlangıç ritüeli.', tags: ['Sauna', 'Buhar', 'Hamam'], list: ['Sauna & Buhar', 'Türk Hamamı & Peeling', 'Köpük + Klasik Masaj', 'Yüz Maskesi'] },
-          { title: 'Bronze Package', image: './Bronze.png', description: 'Kahve peeling ve bronze yağlarla konfor ritüeli.', tags: ['Kahve', 'Masaj', 'Maske'], list: ['Sauna & Buhar', 'Kahve Peeling', 'Köpük + Bronze Yağ Masajı', 'Yüz Maskesi'] },
-          { title: 'Medical Package', image: './Medical.png', description: 'Daha derin terapi odaklı toparlanma seansı.', tags: ['Medical', 'Deniz Tuzu', 'Wellness'], list: ['Sauna & Buhar', 'Deniz Tuzu Peeling', 'Köpük + Medikal Masaj', 'Yüz Maskesi'] },
-          { title: 'V.I.P Package', image: './vip.png', description: 'Premium toparlanma unsurlarıyla imza lüks rota.', tags: ['VIP', 'Hot Stone', 'Jakuzi'], list: ['Tam Hamam Ritüeli', 'Hot Stone + Refleks Masajı', 'Jakuzi & Bitki Çayı', 'Premium bakım'] }
-        ] },
-        services: { eyebrow: 'İçerideki hizmetler', title: 'Bakımları keşfedin', items: [
-          { short: 'Türk Hamamı', title: 'Türk Hamamı Ritüelleri', image: './Turkishbath.png', description: 'Tüm vücut için geleneksel arındırıcı ritüel.', tags: ['Hamam', 'Peeling', 'Köpük'] },
-          { short: 'Masaj', title: 'Masaj & Wellness', image: './Massage.png', description: 'Derin toparlanma için terapötik ve rahatlatıcı teknikler.', tags: ['Klasik', 'Medikal', 'Hot Stone'] },
-          { short: 'Yüz & Vücut', title: 'Yüz & Vücut Bakımı', image: './Face.png', description: 'Canlı görünüm için nemlendirici bakım.', tags: ['Maske', 'Body Care', 'Hydration'] },
-          { short: 'Özel', title: 'Özel Terapiler', image: './Special.png', description: 'Stres azaltma ve denge için odaklı terapiler.', tags: ['Reflex', 'Therapy', 'Jakuzi'] }
-        ] },
-        gallery: { eyebrow: 'Görsel atmosfer', title: 'Sahne galerisi', items: [
-          { title: 'Sahne 01', image: './scene1.png', description: 'Sakin atmosfer ve sıcak dokular.' },
-          { title: 'Sahne 02', image: './scene2.png', description: 'Siyah-altın premium detaylar.' },
-          { title: 'Sahne 03', image: './scene3.png', description: 'Derin rahatlama için tasarlanan ortam.' },
-          { title: 'Sahne 04', image: './scene4.png', description: 'Minimal lüks ve yumuşak aydınlatma.' },
-          { title: 'Sahne 05', image: './scene5.png', description: 'Bakım sonrası konfor alanları.' },
-          { title: 'Sahne 06', image: './scene6.png', description: 'Otel seviyesinde premium spa havası.' }
-        ] },
-        reviews: { eyebrow: 'Yorumlar', title: 'Misafirler bize güveniyor', items: ['Çok rahatlatıcı atmosfer ve şık tasarım.', 'Profesyonel masaj ve çok nazik ekip.', 'Tatilde yaşadığımız en iyi spa deneyimlerinden biri.'] },
-        contact: { eyebrow: 'İletişim + Harita', title: 'Bir dakikada rezervasyon', addressLabel: 'Adres', addressValue: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya', phoneLabel: 'Telefon / WhatsApp', phoneSub: 'Anında rezervasyon hattı.', hoursLabel: 'Çalışma Saatleri', hoursValue: 'Her gün 08:00 – 20:00' },
-        final: { eyebrow: 'Final CTA', title: 'Rahatlamaya hazır mısınız?', subtitle: 'Spa seansınızı bugün ayırtın.' }
+        nav: { services: 'Hizmetler', prices: 'Fiyatlar', reviews: 'Yorumlar', contact: 'İletişim' },
+        hero: {
+          title: 'Kemer’de premium SPA, net fiyatlar ve hızlı rezervasyon.',
+          subtitle: 'Masaj, hamam ve paketleri tek sayfada görün. WhatsApp üzerinden 1 dakikada rezervasyon yapın.'
+        },
+        buttons: {
+          bookWhatsapp: 'WhatsApp ile Rezervasyon',
+          viewServices: 'Hizmetleri Gör',
+          openMaps: 'Haritada Aç',
+          askPriceOnWhatsapp: 'Paket için WhatsApp’tan sor'
+        },
+        wa: {
+          general: 'Merhaba, masaj için rezervasyon yapmak istiyorum.',
+          price: 'Merhaba, fiyat listesini gördüm ve rezervasyon yapmak istiyorum.',
+          service: 'Merhaba, şu hizmet için rezervasyon istiyorum: '
+        },
+        popular: {
+          title: 'Popüler Hizmetler',
+          subtitle: 'Süre ve fiyat bilgisiyle en çok tercih edilen işlemler.',
+          items: [
+            { name: 'Bali Masajı', desc: 'Tüm vücut için derin rahatlama', duration: '60 dk', price: '€45' },
+            { name: 'Deep Tissue Masaj', desc: 'Gergin bölgelere hedefli basınç', duration: '60 dk', price: '€50' },
+            { name: 'Çift Masajı', desc: 'Aynı anda iki kişilik seans', duration: '60 dk', price: '€95' },
+            { name: 'Klasik Hamam Ritüeli', desc: 'Buhar, peeling ve köpük bakımı', duration: '45 dk', price: '€35' },
+            { name: 'Hamam + Masaj Paketi', desc: 'Temizlik ve toparlanma birlikte', duration: '90 dk', price: '€70' },
+            { name: 'Hot Stone Masaj', desc: 'Sıcak taşlarla tam gevşeme', duration: '60 dk', price: '€55' }
+          ]
+        },
+        priceList: {
+          title: 'Tam Fiyat Listesi',
+          subtitle: 'Rezervasyon öncesi tüm ana hizmetleri ve ücretleri görün.',
+          groups: [
+            {
+              title: 'Masaj',
+              rows: [
+                ['Klasik Masaj', '60 dk', '€40'],
+                ['Bali Masajı', '60 dk', '€45'],
+                ['Deep Tissue Masaj', '60 dk', '€50'],
+                ['Hot Stone Masaj', '60 dk', '€55']
+              ]
+            },
+            {
+              title: 'Hamam',
+              rows: [
+                ['Türk Hamamı + Köpük', '30 dk', '€25'],
+                ['Klasik Hamam Ritüeli', '45 dk', '€35'],
+                ['Hamam Deluxe', '60 dk', '€45']
+              ]
+            },
+            {
+              title: 'Paketler',
+              rows: [
+                ['Welcome Package', '90 dk', '€65'],
+                ['Bronze Package', '90 dk', '€75'],
+                ['Medical Package', '90 dk', '€85'],
+                ['VIP Package', '120 dk', '€110']
+              ]
+            },
+            {
+              title: 'Diğer Bakımlar',
+              rows: [
+                ['Yüz Maskesi', '20 dk', '€20'],
+                ['Refleksoloji', '30 dk', '€30'],
+                ['Vücut Peeling', '25 dk', '€22']
+              ]
+            }
+          ]
+        },
+        why: { title: 'Neden Bizi Seçmelisiniz', items: ['Profesyonel terapistler', 'Temiz ve sakin atmosfer', 'Kolay WhatsApp rezervasyonu', 'Kemer’de merkezi konum'] },
+        gallery: { title: 'Galeri', items: ['./Welcome.png', './Massage.png', './Turkishbath.png', './Bronze.png', './Face.png', './vip.png'] },
+        reviews: {
+          title: 'Yorumlar',
+          items: [
+            { text: 'Çok temiz spa ve masaj kalitesi harika.', by: 'Anna · Almanya' },
+            { text: 'WhatsApp rezervasyonu çok hızlıydı.', by: 'Michael · Birleşik Krallık' },
+            { text: 'Tatilde yaşadığım en iyi hamam deneyimi.', by: 'Irina · Rusya' },
+            { text: 'Fiyatlar net, hizmet çok profesyonel.', by: 'Emre · Türkiye' }
+          ]
+        },
+        contact: {
+          title: 'Konum ve İletişim',
+          addressLabel: 'Adres',
+          address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya',
+          phoneLabel: 'Telefon / WhatsApp',
+          hoursLabel: 'Çalışma Saatleri',
+          hours: 'Her gün 08:00 – 20:00'
+        },
+        final: {
+          title: 'Bakımınızı rezerve etmeye hazır mısınız?',
+          subtitle: 'WhatsApp’tan bize yazın, seansınızı dakikalar içinde ayıralım.'
+        }
       }
     };
 
-    const appShell = document.getElementById('appShell');
-    const introScreen = document.getElementById('introScreen');
-    const introWelcome = document.getElementById('introWelcome');
-    const languageModal = document.getElementById('languageModal');
-    const languageTitle = document.getElementById('languageTitle');
-    const quickGrid = document.getElementById('quickGrid');
-    const packagesGrid = document.getElementById('packagesGrid');
-    const servicesGrid = document.getElementById('servicesGrid');
+    const popularGrid = document.getElementById('popularGrid');
+    const priceGroups = document.getElementById('priceGroups');
+    const benefitsGrid = document.getElementById('benefitsGrid');
     const galleryGrid = document.getElementById('galleryGrid');
     const reviewsGrid = document.getElementById('reviewsGrid');
-
-    const detailModal = document.getElementById('detailModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalText = document.getElementById('modalText');
-    const modalTags = document.getElementById('modalTags');
-    const modalList = document.getElementById('modalList');
-    const modalActions = document.getElementById('modalActions');
 
     let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
 
     function getPath(obj, key) {
       return key.split('.').reduce((acc, item) => (acc ? acc[item] : ''), obj);
+    }
+
+    function buildWaLink(message) {
+      return `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}`;
+    }
+
+    function updateWhatsAppLinks() {
+      const t = translations[currentLanguage];
+      document.querySelectorAll('.wa-link').forEach((link) => {
+        const kind = link.dataset.waKind || 'general';
+        if (kind === 'service') {
+          const serviceName = link.dataset.serviceName || '';
+          link.href = buildWaLink(`${t.wa.service}${serviceName}`);
+          return;
+        }
+        link.href = buildWaLink(t.wa[kind] || t.wa.general);
+      });
+    }
+
+    function renderPopular() {
+      const t = translations[currentLanguage];
+      popularGrid.innerHTML = t.popular.items.map((item) => `
+        <article class="card service-card">
+          <div class="service-head">
+            <h3 class="service-name">${item.name}</h3>
+            <span class="service-price">${item.price}</span>
+          </div>
+          <div class="service-meta">${item.desc}</div>
+          <div class="service-meta">${item.duration}</div>
+          <a class="btn btn-secondary wa-link" data-wa-kind="service" data-service-name="${item.name}" target="_blank" rel="noreferrer">${t.buttons.bookWhatsapp}</a>
+        </article>
+      `).join('');
+
+    }
+
+    function renderPriceList() {
+      const t = translations[currentLanguage];
+      priceGroups.innerHTML = t.priceList.groups.map((group) => `
+        <article class="card price-group">
+          <h3>${group.title}</h3>
+          ${group.rows.map((row) => `
+            <div class="price-row">
+              <span>${row[0]}</span>
+              <span class="muted">${row[1]}</span>
+              <strong>${row[2]}</strong>
+            </div>
+          `).join('')}
+        </article>
+      `).join('');
+    }
+
+    function renderBenefits() {
+      const t = translations[currentLanguage];
+      benefitsGrid.innerHTML = t.why.items.map((item) => `<article class="card benefit-item">${item}</article>`).join('');
+    }
+
+    function renderGallery() {
+      const t = translations[currentLanguage];
+      galleryGrid.innerHTML = t.gallery.items.map((image) => `<article class="card gallery-card"><img src="${image}" alt="Spa interior" loading="lazy"></article>`).join('');
+    }
+
+    function renderReviews() {
+      const t = translations[currentLanguage];
+      reviewsGrid.innerHTML = t.reviews.items.map((item) => `
+        <article class="card review-card">
+          <p class="review-text">“${item.text}”</p>
+          <div class="review-meta">${item.by}</div>
+        </article>
+      `).join('');
     }
 
     function updateStaticText() {
@@ -540,159 +660,31 @@
         const value = getPath(t, el.dataset.i18n);
         if (typeof value === 'string') el.textContent = value;
       });
-      languageTitle.textContent = t.languageTitle;
-      introWelcome.textContent = t.introWelcome;
-      introWelcome.classList.toggle('ru', currentLanguage === 'ru');
-      document.documentElement.lang = currentLanguage;
 
       document.querySelectorAll('[data-lang-switch]').forEach((btn) => {
         btn.classList.toggle('active', btn.dataset.langSwitch === currentLanguage);
       });
-    }
 
-    function renderQuick() {
-      const cards = translations[currentLanguage].quick.cards;
-      quickGrid.innerHTML = cards.map(([title, note]) => `
-        <article class="card quick-card"><p class="quick-title">${title}</p><p class="quick-note">${note}</p></article>
-      `).join('');
-    }
-
-    function renderPackages() {
-      const items = translations[currentLanguage].packages.items;
-      packagesGrid.innerHTML = items.map((item, idx) => `
-        <article class="preview-card" data-kind="package" data-index="${idx}">
-          <img src="${item.image}" alt="${item.title}" />
-          <div class="tile-overlay"><p class="tile-title">${item.title}</p></div>
-        </article>
-      `).join('');
-    }
-
-    function renderServices() {
-      const items = translations[currentLanguage].services.items;
-      servicesGrid.innerHTML = items.map((item, idx) => `
-        <article class="service-tile" data-kind="service" data-index="${idx}">
-          <img src="${item.image}" alt="${item.title}" />
-          <div class="tile-overlay">
-            <p class="tile-title">${item.short}</p>
-            <div class="tile-tags">${item.tags.slice(0, 3).map((tag) => `<span class="tile-tag">${tag}</span>`).join('')}</div>
-          </div>
-        </article>
-      `).join('');
-    }
-
-    function renderGallery() {
-      const items = translations[currentLanguage].gallery.items;
-      galleryGrid.innerHTML = items.map((item, idx) => `
-        <article class="gallery-card" data-kind="gallery" data-index="${idx}">
-          <img src="${item.image}" alt="${item.title}" />
-          <div class="scene-label">${item.title || `Scene 0${idx + 1}`}</div>
-        </article>
-      `).join('');
-    }
-
-    function renderReviews() {
-      const items = translations[currentLanguage].reviews.items;
-      reviewsGrid.innerHTML = items.map((text) => `
-        <article class="card review-card"><div class="stars">★★★★★</div><p class="review-text">${text}</p></article>
-      `).join('');
-    }
-
-    function openDetails(kind, index) {
-      const t = translations[currentLanguage];
-      const item = t[kind].items[index];
-      if (!item) return;
-      modalImage.src = item.image;
-      modalImage.alt = item.title;
-      modalTitle.textContent = item.title;
-      modalText.textContent = item.description || '';
-      modalTags.innerHTML = (item.tags || []).map((tag) => `<span class="tile-tag">${tag}</span>`).join('');
-      modalList.innerHTML = (item.list || []).map((line) => `<li>${line}</li>`).join('');
-      modalActions.innerHTML = `<a class="btn btn-primary" href="https://wa.me/905010399572" target="_blank" rel="noreferrer">${kind === 'packages' ? t.buttons.bookPackage : t.buttons.askWhatsapp}</a>`;
-      detailModal.classList.add('open');
-      detailModal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeDetails() {
-      detailModal.classList.remove('open');
-      detailModal.setAttribute('aria-hidden', 'true');
-      if (!languageModal.classList.contains('open')) document.body.style.overflow = '';
-    }
-
-    function attachGridEvents() {
-      packagesGrid.querySelectorAll('.preview-card').forEach((el) => {
-        el.addEventListener('click', () => openDetails('packages', Number(el.dataset.index)));
-      });
-      servicesGrid.querySelectorAll('.service-tile').forEach((el) => {
-        el.addEventListener('click', () => openDetails('services', Number(el.dataset.index)));
-      });
-      galleryGrid.querySelectorAll('.gallery-card').forEach((el) => {
-        el.addEventListener('click', () => openDetails('gallery', Number(el.dataset.index)));
-      });
+      document.documentElement.lang = currentLanguage;
     }
 
     function applyLanguage(lang) {
       currentLanguage = translations[lang] ? lang : 'en';
       localStorage.setItem('preferredLanguage', currentLanguage);
       updateStaticText();
-      renderQuick();
-      renderPackages();
-      renderServices();
+      renderPopular();
+      renderPriceList();
+      renderBenefits();
       renderGallery();
       renderReviews();
-      attachGridEvents();
+      updateWhatsAppLinks();
     }
-
-    function openLanguageModal() {
-      languageModal.classList.add('open');
-      languageModal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLanguageModal() {
-      languageModal.classList.remove('open');
-      languageModal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    function startExperience() {
-      const saved = localStorage.getItem('preferredLanguage');
-      applyLanguage(saved || 'en');
-      const introDuration = saved ? 900 : 1400;
-      setTimeout(() => {
-        if (saved) {
-          introScreen.classList.add('hide');
-          appShell.classList.add('ready');
-        } else {
-          openLanguageModal();
-        }
-      }, introDuration);
-    }
-
-    document.querySelectorAll('[data-pick-lang]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        applyLanguage(btn.dataset.pickLang);
-        closeLanguageModal();
-        introScreen.classList.add('hide');
-        appShell.classList.add('ready');
-      });
-    });
 
     document.querySelectorAll('[data-lang-switch]').forEach((btn) => {
       btn.addEventListener('click', () => applyLanguage(btn.dataset.langSwitch));
     });
 
-    detailModal.addEventListener('click', (event) => {
-      if (event.target.dataset.close === 'true') closeDetails();
-    });
-
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        closeDetails();
-      }
-    });
-
-    startExperience();
+    applyLanguage(currentLanguage);
   </script>
 </body>
 </html>
