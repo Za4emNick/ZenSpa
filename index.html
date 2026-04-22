@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZEN SPA CENTER</title>
-  <meta name="description" content="ZEN SPA CENTER in Kemer, Antalya — transparent prices and instant WhatsApp booking." />
+  <meta name="description" content="ZEN SPA CENTER in Kemer, Antalya — minimalist premium spa with easy WhatsApp reservation." />
   <style>
     :root {
-      --bg: #f8f6f1;
+      --bg: #ffffff;
       --surface: #ffffff;
-      --surface-soft: #f2efe8;
-      --text: #1f1f1c;
-      --muted: #66635d;
-      --line: #ded9cc;
-      --accent: #1f8f5f;
-      --accent-strong: #17774f;
+      --surface-soft: #f7f7f6;
+      --text: #1f1f1d;
+      --muted: #66655f;
+      --line: #e7e5df;
+      --accent: #2f6f61;
+      --accent-strong: #285d51;
       --radius: 16px;
-      --shadow: 0 10px 28px rgba(32, 28, 18, 0.08);
+      --shadow: 0 8px 20px rgba(31, 28, 20, 0.06);
     }
 
     * { box-sizing: border-box; }
@@ -32,28 +32,28 @@
     img { display: block; width: 100%; }
     a { color: inherit; text-decoration: none; }
     .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    .section { padding: 56px 0; border-bottom: 1px solid var(--line); }
-    .section-title { margin: 0; font-size: clamp(28px, 7vw, 48px); line-height: 1.07; letter-spacing: -0.02em; }
-    .section-subtitle { margin: 10px 0 0; color: var(--muted); max-width: 720px; }
+    .section { padding: 54px 0; border-bottom: 1px solid var(--line); }
+    .section-title { margin: 0; font-size: clamp(28px, 7vw, 46px); line-height: 1.08; letter-spacing: -0.02em; }
+    .section-subtitle { margin: 10px 0 0; color: var(--muted); max-width: 740px; }
 
     .nav-wrap {
       position: sticky;
       top: 0;
-      z-index: 30;
-      background: rgba(248, 246, 241, 0.92);
-      backdrop-filter: blur(8px);
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.94);
       border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
     }
     .nav {
       min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
     .brand { display: inline-flex; align-items: center; gap: 10px; }
     .brand-logo { height: 34px; width: auto; }
-    .brand-text { margin: 0; font-size: 15px; letter-spacing: 0.12em; font-weight: 600; }
+    .brand-text { margin: 0; font-size: 15px; letter-spacing: 0.11em; font-weight: 600; }
 
     .nav-links { display: none; gap: 14px; font-size: 13px; color: var(--muted); }
 
@@ -62,16 +62,16 @@
       border: 1px solid var(--line);
       border-radius: 999px;
       overflow: hidden;
-      background: #fff;
+      background: var(--surface);
     }
     .lang-btn {
       min-width: 42px;
       min-height: 34px;
       border: 0;
       background: transparent;
+      color: var(--muted);
       font-size: 12px;
       cursor: pointer;
-      color: var(--muted);
     }
     .lang-btn.active {
       background: var(--surface-soft);
@@ -79,9 +79,9 @@
       font-weight: 600;
     }
 
-    .hero { padding: 48px 0 52px; }
-    .hero-title { margin: 0; font-size: clamp(34px, 11vw, 72px); line-height: 0.98; letter-spacing: -0.03em; }
-    .hero-sub { margin: 16px 0 0; max-width: 680px; color: var(--muted); font-size: clamp(16px, 3.8vw, 20px); }
+    .hero { padding: 54px 0; }
+    .hero-title { margin: 0; font-size: clamp(34px, 10.5vw, 68px); line-height: 1; letter-spacing: -0.03em; }
+    .hero-sub { margin: 14px 0 0; color: var(--muted); max-width: 700px; font-size: clamp(16px, 3.8vw, 20px); }
 
     .actions { margin-top: 24px; display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
@@ -90,65 +90,65 @@
       border: 1px solid transparent;
       padding: 12px 16px;
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       font-size: 14px;
       font-weight: 600;
-      transition: 0.2s ease;
+      transition: .2s ease;
     }
-    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary { color: #fff; background: var(--accent); }
     .btn-primary:hover { background: var(--accent-strong); }
-    .btn-secondary { border-color: var(--line); background: #fff; color: var(--text); }
+    .btn-secondary { color: var(--text); border-color: var(--line); background: #fff; }
 
     .card {
-      background: var(--surface);
       border: 1px solid var(--line);
+      background: var(--surface);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .services-grid,
-    .benefits-grid,
-    .gallery-grid,
-    .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
-
-    .service-card { padding: 16px; display: grid; gap: 10px; }
-    .service-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
-    .service-name { margin: 0; font-size: 18px; }
-    .service-price { font-weight: 700; font-size: 18px; white-space: nowrap; }
-    .service-meta { color: var(--muted); font-size: 14px; }
-
-    .price-groups { margin-top: 20px; display: grid; gap: 14px; }
-    .price-group { padding: 14px; }
-    .price-group h3 { margin: 0 0 10px; font-size: 18px; }
-    .price-row {
+    .service-groups { margin-top: 22px; display: grid; gap: 14px; }
+    .service-group { padding: 16px; }
+    .group-title { margin: 0; font-size: 18px; }
+    .service-list { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .service-item {
       display: grid;
-      grid-template-columns: 1fr auto auto;
+      grid-template-columns: 1fr auto;
       gap: 10px;
-      padding: 9px 0;
       border-top: 1px dashed var(--line);
+      padding-top: 8px;
       font-size: 14px;
       align-items: center;
     }
-    .price-row:first-of-type { border-top: 0; padding-top: 0; }
-    .muted { color: var(--muted); }
+    .service-item:first-child { border-top: 0; padding-top: 0; }
+    .duration { color: var(--muted); white-space: nowrap; }
 
-    .benefit-item { padding: 16px; font-size: 15px; }
+    .packages-grid,
+    .why-grid,
+    .gallery-grid,
+    .reviews-grid { margin-top: 22px; display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+    .package-card { padding: 16px; }
+    .package-title { margin: 0; font-size: 18px; }
+    .package-note { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
+    .package-list { margin: 10px 0 0; padding-left: 18px; color: var(--text); }
+
+    .why-card { padding: 16px; font-size: 15px; }
 
     .gallery-card { overflow: hidden; }
-    .gallery-card img { aspect-ratio: 4/3; object-fit: cover; }
+    .gallery-card img { aspect-ratio: 4 / 3; object-fit: cover; }
 
     .review-card { padding: 16px; }
     .review-text { margin: 0; font-size: 15px; }
     .review-meta { margin-top: 8px; color: var(--muted); font-size: 13px; }
 
-    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
+    .contact-grid { margin-top: 20px; display: grid; grid-template-columns: 1fr; gap: 12px; }
     .contact-card { padding: 16px; }
-    .contact-label { margin: 0; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
-    .contact-value { margin: 10px 0 0; font-size: 17px; }
+    .contact-label { margin: 0; color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .contact-value { margin: 9px 0 0; font-size: 17px; }
 
     .map-wrap { padding: 10px; }
-    .map { border: 0; width: 100%; min-height: 280px; border-radius: 12px; }
+    .map { width: 100%; min-height: 280px; border: 0; border-radius: 12px; }
 
     .final-cta { padding: 24px; }
 
@@ -156,26 +156,25 @@
       position: fixed;
       right: 14px;
       bottom: 14px;
-      z-index: 40;
+      z-index: 30;
       min-height: 52px;
-      min-width: 52px;
       border-radius: 999px;
-      padding: 0 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
     }
 
-    @media (min-width: 720px) {
-      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .benefits-grid, .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (min-width: 760px) {
+      .packages-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .contact-grid { grid-template-columns: 0.95fr 1.05fr; }
+      .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-grid { grid-template-columns: 0.9fr 1.1fr; }
     }
 
     @media (min-width: 1000px) {
-      .section { padding: 72px 0; }
       .nav-links { display: inline-flex; }
-      .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .benefits-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .section { padding: 70px 0; }
+      .service-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .packages-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .reviews-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
   </style>
@@ -187,12 +186,14 @@
         <img class="brand-logo" src="./logo.png" alt="ZEN SPA CENTER logo" />
         <h1 class="brand-text">ZEN SPA CENTER</h1>
       </a>
+
       <nav class="nav-links" aria-label="Primary">
         <a href="#services" data-i18n="nav.services"></a>
-        <a href="#prices" data-i18n="nav.prices"></a>
+        <a href="#packages" data-i18n="nav.packages"></a>
         <a href="#reviews" data-i18n="nav.reviews"></a>
         <a href="#contact" data-i18n="nav.contact"></a>
       </nav>
+
       <div class="lang-switch" aria-label="Language switcher">
         <button class="lang-btn" data-lang-switch="en">EN</button>
         <button class="lang-btn" data-lang-switch="ru">RU</button>
@@ -202,40 +203,37 @@
   </header>
 
   <main id="top">
-    <section class="hero section" style="border-top:0;">
+    <section class="hero section" style="border-top: 0;">
       <div class="container">
         <h2 class="hero-title" data-i18n="hero.title"></h2>
         <p class="hero-sub" data-i18n="hero.subtitle"></p>
         <div class="actions">
-          <a class="btn btn-primary wa-link" data-wa-kind="general" target="_blank" rel="noreferrer" data-i18n="buttons.bookWhatsapp"></a>
-          <a class="btn btn-secondary" href="#services" data-i18n="buttons.viewServices"></a>
+          <a class="btn btn-primary wa-link" data-wa-kind="general" data-i18n="buttons.contact"></a>
+          <a class="btn btn-secondary" href="#services" data-i18n="buttons.services"></a>
         </div>
       </div>
     </section>
 
     <section class="section" id="services">
       <div class="container">
-        <h2 class="section-title" data-i18n="popular.title"></h2>
-        <p class="section-subtitle" data-i18n="popular.subtitle"></p>
-        <div class="services-grid" id="popularGrid"></div>
+        <h2 class="section-title" data-i18n="services.title"></h2>
+        <p class="section-subtitle" data-i18n="services.subtitle"></p>
+        <div class="service-groups" id="serviceGroups"></div>
       </div>
     </section>
 
     <section class="section" id="prices">
       <div class="container">
-        <h2 class="section-title" data-i18n="priceList.title"></h2>
-        <p class="section-subtitle" data-i18n="priceList.subtitle"></p>
-        <div class="price-groups" id="priceGroups"></div>
-        <div class="actions">
-          <a class="btn btn-primary wa-link" data-wa-kind="price" target="_blank" rel="noreferrer" data-i18n="buttons.askPriceOnWhatsapp"></a>
-        </div>
+        <h2 class="section-title" data-i18n="packages.title"></h2>
+        <p class="section-subtitle" data-i18n="packages.subtitle"></p>
+        <div class="packages-grid" id="packagesGrid"></div>
       </div>
     </section>
 
     <section class="section" id="why-us">
       <div class="container">
         <h2 class="section-title" data-i18n="why.title"></h2>
-        <div class="benefits-grid" id="benefitsGrid"></div>
+        <div class="why-grid" id="whyGrid"></div>
       </div>
     </section>
 
@@ -258,12 +256,21 @@
         <h2 class="section-title" data-i18n="contact.title"></h2>
         <div class="contact-grid">
           <div style="display:grid; gap:12px;">
-            <article class="card contact-card"><p class="contact-label" data-i18n="contact.addressLabel"></p><p class="contact-value" data-i18n="contact.address"></p></article>
-            <article class="card contact-card"><p class="contact-label" data-i18n="contact.phoneLabel"></p><p class="contact-value"><a href="tel:+905010399572">+90 501 039 95 72</a></p></article>
-            <article class="card contact-card"><p class="contact-label" data-i18n="contact.hoursLabel"></p><p class="contact-value" data-i18n="contact.hours"></p></article>
+            <article class="card contact-card">
+              <p class="contact-label" data-i18n="contact.addressLabel"></p>
+              <p class="contact-value" data-i18n="contact.address"></p>
+            </article>
+            <article class="card contact-card">
+              <p class="contact-label" data-i18n="contact.phoneLabel"></p>
+              <p class="contact-value"><a href="tel:+905010399572">+90 501 039 95 72</a></p>
+            </article>
+            <article class="card contact-card">
+              <p class="contact-label" data-i18n="contact.hoursLabel"></p>
+              <p class="contact-value" data-i18n="contact.hours"></p>
+            </article>
             <div class="actions" style="margin-top:0;">
-              <a class="btn btn-primary wa-link" data-wa-kind="general" target="_blank" rel="noreferrer" data-i18n="buttons.bookWhatsapp"></a>
-              <a class="btn btn-secondary" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noreferrer" data-i18n="buttons.openMaps"></a>
+              <a class="btn btn-primary wa-link" data-wa-kind="general" data-i18n="buttons.whatsapp"></a>
+              <a class="btn btn-secondary" target="_blank" rel="noreferrer" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14c3bf271ac85f3f:0x4cb729f77f0b8ad7?sa=X&ved=1t:8290&ictx=111" data-i18n="buttons.maps"></a>
             </div>
           </div>
           <article class="card map-wrap">
@@ -273,309 +280,411 @@
       </div>
     </section>
 
-    <section class="section" style="border-bottom:0;">
+    <section class="section" style="border-bottom: 0;">
       <div class="container">
         <div class="card final-cta">
           <h2 class="section-title" data-i18n="final.title"></h2>
           <p class="section-subtitle" data-i18n="final.subtitle"></p>
           <div class="actions">
-            <a class="btn btn-primary wa-link" data-wa-kind="general" target="_blank" rel="noreferrer" data-i18n="buttons.bookWhatsapp"></a>
+            <a class="btn btn-primary wa-link" data-wa-kind="general" data-i18n="buttons.getInTouch"></a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <a class="btn btn-primary floating-wa wa-link" data-wa-kind="general" target="_blank" rel="noreferrer" aria-label="WhatsApp">WhatsApp</a>
+  <a class="btn btn-primary floating-wa wa-link" data-wa-kind="general" aria-label="WhatsApp">WhatsApp</a>
 
   <script>
     const whatsappPhone = '905010399572';
 
     const translations = {
       en: {
-        nav: { services: 'Services', prices: 'Prices', reviews: 'Reviews', contact: 'Contact' },
+        nav: { services: 'Services', packages: 'Packages', reviews: 'Reviews', contact: 'Contact' },
         hero: {
-          title: 'Premium SPA in Kemer with clear prices and instant booking.',
-          subtitle: 'Massage, hammam and packages in one clean place. Book your session in 1 minute on WhatsApp.'
+          title: 'Private premium SPA in Kemer.',
+          subtitle: 'Clean, calm and family-friendly atmosphere with hammam and massage programs. Easy reservation via WhatsApp.'
         },
         buttons: {
-          bookWhatsapp: 'Book on WhatsApp',
-          viewServices: 'View Services',
-          openMaps: 'Open in Maps',
-          askPriceOnWhatsapp: 'Ask about a package on WhatsApp'
+          contact: 'Contact Us',
+          services: 'View Services',
+          whatsapp: 'WhatsApp',
+          maps: 'Open in Maps',
+          getInTouch: 'Get in Touch'
         },
         wa: {
-          general: 'Hello, I want to book a massage.',
-          price: 'Hello, I saw your price list and want to book a service.',
-          service: 'Hello, I want to book: '
+          general: 'Hello, I would like to make a reservation.',
+          service: 'Hello, I am interested in: '
         },
-        popular: {
-          title: 'Popular Services',
-          subtitle: 'Most requested treatments with duration and price.',
-          items: [
-            { name: 'Balinese Massage', desc: 'Deep relaxing full body massage', duration: '60 min', price: '€45' },
-            { name: 'Deep Tissue Massage', desc: 'Targeted pressure for tension relief', duration: '60 min', price: '€50' },
-            { name: 'Couple Massage', desc: 'Two therapists, one relaxing session', duration: '60 min', price: '€95' },
-            { name: 'Classic Hammam Ritual', desc: 'Steam, peeling and foam ritual', duration: '45 min', price: '€35' },
-            { name: 'Hammam + Massage Package', desc: 'Complete cleansing and body recovery', duration: '90 min', price: '€70' },
-            { name: 'Hot Stone Massage', desc: 'Warm stone therapy for full reset', duration: '60 min', price: '€55' }
-          ]
-        },
-        priceList: {
-          title: 'Full Price List',
-          subtitle: 'No hidden pricing. See all key treatments before booking.',
+        services: {
+          title: 'Services',
+          subtitle: 'All treatments are listed by category for fast selection.',
           groups: [
             {
-              title: 'Massage',
-              rows: [
-                ['Classic Massage', '60 min', '€40'],
-                ['Balinese Massage', '60 min', '€45'],
-                ['Deep Tissue Massage', '60 min', '€50'],
-                ['Hot Stone Massage', '60 min', '€55']
+              category: 'Hamam',
+              items: [
+                ['Peeling', '20 min'],
+                ['Coffee Peeling', '30 min'],
+                ['Peeling with Salt', '30 min'],
+                ['Foam Massage', '30 min'],
+                ['Mask for Face', '20 min'],
+                ['Ice Mask for Face', '30 min'],
+                ['Peeling and Foam Massage', '30 min']
               ]
             },
             {
-              title: 'Hammam',
-              rows: [
-                ['Turkish Bath + Foam', '30 min', '€25'],
-                ['Classic Hammam Ritual', '45 min', '€35'],
-                ['Hammam Deluxe', '60 min', '€45']
+              category: 'Local Massage',
+              items: [
+                ['Face Massage', '30 min'],
+                ['Head Massage', '30 min'],
+                ['Back Massage', '30 min'],
+                ['Foot Massage', '30 min'],
+                ['Anticellulite Massage', '30 min']
               ]
             },
             {
-              title: 'Packages',
-              rows: [
-                ['Welcome Package', '90 min', '€65'],
-                ['Bronze Package', '90 min', '€75'],
-                ['Medical Package', '90 min', '€85'],
-                ['VIP Package', '120 min', '€110']
+              category: 'Full Massage',
+              items: [
+                ['Classic Massage', '30/60 min'],
+                ['Antistress Massage', '60 min'],
+                ['Aroma Massage', '60 min'],
+                ['Sports Massage', '60 min'],
+                ['Lymphatic Massage', '60 min'],
+                ['Anticellulite Massage', '60 min'],
+                ['Medical Massage', '60 min'],
+                ['Hot Stone Massage', '60 min'],
+                ['Chocolate Massage', '60 min'],
+                ['Mix Massage', '60 min']
               ]
             },
             {
-              title: 'Other Treatments',
-              rows: [
-                ['Face Mask', '20 min', '€20'],
-                ['Reflexology', '30 min', '€30'],
-                ['Body Peeling', '25 min', '€22']
+              category: 'Asian Massage',
+              items: [
+                ['Bali Massage', '60/90 min'],
+                ['Thai Massage', '60/90 min'],
+                ['Ayurveda Abhyangam Massage', '60/90 min'],
+                ['Shiatsu Massage', '60 min'],
+                ['Indian Massage', '60 min'],
+                ['Sultan Massage', '60/90 min'],
+                ['Algen Wrap', '30 min'],
+                ['Chocolate Wrap', '30 min'],
+                ['Jacuzzi / Sea Salt', '40 min']
               ]
             }
           ]
         },
-        why: { title: 'Why Choose Us', items: ['Professional therapists', 'Clean and relaxing atmosphere', 'Easy WhatsApp reservation', 'Convenient location in Kemer'] },
-        gallery: { title: 'Gallery', items: ['./Welcome.png', './Massage.png', './Turkishbath.png', './Bronze.png', './Face.png', './vip.png'] },
+        packages: {
+          title: 'SPA Programs',
+          subtitle: 'Ready-made programs for complete relaxation and smooth experience.',
+          items: [
+            {
+              name: 'Package 1',
+              note: 'Traditional Hammam Program',
+              list: ['Sauna', 'Steam Room', 'Peeling', 'Foam Massage', 'Classic Massage', 'Mask for Face']
+            },
+            {
+              name: 'Package 2',
+              note: 'Relax Package',
+              list: ['Sauna', 'Steam Room', 'Peeling', 'Coffee Peeling', 'Foam Massage', 'Aroma Massage', 'Mask for Face']
+            },
+            {
+              name: 'Package 3',
+              note: 'Premium Care',
+              list: ['Sauna', 'Steam Room', 'Peeling', 'Peeling with Salt', 'Foam Massage', 'Full Body Medical Massage', 'Mask for Face']
+            },
+            {
+              name: 'VIP Package',
+              note: 'VIP Experience',
+              list: ['Sauna', 'Steam Room', 'Peeling', 'Foam Massage', 'Sultan Massage', 'Jacuzzi / Sea Salt', 'Face Care Ritual']
+            }
+          ]
+        },
+        why: {
+          title: 'Why Choose Us',
+          items: ['Clean and private atmosphere', 'Professional therapists', 'Comfortable experience', 'Family-friendly environment', 'Easy reservation', 'Premium service']
+        },
+        gallery: { title: 'Gallery', items: ['./Welcome.png', './Turkishbath.png', './Massage.png', './Bronze.png', './Face.png', './vip.png'] },
         reviews: {
           title: 'Reviews',
           items: [
-            { text: 'Very clean spa and great massage quality.', by: 'Anna · Germany' },
-            { text: 'Fast WhatsApp booking and friendly team.', by: 'Michael · UK' },
-            { text: 'Perfect hammam experience during vacation.', by: 'Irina · Russia' },
-            { text: 'Clear prices, no surprises, very professional.', by: 'Emre · Türkiye' }
+            { text: 'This is much better than public spas, where it is often crowded and not always clean. Here everything is clean, calm, and the VIP service is excellent. We really enjoyed it with our children.', by: 'Guest · Family Trip' },
+            { text: 'Very calm atmosphere and careful therapists.', by: 'Emma · UK' },
+            { text: 'Easy communication and a comfortable private experience.', by: 'Murat · Türkiye' },
+            { text: 'Great hammam and massage combination.', by: 'Irina · Russia' }
           ]
         },
         contact: {
-          title: 'Location & Contact',
+          title: 'Contact / Location',
           addressLabel: 'Address',
           address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya',
-          phoneLabel: 'Phone / WhatsApp',
+          phoneLabel: 'Phone',
           hoursLabel: 'Working Hours',
           hours: 'Daily 08:00 – 20:00'
         },
         final: {
-          title: 'Ready to book your treatment?',
-          subtitle: 'Contact us on WhatsApp and reserve your session in minutes.'
+          title: 'Ready to relax?',
+          subtitle: 'Contact us for reservation. We are happy to help you choose the right treatment.'
         }
       },
       ru: {
-        nav: { services: 'Услуги', prices: 'Цены', reviews: 'Отзывы', contact: 'Контакты' },
+        nav: { services: 'Услуги', packages: 'Пакеты', reviews: 'Отзывы', contact: 'Контакты' },
         hero: {
-          title: 'Премиальный SPA в Кемере с прозрачными ценами и быстрой записью.',
-          subtitle: 'Массаж, хаммам и пакеты услуг в одном месте. Запишитесь в WhatsApp за 1 минуту.'
+          title: 'Приватный премиальный SPA в Кемере.',
+          subtitle: 'Чистая, спокойная и family-friendly атмосфера с хаммамом и массажными программами. Удобная связь через WhatsApp.'
         },
         buttons: {
-          bookWhatsapp: 'Записаться в WhatsApp',
-          viewServices: 'Смотреть услуги',
-          openMaps: 'Открыть в Картах',
-          askPriceOnWhatsapp: 'Спросить о пакете в WhatsApp'
+          contact: 'Связаться с нами',
+          services: 'Смотреть услуги',
+          whatsapp: 'WhatsApp',
+          maps: 'Открыть карту',
+          getInTouch: 'Написать нам'
         },
         wa: {
-          general: 'Здравствуйте, хочу забронировать массаж.',
-          price: 'Здравствуйте, посмотрел(а) прайс и хочу записаться.',
-          service: 'Здравствуйте, хочу забронировать: '
+          general: 'Здравствуйте, хочу сделать резервацию.',
+          service: 'Здравствуйте, интересует услуга: '
         },
-        popular: {
-          title: 'Популярные услуги',
-          subtitle: 'Самые востребованные процедуры с длительностью и ценой.',
-          items: [
-            { name: 'Балийский массаж', desc: 'Глубокое расслабление всего тела', duration: '60 мин', price: '€45' },
-            { name: 'Deep Tissue массаж', desc: 'Проработка напряжённых зон', duration: '60 мин', price: '€50' },
-            { name: 'Парный массаж', desc: 'Сеанс для двоих одновременно', duration: '60 мин', price: '€95' },
-            { name: 'Классический хаммам', desc: 'Пар, пилинг и пенная процедура', duration: '45 мин', price: '€35' },
-            { name: 'Хаммам + массаж', desc: 'Полное очищение и восстановление', duration: '90 мин', price: '€70' },
-            { name: 'Hot Stone массаж', desc: 'Терапия горячими камнями', duration: '60 мин', price: '€55' }
-          ]
-        },
-        priceList: {
-          title: 'Полный прайс-лист',
-          subtitle: 'Все ключевые процедуры и цены до бронирования.',
+        services: {
+          title: 'Услуги',
+          subtitle: 'Все процедуры сгруппированы по категориям для удобного выбора.',
           groups: [
             {
-              title: 'Массаж',
-              rows: [
-                ['Классический массаж', '60 мин', '€40'],
-                ['Балийский массаж', '60 мин', '€45'],
-                ['Deep Tissue массаж', '60 мин', '€50'],
-                ['Hot Stone массаж', '60 мин', '€55']
+              category: 'Хаммам',
+              items: [
+                ['Пилинг', '20 мин'],
+                ['Кофейный пилинг', '30 мин'],
+                ['Пилинг с солью', '30 мин'],
+                ['Пенный массаж', '30 мин'],
+                ['Маска для лица', '20 мин'],
+                ['Ледяная маска для лица', '30 мин'],
+                ['Пилинг и пенный массаж', '30 мин']
               ]
             },
             {
-              title: 'Хаммам',
-              rows: [
-                ['Турецкая баня + пена', '30 мин', '€25'],
-                ['Классический хаммам', '45 мин', '€35'],
-                ['Хаммам Deluxe', '60 мин', '€45']
+              category: 'Локальный массаж',
+              items: [
+                ['Массаж лица', '30 мин'],
+                ['Массаж головы', '30 мин'],
+                ['Массаж спины', '30 мин'],
+                ['Массаж стоп', '30 мин'],
+                ['Антицеллюлитный массаж', '30 мин']
               ]
             },
             {
-              title: 'Пакеты',
-              rows: [
-                ['Welcome Package', '90 мин', '€65'],
-                ['Bronze Package', '90 мин', '€75'],
-                ['Medical Package', '90 мин', '€85'],
-                ['VIP Package', '120 мин', '€110']
+              category: 'Полный массаж',
+              items: [
+                ['Классический массаж', '30/60 мин'],
+                ['Антистресс массаж', '60 мин'],
+                ['Арома массаж', '60 мин'],
+                ['Спортивный массаж', '60 мин'],
+                ['Лимфодренажный массаж', '60 мин'],
+                ['Антицеллюлитный массаж', '60 мин'],
+                ['Медицинский массаж', '60 мин'],
+                ['Hot Stone массаж', '60 мин'],
+                ['Шоколадный массаж', '60 мин'],
+                ['Mix массаж', '60 мин']
               ]
             },
             {
-              title: 'Другие процедуры',
-              rows: [
-                ['Маска для лица', '20 мин', '€20'],
-                ['Рефлексология', '30 мин', '€30'],
-                ['Пилинг тела', '25 мин', '€22']
+              category: 'Азиатский массаж',
+              items: [
+                ['Бали массаж', '60/90 мин'],
+                ['Тайский массаж', '60/90 мин'],
+                ['Аюрведический Abhyangam массаж', '60/90 мин'],
+                ['Шиацу массаж', '60 мин'],
+                ['Индийский массаж', '60 мин'],
+                ['Sultan массаж', '60/90 мин'],
+                ['Algen обертывание', '30 мин'],
+                ['Шоколадное обертывание', '30 мин'],
+                ['Джакузи / Морская соль', '40 мин']
               ]
             }
           ]
         },
-        why: { title: 'Почему выбирают нас', items: ['Профессиональные терапевты', 'Чистая и спокойная атмосфера', 'Удобная запись через WhatsApp', 'Удобная локация в Кемере'] },
-        gallery: { title: 'Галерея', items: ['./Welcome.png', './Massage.png', './Turkishbath.png', './Bronze.png', './Face.png', './vip.png'] },
+        packages: {
+          title: 'SPA-программы',
+          subtitle: 'Готовые программы для полноценного отдыха и мягкого восстановления.',
+          items: [
+            {
+              name: 'Пакет 1',
+              note: 'Традиционная программа хаммама',
+              list: ['Сауна', 'Парная', 'Пилинг', 'Пенный массаж', 'Классический массаж', 'Маска для лица']
+            },
+            {
+              name: 'Пакет 2',
+              note: 'Relax пакет',
+              list: ['Сауна', 'Парная', 'Пилинг', 'Кофейный пилинг', 'Пенный массаж', 'Арома массаж', 'Маска для лица']
+            },
+            {
+              name: 'Пакет 3',
+              note: 'Premium care',
+              list: ['Сауна', 'Парная', 'Пилинг', 'Пилинг с солью', 'Пенный массаж', 'Полный медицинский массаж', 'Маска для лица']
+            },
+            {
+              name: 'VIP Пакет',
+              note: 'VIP Experience',
+              list: ['Сауна', 'Парная', 'Пилинг', 'Пенный массаж', 'Sultan массаж', 'Джакузи / Морская соль', 'Ритуал ухода за лицом']
+            }
+          ]
+        },
+        why: {
+          title: 'Почему выбирают нас',
+          items: ['Чистая и приватная атмосфера', 'Профессиональные терапевты', 'Комфортный опыт', 'Подходит для семей', 'Удобная резервация', 'Премиальный сервис']
+        },
+        gallery: { title: 'Галерея', items: ['./Welcome.png', './Turkishbath.png', './Massage.png', './Bronze.png', './Face.png', './vip.png'] },
         reviews: {
           title: 'Отзывы',
           items: [
-            { text: 'Очень чисто и отличный уровень массажа.', by: 'Анна · Германия' },
-            { text: 'Быстрый ответ в WhatsApp и вежливая команда.', by: 'Майкл · Великобритания' },
-            { text: 'Лучший хаммам за весь отпуск.', by: 'Ирина · Россия' },
-            { text: 'Понятные цены и очень профессионально.', by: 'Эмре · Türkiye' }
+            { text: 'Это намного лучше общественных спа, где обычно много людей и не всегда чисто. Здесь чисто, спокойно и действительно VIP-обслуживание. Нам с детьми очень понравилось.', by: 'Гость · Семейный отдых' },
+            { text: 'Очень спокойная атмосфера и внимательные специалисты.', by: 'Елена · Россия' },
+            { text: 'Удобная связь и комфортная приватная обстановка.', by: 'Дениз · Türkiye' },
+            { text: 'Отличное сочетание хаммама и массажа.', by: 'Андрей · Беларусь' }
           ]
         },
         contact: {
-          title: 'Локация и контакты',
+          title: 'Контакты / Локация',
           addressLabel: 'Адрес',
           address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya',
-          phoneLabel: 'Телефон / WhatsApp',
+          phoneLabel: 'Телефон',
           hoursLabel: 'Часы работы',
           hours: 'Ежедневно 08:00 – 20:00'
         },
         final: {
-          title: 'Готовы забронировать процедуру?',
-          subtitle: 'Напишите нам в WhatsApp и закрепите удобное время за несколько минут.'
+          title: 'Готовы расслабиться?',
+          subtitle: 'Свяжитесь с нами для резервации. Мы поможем подобрать подходящую процедуру.'
         }
       },
       tr: {
-        nav: { services: 'Hizmetler', prices: 'Fiyatlar', reviews: 'Yorumlar', contact: 'İletişim' },
+        nav: { services: 'Hizmetler', packages: 'Paketler', reviews: 'Yorumlar', contact: 'İletişim' },
         hero: {
-          title: 'Kemer’de premium SPA, net fiyatlar ve hızlı rezervasyon.',
-          subtitle: 'Masaj, hamam ve paketleri tek sayfada görün. WhatsApp üzerinden 1 dakikada rezervasyon yapın.'
+          title: 'Kemer’de özel premium SPA deneyimi.',
+          subtitle: 'Temiz, sakin ve aile dostu atmosferde hamam ve masaj programları. WhatsApp ile kolay rezervasyon.'
         },
         buttons: {
-          bookWhatsapp: 'WhatsApp ile Rezervasyon',
-          viewServices: 'Hizmetleri Gör',
-          openMaps: 'Haritada Aç',
-          askPriceOnWhatsapp: 'Paket için WhatsApp’tan sor'
+          contact: 'Bize Ulaşın',
+          services: 'Hizmetleri Gör',
+          whatsapp: 'WhatsApp',
+          maps: 'Haritada Aç',
+          getInTouch: 'İletişime Geç'
         },
         wa: {
-          general: 'Merhaba, masaj için rezervasyon yapmak istiyorum.',
-          price: 'Merhaba, fiyat listesini gördüm ve rezervasyon yapmak istiyorum.',
-          service: 'Merhaba, şu hizmet için rezervasyon istiyorum: '
+          general: 'Merhaba, rezervasyon yapmak istiyorum.',
+          service: 'Merhaba, şu hizmetle ilgileniyorum: '
         },
-        popular: {
-          title: 'Popüler Hizmetler',
-          subtitle: 'Süre ve fiyat bilgisiyle en çok tercih edilen işlemler.',
-          items: [
-            { name: 'Bali Masajı', desc: 'Tüm vücut için derin rahatlama', duration: '60 dk', price: '€45' },
-            { name: 'Deep Tissue Masaj', desc: 'Gergin bölgelere hedefli basınç', duration: '60 dk', price: '€50' },
-            { name: 'Çift Masajı', desc: 'Aynı anda iki kişilik seans', duration: '60 dk', price: '€95' },
-            { name: 'Klasik Hamam Ritüeli', desc: 'Buhar, peeling ve köpük bakımı', duration: '45 dk', price: '€35' },
-            { name: 'Hamam + Masaj Paketi', desc: 'Temizlik ve toparlanma birlikte', duration: '90 dk', price: '€70' },
-            { name: 'Hot Stone Masaj', desc: 'Sıcak taşlarla tam gevşeme', duration: '60 dk', price: '€55' }
-          ]
-        },
-        priceList: {
-          title: 'Tam Fiyat Listesi',
-          subtitle: 'Rezervasyon öncesi tüm ana hizmetleri ve ücretleri görün.',
+        services: {
+          title: 'Hizmetler',
+          subtitle: 'Tüm işlemler hızlı seçim için kategorilere ayrılmıştır.',
           groups: [
             {
-              title: 'Masaj',
-              rows: [
-                ['Klasik Masaj', '60 dk', '€40'],
-                ['Bali Masajı', '60 dk', '€45'],
-                ['Deep Tissue Masaj', '60 dk', '€50'],
-                ['Hot Stone Masaj', '60 dk', '€55']
+              category: 'Hamam',
+              items: [
+                ['Peeling', '20 dk'],
+                ['Kahve Peeling', '30 dk'],
+                ['Tuzlu Peeling', '30 dk'],
+                ['Köpük Masajı', '30 dk'],
+                ['Yüz Maskesi', '20 dk'],
+                ['Buz Yüz Maskesi', '30 dk'],
+                ['Peeling ve Köpük Masajı', '30 dk']
               ]
             },
             {
-              title: 'Hamam',
-              rows: [
-                ['Türk Hamamı + Köpük', '30 dk', '€25'],
-                ['Klasik Hamam Ritüeli', '45 dk', '€35'],
-                ['Hamam Deluxe', '60 dk', '€45']
+              category: 'Lokal Masaj',
+              items: [
+                ['Yüz Masajı', '30 dk'],
+                ['Baş Masajı', '30 dk'],
+                ['Sırt Masajı', '30 dk'],
+                ['Ayak Masajı', '30 dk'],
+                ['Selülit Karşıtı Masaj', '30 dk']
               ]
             },
             {
-              title: 'Paketler',
-              rows: [
-                ['Welcome Package', '90 dk', '€65'],
-                ['Bronze Package', '90 dk', '€75'],
-                ['Medical Package', '90 dk', '€85'],
-                ['VIP Package', '120 dk', '€110']
+              category: 'Full Masaj',
+              items: [
+                ['Klasik Masaj', '30/60 dk'],
+                ['Anti-stres Masajı', '60 dk'],
+                ['Aroma Masajı', '60 dk'],
+                ['Spor Masajı', '60 dk'],
+                ['Lenfatik Masaj', '60 dk'],
+                ['Selülit Karşıtı Masaj', '60 dk'],
+                ['Medikal Masaj', '60 dk'],
+                ['Hot Stone Masaj', '60 dk'],
+                ['Çikolata Masajı', '60 dk'],
+                ['Mix Masaj', '60 dk']
               ]
             },
             {
-              title: 'Diğer Bakımlar',
-              rows: [
-                ['Yüz Maskesi', '20 dk', '€20'],
-                ['Refleksoloji', '30 dk', '€30'],
-                ['Vücut Peeling', '25 dk', '€22']
+              category: 'Asya Masajı',
+              items: [
+                ['Bali Masajı', '60/90 dk'],
+                ['Thai Masajı', '60/90 dk'],
+                ['Ayurveda Abhyangam Masajı', '60/90 dk'],
+                ['Shiatsu Masajı', '60 dk'],
+                ['Hint Masajı', '60 dk'],
+                ['Sultan Masajı', '60/90 dk'],
+                ['Algen Wrap', '30 dk'],
+                ['Chocolate Wrap', '30 dk'],
+                ['Jakuzi / Deniz Tuzu', '40 dk']
               ]
             }
           ]
         },
-        why: { title: 'Neden Bizi Seçmelisiniz', items: ['Profesyonel terapistler', 'Temiz ve sakin atmosfer', 'Kolay WhatsApp rezervasyonu', 'Kemer’de merkezi konum'] },
-        gallery: { title: 'Galeri', items: ['./Welcome.png', './Massage.png', './Turkishbath.png', './Bronze.png', './Face.png', './vip.png'] },
+        packages: {
+          title: 'SPA Programları',
+          subtitle: 'Tam rahatlama ve dengeli bakım için hazır programlar.',
+          items: [
+            {
+              name: 'Paket 1',
+              note: 'Geleneksel Hamam Programı',
+              list: ['Sauna', 'Buhar Odası', 'Peeling', 'Köpük Masajı', 'Klasik Masaj', 'Yüz Maskesi']
+            },
+            {
+              name: 'Paket 2',
+              note: 'Relax Paket',
+              list: ['Sauna', 'Buhar Odası', 'Peeling', 'Kahve Peeling', 'Köpük Masajı', 'Aroma Masajı', 'Yüz Maskesi']
+            },
+            {
+              name: 'Paket 3',
+              note: 'Premium Care',
+              list: ['Sauna', 'Buhar Odası', 'Peeling', 'Tuzlu Peeling', 'Köpük Masajı', 'Tam Vücut Medikal Masaj', 'Yüz Maskesi']
+            },
+            {
+              name: 'VIP Paket',
+              note: 'VIP Experience',
+              list: ['Sauna', 'Buhar Odası', 'Peeling', 'Köpük Masajı', 'Sultan Masajı', 'Jakuzi / Deniz Tuzu', 'Yüz Bakım Ritüeli']
+            }
+          ]
+        },
+        why: {
+          title: 'Neden Bizi Seçmelisiniz',
+          items: ['Temiz ve özel atmosfer', 'Profesyonel terapistler', 'Konforlu deneyim', 'Aile dostu ortam', 'Kolay rezervasyon', 'Premium hizmet']
+        },
+        gallery: { title: 'Galeri', items: ['./Welcome.png', './Turkishbath.png', './Massage.png', './Bronze.png', './Face.png', './vip.png'] },
         reviews: {
           title: 'Yorumlar',
           items: [
-            { text: 'Çok temiz spa ve masaj kalitesi harika.', by: 'Anna · Almanya' },
-            { text: 'WhatsApp rezervasyonu çok hızlıydı.', by: 'Michael · Birleşik Krallık' },
-            { text: 'Tatilde yaşadığım en iyi hamam deneyimi.', by: 'Irina · Rusya' },
-            { text: 'Fiyatlar net, hizmet çok profesyonel.', by: 'Emre · Türkiye' }
+            { text: 'Burası kalabalık ve her zaman temiz olmayan halka açık spalardan çok daha iyi. Burada her şey temiz, sakin ve VIP hizmet gerçekten çok iyi. Çocuklarımızla birlikte çok memnun kaldık.', by: 'Misafir · Aile Tatili' },
+            { text: 'Çok sakin bir ortam ve özenli terapistler.', by: 'Aylin · Türkiye' },
+            { text: 'İletişim çok kolay, özel deneyim çok konforlu.', by: 'David · UK' },
+            { text: 'Hamam ve masaj kombinasyonu harikaydı.', by: 'Irina · Rusya' }
           ]
         },
         contact: {
-          title: 'Konum ve İletişim',
+          title: 'İletişim / Konum',
           addressLabel: 'Adres',
           address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya',
-          phoneLabel: 'Telefon / WhatsApp',
+          phoneLabel: 'Telefon',
           hoursLabel: 'Çalışma Saatleri',
           hours: 'Her gün 08:00 – 20:00'
         },
         final: {
-          title: 'Bakımınızı rezerve etmeye hazır mısınız?',
-          subtitle: 'WhatsApp’tan bize yazın, seansınızı dakikalar içinde ayıralım.'
+          title: 'Rahatlamaya hazır mısınız?',
+          subtitle: 'Rezervasyon için bize ulaşın. Size en uygun bakımı seçmenize memnuniyetle yardımcı oluruz.'
         }
       }
     };
 
-    const popularGrid = document.getElementById('popularGrid');
-    const priceGroups = document.getElementById('priceGroups');
-    const benefitsGrid = document.getElementById('benefitsGrid');
+    const serviceGroups = document.getElementById('serviceGroups');
+    const packagesGrid = document.getElementById('packagesGrid');
+    const whyGrid = document.getElementById('whyGrid');
     const galleryGrid = document.getElementById('galleryGrid');
     const reviewsGrid = document.getElementById('reviewsGrid');
 
@@ -593,63 +702,59 @@
       const t = translations[currentLanguage];
       document.querySelectorAll('.wa-link').forEach((link) => {
         const kind = link.dataset.waKind || 'general';
-        if (kind === 'service') {
-          const serviceName = link.dataset.serviceName || '';
-          link.href = buildWaLink(`${t.wa.service}${serviceName}`);
-          return;
-        }
         link.href = buildWaLink(t.wa[kind] || t.wa.general);
+        link.target = '_blank';
+        link.rel = 'noreferrer';
       });
     }
 
-    function renderPopular() {
-      const t = translations[currentLanguage];
-      popularGrid.innerHTML = t.popular.items.map((item) => `
-        <article class="card service-card">
-          <div class="service-head">
-            <h3 class="service-name">${item.name}</h3>
-            <span class="service-price">${item.price}</span>
-          </div>
-          <div class="service-meta">${item.desc}</div>
-          <div class="service-meta">${item.duration}</div>
-          <a class="btn btn-secondary wa-link" data-wa-kind="service" data-service-name="${item.name}" target="_blank" rel="noreferrer">${t.buttons.bookWhatsapp}</a>
+    function renderServices() {
+      const groups = translations[currentLanguage].services.groups;
+      serviceGroups.innerHTML = groups.map((group) => `
+        <article class="card service-group">
+          <h3 class="group-title">${group.category}</h3>
+          <ul class="service-list">
+            ${group.items.map((item) => `
+              <li class="service-item">
+                <span>${item[0]}</span>
+                <span class="duration">${item[1]}</span>
+              </li>
+            `).join('')}
+          </ul>
         </article>
       `).join('');
 
     }
 
-    function renderPriceList() {
-      const t = translations[currentLanguage];
-      priceGroups.innerHTML = t.priceList.groups.map((group) => `
-        <article class="card price-group">
-          <h3>${group.title}</h3>
-          ${group.rows.map((row) => `
-            <div class="price-row">
-              <span>${row[0]}</span>
-              <span class="muted">${row[1]}</span>
-              <strong>${row[2]}</strong>
-            </div>
-          `).join('')}
+    function renderPackages() {
+      const items = translations[currentLanguage].packages.items;
+      packagesGrid.innerHTML = items.map((item) => `
+        <article class="card package-card">
+          <h3 class="package-title">${item.name}</h3>
+          <p class="package-note">${item.note}</p>
+          <ul class="package-list">
+            ${item.list.map((line) => `<li>${line}</li>`).join('')}
+          </ul>
         </article>
       `).join('');
     }
 
-    function renderBenefits() {
-      const t = translations[currentLanguage];
-      benefitsGrid.innerHTML = t.why.items.map((item) => `<article class="card benefit-item">${item}</article>`).join('');
+    function renderWhy() {
+      const items = translations[currentLanguage].why.items;
+      whyGrid.innerHTML = items.map((item) => `<article class="card why-card">${item}</article>`).join('');
     }
 
     function renderGallery() {
-      const t = translations[currentLanguage];
-      galleryGrid.innerHTML = t.gallery.items.map((image) => `<article class="card gallery-card"><img src="${image}" alt="Spa interior" loading="lazy"></article>`).join('');
+      const items = translations[currentLanguage].gallery.items;
+      galleryGrid.innerHTML = items.map((img) => `<article class="card gallery-card"><img src="${img}" alt="Spa photo" loading="lazy" /></article>`).join('');
     }
 
     function renderReviews() {
-      const t = translations[currentLanguage];
-      reviewsGrid.innerHTML = t.reviews.items.map((item) => `
+      const items = translations[currentLanguage].reviews.items;
+      reviewsGrid.innerHTML = items.map((item) => `
         <article class="card review-card">
           <p class="review-text">“${item.text}”</p>
-          <div class="review-meta">${item.by}</div>
+          <p class="review-meta">${item.by}</p>
         </article>
       `).join('');
     }
@@ -660,11 +765,9 @@
         const value = getPath(t, el.dataset.i18n);
         if (typeof value === 'string') el.textContent = value;
       });
-
       document.querySelectorAll('[data-lang-switch]').forEach((btn) => {
         btn.classList.toggle('active', btn.dataset.langSwitch === currentLanguage);
       });
-
       document.documentElement.lang = currentLanguage;
     }
 
@@ -672,9 +775,9 @@
       currentLanguage = translations[lang] ? lang : 'en';
       localStorage.setItem('preferredLanguage', currentLanguage);
       updateStaticText();
-      renderPopular();
-      renderPriceList();
-      renderBenefits();
+      renderServices();
+      renderPackages();
+      renderWhy();
       renderGallery();
       renderReviews();
       updateWhatsAppLinks();
