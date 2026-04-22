@@ -55,7 +55,7 @@
     .brand-logo {
       height: 52px;
       width: auto;
-      filter: drop-shadow(0 0 8px rgba(184, 172, 160, 0.42));
+      filter: brightness(0) saturate(100%) invert(77%) sepia(12%) saturate(256%) hue-rotate(345deg) brightness(88%) contrast(86%) drop-shadow(0 0 8px rgba(184, 172, 160, 0.42));
     }
     .brand-text { margin: 0; font-size: 15px; letter-spacing: 0.11em; font-weight: 600; }
 
@@ -82,6 +82,49 @@
       color: var(--text);
       font-weight: 600;
     }
+
+    .language-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.96);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .language-overlay.hidden { display: none; }
+    .language-card {
+      width: min(760px, 100%);
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .language-title { margin: 0; font-size: clamp(24px, 5vw, 38px); }
+    .language-subtitle { margin: 12px 0 0; color: var(--muted); }
+    .language-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .language-option {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #151311;
+      color: var(--text);
+      font-size: 15px;
+      min-height: 50px;
+      padding: 10px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      justify-content: center;
+    }
+    .language-option:hover { background: #1e1a16; }
 
     .hero { padding: 58px 0 44px; }
     .hero-title { margin: 0; font-size: clamp(34px, 9.8vw, 64px); line-height: 1.03; letter-spacing: -0.03em; max-width: 820px; }
@@ -215,6 +258,21 @@
   </style>
 </head>
 <body>
+  <div class="language-overlay" id="languageOverlay" role="dialog" aria-modal="true" aria-labelledby="languageOverlayTitle">
+    <div class="language-card">
+      <h2 class="language-title" id="languageOverlayTitle">Choose language</h2>
+      <p class="language-subtitle">Выберите язык, чтобы открыть сайт / Site dilini seçin.</p>
+      <div class="language-grid">
+        <button class="language-option" data-lang-pick="en">🇬🇧 English</button>
+        <button class="language-option" data-lang-pick="ru">🇷🇺 Русский</button>
+        <button class="language-option" data-lang-pick="tr">🇹🇷 Türkçe</button>
+        <button class="language-option" data-lang-pick="de">🇩🇪 Deutsch</button>
+        <button class="language-option" data-lang-pick="pl">🇵🇱 Polski</button>
+        <button class="language-option" data-lang-pick="fr">🇫🇷 Français</button>
+      </div>
+    </div>
+  </div>
+
   <header class="nav-wrap">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="ZEN SPA CENTER">
@@ -234,6 +292,9 @@
         <button class="lang-btn" data-lang-switch="en">EN</button>
         <button class="lang-btn" data-lang-switch="ru">RU</button>
         <button class="lang-btn" data-lang-switch="tr">TR</button>
+        <button class="lang-btn" data-lang-switch="de">DE</button>
+        <button class="lang-btn" data-lang-switch="pl">PL</button>
+        <button class="lang-btn" data-lang-switch="fr">FR</button>
       </div>
     </div>
   </header>
@@ -418,28 +479,24 @@
               name: 'Package 1',
               note: 'Traditional Hammam Program',
               duration: '90 min',
-              price: 'from €79',
               list: ['Sauna', 'Steam Room', 'Peeling', 'Foam Massage', 'Classic Massage', 'Mask for Face']
             },
             {
               name: 'Package 2',
               note: 'Relax Package',
               duration: '110 min',
-              price: 'from €95',
               list: ['Sauna', 'Steam Room', 'Peeling', 'Coffee Peeling', 'Foam Massage', 'Aroma Massage', 'Mask for Face']
             },
             {
               name: 'Package 3',
               note: 'Premium Care',
               duration: '120 min',
-              price: 'from €109',
               list: ['Sauna', 'Steam Room', 'Peeling', 'Peeling with Salt', 'Foam Massage', 'Full Body Medical Massage', 'Mask for Face']
             },
             {
               name: 'VIP Package',
               note: 'VIP Experience',
               duration: '130 min',
-              price: 'from €129',
               list: ['Sauna', 'Steam Room', 'Peeling', 'Foam Massage', 'Sultan Massage', 'Jacuzzi / Sea Salt', 'Face Care Ritual']
             }
           ]
@@ -452,10 +509,10 @@
         reviews: {
           title: 'Reviews',
           items: [
-            { text: 'This is much better than public spas, where it is often crowded and not always clean. Here everything is clean, calm, and the VIP service is excellent. We really enjoyed it with our children.', by: 'Guest · Family Trip' },
-            { text: 'Very calm atmosphere and careful therapists.', by: 'Emma · UK' },
-            { text: 'Easy communication and a comfortable private experience.', by: 'Murat · Türkiye' },
-            { text: 'Great hammam and massage combination.', by: 'Irina · Russia' }
+            { text: 'We visited as a family and were honestly surprised by how private and well organized everything was. The public spa options we tried before were noisy, but here the atmosphere stayed calm from start to finish. Robert especially liked that therapists explained each step and adjusted pressure perfectly. We left fully relaxed and will definitely come back during our next holiday.', by: 'Robert · Netherlands · Family Trip' },
+            { text: 'From the first WhatsApp message to the final tea after the session, everything felt thoughtful and professional. The hammam area was spotless, towels were fresh, and the aroma massage was one of the best I have had in years. It felt like a premium ritual rather than a standard tourist service.', by: 'Emma · United Kingdom' },
+            { text: 'Communication was very easy and fast, and the team helped us choose the right program based on how tired we felt after travel. I appreciated the quiet rooms, clean facilities, and the way therapists checked comfort during the full massage. This place is ideal if you want a peaceful private spa day.', by: 'Murat · Türkiye' },
+            { text: 'The hammam and massage combination is excellent and very balanced: enough warmth, deep relaxation, and real recovery for muscles. I also loved that there was no rush between procedures, so we could truly rest. A beautiful spa in Kemer that I can confidently recommend to friends.', by: 'Irina · Russia' }
           ]
         },
         contact: {
@@ -554,28 +611,24 @@
               name: 'Пакет 1',
               note: 'Традиционная программа хаммама',
               duration: '90 мин',
-              price: 'от €79',
               list: ['Сауна', 'Парная', 'Пилинг', 'Пенный массаж', 'Классический массаж', 'Маска для лица']
             },
             {
               name: 'Пакет 2',
               note: 'Relax пакет',
               duration: '110 мин',
-              price: 'от €95',
               list: ['Сауна', 'Парная', 'Пилинг', 'Кофейный пилинг', 'Пенный массаж', 'Арома массаж', 'Маска для лица']
             },
             {
               name: 'Пакет 3',
               note: 'Premium care',
               duration: '120 мин',
-              price: 'от €109',
               list: ['Сауна', 'Парная', 'Пилинг', 'Пилинг с солью', 'Пенный массаж', 'Полный медицинский массаж', 'Маска для лица']
             },
             {
               name: 'VIP Пакет',
               note: 'VIP Experience',
               duration: '130 мин',
-              price: 'от €129',
               list: ['Сауна', 'Парная', 'Пилинг', 'Пенный массаж', 'Sultan массаж', 'Джакузи / Морская соль', 'Ритуал ухода за лицом']
             }
           ]
@@ -588,10 +641,10 @@
         reviews: {
           title: 'Отзывы',
           items: [
-            { text: 'Это намного лучше общественных спа, где обычно много людей и не всегда чисто. Здесь чисто, спокойно и действительно VIP-обслуживание. Нам с детьми очень понравилось.', by: 'Гость · Семейный отдых' },
-            { text: 'Очень спокойная атмосфера и внимательные специалисты.', by: 'Елена · Россия' },
-            { text: 'Удобная связь и комфортная приватная обстановка.', by: 'Дениз · Türkiye' },
-            { text: 'Отличное сочетание хаммама и массажа.', by: 'Андрей · Беларусь' }
+            { text: 'Мы приехали всей семьёй и были приятно удивлены, насколько здесь всё продумано и приватно. В общественных спа обычно шумно, а здесь с самого начала было спокойно и очень чисто. Роберту особенно понравилось, что мастера объясняли каждый этап и подбирали комфортную силу массажа. После программы ушли полностью отдохнувшими и обязательно вернёмся в следующий отпуск.', by: 'Robert · Нидерланды · Семейный отдых' },
+            { text: 'Начиная с первого сообщения в WhatsApp и до финальной чашки чая после процедур, всё было организовано очень внимательно. Хаммам идеально чистый, полотенца свежие, а арома-массаж — один из лучших, которые я пробовала за последние годы. Это ощущается как премиальный ритуал, а не стандартная туристическая услуга.', by: 'Елена · Великобритания' },
+            { text: 'Связаться и забронировать было очень легко, команда быстро помогла выбрать подходящую программу после дороги. Отдельно хочу отметить тишину, чистые помещения и то, как специалисты постоянно уточняли комфорт во время полного массажа. Отличное место для спокойного приватного SPA-дня.', by: 'Дениз · Турция' },
+            { text: 'Связка хаммама и массажа здесь действительно отличная и сбалансированная: и приятное прогревание, и глубокое расслабление, и заметное восстановление мышц. Понравилось, что между этапами нет спешки, поэтому можно по-настоящему отдохнуть. Прекрасный SPA в Кемере, который уверенно рекомендую друзьям.', by: 'Андрей · Беларусь' }
           ]
         },
         contact: {
@@ -690,28 +743,24 @@
               name: 'Paket 1',
               note: 'Geleneksel Hamam Programı',
               duration: '90 dk',
-              price: '€79’dan başlayan',
               list: ['Sauna', 'Buhar Odası', 'Peeling', 'Köpük Masajı', 'Klasik Masaj', 'Yüz Maskesi']
             },
             {
               name: 'Paket 2',
               note: 'Relax Paket',
               duration: '110 dk',
-              price: '€95’ten başlayan',
               list: ['Sauna', 'Buhar Odası', 'Peeling', 'Kahve Peeling', 'Köpük Masajı', 'Aroma Masajı', 'Yüz Maskesi']
             },
             {
               name: 'Paket 3',
               note: 'Premium Care',
               duration: '120 dk',
-              price: '€109’dan başlayan',
               list: ['Sauna', 'Buhar Odası', 'Peeling', 'Tuzlu Peeling', 'Köpük Masajı', 'Tam Vücut Medikal Masaj', 'Yüz Maskesi']
             },
             {
               name: 'VIP Paket',
               note: 'VIP Experience',
               duration: '130 dk',
-              price: '€129’dan başlayan',
               list: ['Sauna', 'Buhar Odası', 'Peeling', 'Köpük Masajı', 'Sultan Masajı', 'Jakuzi / Deniz Tuzu', 'Yüz Bakım Ritüeli']
             }
           ]
@@ -724,10 +773,10 @@
         reviews: {
           title: 'Yorumlar',
           items: [
-            { text: 'Burası kalabalık ve her zaman temiz olmayan halka açık spalardan çok daha iyi. Burada her şey temiz, sakin ve VIP hizmet gerçekten çok iyi. Çocuklarımızla birlikte çok memnun kaldık.', by: 'Misafir · Aile Tatili' },
-            { text: 'Çok sakin bir ortam ve özenli terapistler.', by: 'Aylin · Türkiye' },
-            { text: 'İletişim çok kolay, özel deneyim çok konforlu.', by: 'David · UK' },
-            { text: 'Hamam ve masaj kombinasyonu harikaydı.', by: 'Irina · Rusya' }
+            { text: 'Ailecek geldik ve her şeyin ne kadar düzenli ve özel hazırlandığını görünce gerçekten memnun kaldık. Daha önce gittiğimiz halka açık spa merkezleri kalabalıktı, burada ise baştan sona sakin bir atmosfer vardı. Robert özellikle terapistlerin her adımı açıklamasını ve basıncı isteğimize göre ayarlamasını çok beğendi. Tatilimizdeki en iyi deneyimlerden biri oldu.', by: 'Robert · Hollanda · Aile Tatili' },
+            { text: 'İlk WhatsApp mesajından seans sonrası ikram edilen çaya kadar tüm süreç çok profesyonel ilerledi. Hamam bölümü tertemizdi, havlular yeniydi ve aroma masajı uzun zamandır aldığım en iyi masajlardan biriydi. Standart bir turistik hizmetten çok, özenli bir premium bakım ritüeli gibiydi.', by: 'Aylin · Birleşik Krallık' },
+            { text: 'İletişim çok hızlıydı ve ekip yol yorgunluğumuza göre en uygun programı seçmemize yardımcı oldu. Sessiz odalar, temiz alanlar ve masaj sırasında sürekli konfor kontrolü yapılması bizi çok rahatlattı. Kemer’de özel ve sakin bir spa günü için harika bir adres.', by: 'Deniz · Türkiye' },
+            { text: 'Hamam ve masaj kombinasyonu çok dengeli hazırlanmış: yeterli ısı, derin rahatlama ve kaslarda gerçek bir toparlanma hissi var. İşlemler arasında acele ettirilmemek ayrıca çok değerliydi. Kemer’de gönül rahatlığıyla tavsiye edebileceğim bir spa merkezi.', by: 'Irina · Rusya' }
           ]
         },
         contact: {
@@ -742,14 +791,62 @@
           title: 'Rahatlamaya hazır mısınız?',
           subtitle: 'Tek mesajla rezervasyon yapın — size en uygun paket ve saati birlikte seçelim.'
         }
+      },
+      de: {
+        nav: { packages: 'Pakete', why: 'Vorteile', services: 'Leistungen', reviews: 'Bewertungen', contact: 'Kontakt' },
+        hero: { title: 'Premium-SPA-Rituale in Kemer.', subtitle: 'Privates Hamam, professionelle Massagen und eine ruhige Atmosphäre für tiefe Entspannung.' },
+        buttons: { bookNow: 'Jetzt buchen', viewPackages: 'Pakete ansehen', whatsapp: 'WhatsApp', maps: 'In Maps öffnen', getInTouch: 'Jetzt reservieren', packageCta: 'Paket buchen' },
+        wa: { general: 'Hallo, ich möchte eine Reservierung machen.', service: 'Hallo, ich interessiere mich für: ' },
+        services: { title: 'Leistungen', subtitle: 'Detailliertes Menü für individuelle Behandlungen.' },
+        packages: { title: 'SPA-Programme', subtitle: 'Beliebte Komplettprogramme für schnelle Reservierung.' },
+        why: { title: 'Warum wir' },
+        gallery: { title: 'Galerie' },
+        reviews: { title: 'Bewertungen' },
+        contact: { title: 'Kontakt / Standort', addressLabel: 'Adresse', address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya', phoneLabel: 'Telefon', hoursLabel: 'Öffnungszeiten', hours: 'Täglich 08:00 – 20:00' },
+        final: { title: 'Bereit zu entspannen?', subtitle: 'Schreiben Sie uns und wir helfen bei Zeit und Programm.' }
+      },
+      pl: {
+        nav: { packages: 'Pakiety', why: 'Zalety', services: 'Usługi', reviews: 'Opinie', contact: 'Kontakt' },
+        hero: { title: 'Premium rytuały SPA w Kemer.', subtitle: 'Prywatny hamam, profesjonalny masaż i spokojna atmosfera pełnego relaksu.' },
+        buttons: { bookNow: 'Rezerwuj', viewPackages: 'Zobacz pakiety', whatsapp: 'WhatsApp', maps: 'Otwórz w mapach', getInTouch: 'Zarezerwuj teraz', packageCta: 'Rezerwuj pakiet' },
+        wa: { general: 'Dzień dobry, chcę dokonać rezerwacji.', service: 'Dzień dobry, interesuje mnie: ' },
+        services: { title: 'Usługi', subtitle: 'Szczegółowe menu zabiegów dla indywidualnego wyboru.' },
+        packages: { title: 'Programy SPA', subtitle: 'Najpopularniejsze gotowe programy dla szybkiej rezerwacji.' },
+        why: { title: 'Dlaczego my' },
+        gallery: { title: 'Galeria' },
+        reviews: { title: 'Opinie' },
+        contact: { title: 'Kontakt / Lokalizacja', addressLabel: 'Adres', address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya', phoneLabel: 'Telefon', hoursLabel: 'Godziny pracy', hours: 'Codziennie 08:00 – 20:00' },
+        final: { title: 'Gotowi na relaks?', subtitle: 'Napisz do nas — pomożemy wybrać najlepszy pakiet i godzinę.' }
+      },
+      fr: {
+        nav: { packages: 'Forfaits', why: 'Avantages', services: 'Services', reviews: 'Avis', contact: 'Contact' },
+        hero: { title: 'Rituels SPA premium à Kemer.', subtitle: 'Hammam privé, massages experts et atmosphère calme pour une détente profonde.' },
+        buttons: { bookNow: 'Réserver', viewPackages: 'Voir les forfaits', whatsapp: 'WhatsApp', maps: 'Ouvrir Maps', getInTouch: 'Réserver maintenant', packageCta: 'Réserver ce forfait' },
+        wa: { general: 'Bonjour, je souhaite faire une réservation.', service: 'Bonjour, je suis intéressé par : ' },
+        services: { title: 'Services', subtitle: 'Menu détaillé des soins pour un choix personnalisé.' },
+        packages: { title: 'Programmes SPA', subtitle: 'Offres complètes populaires pour une réservation rapide.' },
+        why: { title: 'Pourquoi nous choisir' },
+        gallery: { title: 'Galerie' },
+        reviews: { title: 'Avis' },
+        contact: { title: 'Contact / Localisation', addressLabel: 'Adresse', address: 'Göynük mh. Başkomutan, Atatürk Cd. No:147-1 D:1, 07981 Kemer/Antalya', phoneLabel: 'Téléphone', hoursLabel: 'Horaires', hours: 'Tous les jours 08:00 – 20:00' },
+        final: { title: 'Prêt à vous détendre ?', subtitle: 'Envoyez-nous un message et nous vous aidons à choisir votre programme.' }
       }
     };
+
+    ['de', 'pl', 'fr'].forEach((lang) => {
+      translations[lang].services.groups = translations.en.services.groups;
+      translations[lang].packages.items = translations.en.packages.items;
+      translations[lang].why.items = translations.en.why.items;
+      translations[lang].gallery.items = translations.en.gallery.items;
+      translations[lang].reviews.items = translations.en.reviews.items;
+    });
 
     const serviceGroups = document.getElementById('serviceGroups');
     const packagesGrid = document.getElementById('packagesGrid');
     const whyGrid = document.getElementById('whyGrid');
     const galleryGrid = document.getElementById('galleryGrid');
     const reviewsGrid = document.getElementById('reviewsGrid');
+    const languageOverlay = document.getElementById('languageOverlay');
 
     let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
 
@@ -798,7 +895,6 @@
           <p class="package-note">${item.note}</p>
           <div class="package-meta">
             ${item.duration ? `<span class="package-pill">${item.duration}</span>` : ''}
-            ${item.price ? `<span class="package-pill">${item.price}</span>` : ''}
           </div>
           <ul class="package-list">
             ${item.list.slice(0, 5).map((line) => `<li>${line}</li>`).join('')}
@@ -854,6 +950,13 @@
 
     document.querySelectorAll('[data-lang-switch]').forEach((btn) => {
       btn.addEventListener('click', () => applyLanguage(btn.dataset.langSwitch));
+    });
+
+    document.querySelectorAll('[data-lang-pick]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyLanguage(btn.dataset.langPick);
+        languageOverlay.classList.add('hidden');
+      });
     });
 
     applyLanguage(currentLanguage);
