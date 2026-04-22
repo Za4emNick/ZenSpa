@@ -31,10 +31,10 @@
 
     img { display: block; width: 100%; }
     a { color: inherit; text-decoration: none; }
-    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    .section { padding: 54px 0; border-bottom: 1px solid var(--line); }
-    .section-title { margin: 0; font-size: clamp(28px, 7vw, 46px); line-height: 1.08; letter-spacing: -0.02em; }
-    .section-subtitle { margin: 10px 0 0; color: var(--muted); max-width: 740px; }
+    .container { width: min(1160px, calc(100% - 22px)); margin: 0 auto; }
+    .section { padding: 46px 0; border-bottom: 1px solid var(--line); }
+    .section-title { margin: 0; font-size: clamp(26px, 6vw, 44px); line-height: 1.12; letter-spacing: -0.02em; }
+    .section-subtitle { margin: 10px 0 0; color: var(--muted); max-width: 700px; line-height: 1.55; }
 
     .nav-wrap {
       position: sticky;
@@ -45,14 +45,18 @@
       backdrop-filter: blur(8px);
     }
     .nav {
-      min-height: 72px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
     }
     .brand { display: inline-flex; align-items: center; gap: 10px; }
-    .brand-logo { height: 34px; width: auto; }
+    .brand-logo {
+      height: 52px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(184, 172, 160, 0.42));
+    }
     .brand-text { margin: 0; font-size: 15px; letter-spacing: 0.11em; font-weight: 600; }
 
     .nav-links { display: none; gap: 14px; font-size: 13px; color: var(--muted); }
@@ -62,15 +66,15 @@
       border: 1px solid var(--line);
       border-radius: 999px;
       overflow: hidden;
-      background: var(--surface);
+      background: rgba(20, 17, 14, 0.7);
     }
     .lang-btn {
-      min-width: 42px;
-      min-height: 34px;
+      min-width: 36px;
+      min-height: 30px;
       border: 0;
       background: transparent;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11px;
       cursor: pointer;
     }
     .lang-btn.active {
@@ -79,16 +83,16 @@
       font-weight: 600;
     }
 
-    .hero { padding: 54px 0; }
-    .hero-title { margin: 0; font-size: clamp(34px, 10.5vw, 68px); line-height: 1; letter-spacing: -0.03em; }
-    .hero-sub { margin: 14px 0 0; color: var(--muted); max-width: 700px; font-size: clamp(16px, 3.8vw, 20px); }
+    .hero { padding: 58px 0 44px; }
+    .hero-title { margin: 0; font-size: clamp(34px, 9.8vw, 64px); line-height: 1.03; letter-spacing: -0.03em; max-width: 820px; }
+    .hero-sub { margin: 14px 0 0; color: var(--muted); max-width: 620px; font-size: clamp(15px, 3.4vw, 19px); }
 
-    .actions { margin-top: 24px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .actions { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
-      min-height: 48px;
-      border-radius: 12px;
+      min-height: 46px;
+      border-radius: 11px;
       border: 1px solid transparent;
-      padding: 12px 16px;
+      padding: 10px 16px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -104,20 +108,20 @@
       border: 1px solid var(--line);
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.26);
     }
 
-    .service-groups { margin-top: 22px; display: grid; gap: 14px; }
-    .service-group { padding: 16px; }
-    .group-title { margin: 0; font-size: 18px; }
-    .service-list { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .service-groups { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .service-group { padding: 14px; }
+    .group-title { margin: 0; font-size: 17px; }
+    .service-list { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
     .service-item {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 10px;
+      gap: 8px;
       border-top: 1px dashed var(--line);
-      padding-top: 8px;
-      font-size: 14px;
+      padding-top: 6px;
+      font-size: 13px;
       align-items: center;
     }
     .service-item:first-child { border-top: 0; padding-top: 0; }
@@ -125,44 +129,70 @@
 
     .packages-grid,
     .why-grid,
-    .gallery-grid,
-    .reviews-grid { margin-top: 22px; display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .gallery-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .reviews-grid { margin-top: 18px; display: grid; grid-template-columns: 1fr; gap: 12px; }
 
-    .package-card { padding: 16px; }
-    .package-title { margin: 0; font-size: 18px; }
-    .package-note { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
-    .package-list { margin: 10px 0 0; padding-left: 18px; color: var(--text); }
+    .package-card {
+      padding: 14px;
+      background: linear-gradient(180deg, #17130f 0%, #12100d 100%);
+      border-color: #3a2e23;
+    }
+    .package-title { margin: 0; font-size: 18px; font-weight: 700; }
+    .package-note { margin: 6px 0 0; color: #c5b7aa; font-size: 13px; }
+    .package-meta { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .package-pill {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .package-list { margin: 10px 0 0; padding-left: 16px; color: var(--text); font-size: 13px; display: grid; gap: 4px; }
+    .package-cta { margin-top: 12px; width: 100%; min-height: 40px; font-size: 13px; }
 
-    .why-card { padding: 16px; font-size: 15px; }
+    .why-card { padding: 14px; font-size: 13px; min-height: 100%; line-height: 1.45; }
 
     .gallery-card { overflow: hidden; }
-    .gallery-card img { aspect-ratio: 4 / 3; object-fit: cover; }
+    .gallery-card img { aspect-ratio: 4 / 3; object-fit: cover; min-height: 100%; }
 
     .review-card { padding: 16px; }
-    .review-text { margin: 0; font-size: 15px; }
+    .review-text { margin: 0; font-size: 15px; line-height: 1.6; }
     .review-meta { margin-top: 8px; color: var(--muted); font-size: 13px; }
 
-    .contact-grid { margin-top: 20px; display: grid; grid-template-columns: 1fr; gap: 12px; }
-    .contact-card { padding: 16px; }
+    .contact-grid { margin-top: 18px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .contact-card { padding: 14px; }
     .contact-label { margin: 0; color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
-    .contact-value { margin: 9px 0 0; font-size: 17px; }
+    .contact-value { margin: 8px 0 0; font-size: 16px; line-height: 1.45; }
 
-    .map-wrap { padding: 10px; }
+    .map-wrap { padding: 8px; }
     .map { width: 100%; min-height: 280px; border: 0; border-radius: 12px; }
 
-    .final-cta { padding: 24px; }
+    .final-cta { padding: 20px; }
 
     .floating-wa {
       position: fixed;
       right: 14px;
       bottom: 14px;
       z-index: 30;
-      min-height: 52px;
+      min-height: 46px;
       border-radius: 999px;
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
     }
 
+    #services .card { background: #121212; border-color: #2a2622; }
+
+    @media (max-width: 359px) {
+      .service-groups,
+      .packages-grid,
+      .why-grid,
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
     @media (min-width: 760px) {
+      .container { width: min(1160px, calc(100% - 42px)); }
+      .service-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .packages-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -175,7 +205,12 @@
       .section { padding: 70px 0; }
       .service-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .packages-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .reviews-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 760px) {
+      .floating-wa { display: none; }
     }
   </style>
 </head>
@@ -188,8 +223,9 @@
       </a>
 
       <nav class="nav-links" aria-label="Primary">
-        <a href="#services" data-i18n="nav.services"></a>
         <a href="#packages" data-i18n="nav.packages"></a>
+        <a href="#why-us" data-i18n="nav.why"></a>
+        <a href="#services" data-i18n="nav.services"></a>
         <a href="#reviews" data-i18n="nav.reviews"></a>
         <a href="#contact" data-i18n="nav.contact"></a>
       </nav>
@@ -208,21 +244,13 @@
         <h2 class="hero-title" data-i18n="hero.title"></h2>
         <p class="hero-sub" data-i18n="hero.subtitle"></p>
         <div class="actions">
-          <a class="btn btn-primary wa-link" data-wa-kind="general" data-i18n="buttons.contact"></a>
-          <a class="btn btn-secondary" href="#services" data-i18n="buttons.services"></a>
+          <a class="btn btn-primary wa-link" data-wa-kind="general" data-i18n="buttons.bookNow"></a>
+          <a class="btn btn-secondary" href="#packages" data-i18n="buttons.viewPackages"></a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="services">
-      <div class="container">
-        <h2 class="section-title" data-i18n="services.title"></h2>
-        <p class="section-subtitle" data-i18n="services.subtitle"></p>
-        <div class="service-groups" id="serviceGroups"></div>
-      </div>
-    </section>
-
-    <section class="section" id="prices">
+    <section class="section" id="packages">
       <div class="container">
         <h2 class="section-title" data-i18n="packages.title"></h2>
         <p class="section-subtitle" data-i18n="packages.subtitle"></p>
@@ -234,6 +262,14 @@
       <div class="container">
         <h2 class="section-title" data-i18n="why.title"></h2>
         <div class="why-grid" id="whyGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <h2 class="section-title" data-i18n="services.title"></h2>
+        <p class="section-subtitle" data-i18n="services.subtitle"></p>
+        <div class="service-groups" id="serviceGroups"></div>
       </div>
     </section>
 
@@ -293,24 +329,25 @@
     </section>
   </main>
 
-  <a class="btn btn-primary floating-wa wa-link" data-wa-kind="general" aria-label="WhatsApp">WhatsApp</a>
+  <a class="btn btn-primary floating-wa wa-link" data-wa-kind="general" aria-label="Book now" data-i18n="buttons.bookNow"></a>
 
   <script>
     const whatsappPhone = '905010399572';
 
     const translations = {
       en: {
-        nav: { services: 'Services', packages: 'Packages', reviews: 'Reviews', contact: 'Contact' },
+        nav: { packages: 'Packages', why: 'Benefits', services: 'Services', reviews: 'Reviews', contact: 'Contact' },
         hero: {
-          title: 'Private premium SPA in Kemer.',
-          subtitle: 'Clean, calm and family-friendly atmosphere with hammam and massage programs. Easy reservation via WhatsApp.'
+          title: 'Premium SPA rituals in Kemer.',
+          subtitle: 'Private hammam, expert massage and a calm atmosphere for deep relaxation.'
         },
         buttons: {
-          contact: 'Contact Us',
-          services: 'View Services',
+          bookNow: 'Book now',
+          viewPackages: 'View packages',
           whatsapp: 'WhatsApp',
           maps: 'Open in Maps',
-          getInTouch: 'Get in Touch'
+          getInTouch: 'Reserve now',
+          packageCta: 'Book this package'
         },
         wa: {
           general: 'Hello, I would like to make a reservation.',
@@ -318,7 +355,7 @@
         },
         services: {
           title: 'Services',
-          subtitle: 'All treatments are listed by category for fast selection.',
+          subtitle: 'Detailed treatment menu for personalized sessions.',
           groups: [
             {
               category: 'Hamam',
@@ -375,26 +412,34 @@
         },
         packages: {
           title: 'SPA Programs',
-          subtitle: 'Ready-made programs for complete relaxation and smooth experience.',
+          subtitle: 'Our most popular all-in-one offers with clear value and faster booking.',
           items: [
             {
               name: 'Package 1',
               note: 'Traditional Hammam Program',
+              duration: '90 min',
+              price: 'from €79',
               list: ['Sauna', 'Steam Room', 'Peeling', 'Foam Massage', 'Classic Massage', 'Mask for Face']
             },
             {
               name: 'Package 2',
               note: 'Relax Package',
+              duration: '110 min',
+              price: 'from €95',
               list: ['Sauna', 'Steam Room', 'Peeling', 'Coffee Peeling', 'Foam Massage', 'Aroma Massage', 'Mask for Face']
             },
             {
               name: 'Package 3',
               note: 'Premium Care',
+              duration: '120 min',
+              price: 'from €109',
               list: ['Sauna', 'Steam Room', 'Peeling', 'Peeling with Salt', 'Foam Massage', 'Full Body Medical Massage', 'Mask for Face']
             },
             {
               name: 'VIP Package',
               note: 'VIP Experience',
+              duration: '130 min',
+              price: 'from €129',
               list: ['Sauna', 'Steam Room', 'Peeling', 'Foam Massage', 'Sultan Massage', 'Jacuzzi / Sea Salt', 'Face Care Ritual']
             }
           ]
@@ -423,21 +468,22 @@
         },
         final: {
           title: 'Ready to relax?',
-          subtitle: 'Contact us for reservation. We are happy to help you choose the right treatment.'
+          subtitle: 'Book in one message — we will help you choose the ideal package and time.'
         }
       },
       ru: {
-        nav: { services: 'Услуги', packages: 'Пакеты', reviews: 'Отзывы', contact: 'Контакты' },
+        nav: { packages: 'Пакеты', why: 'Преимущества', services: 'Услуги', reviews: 'Отзывы', contact: 'Контакты' },
         hero: {
-          title: 'Приватный премиальный SPA в Кемере.',
-          subtitle: 'Чистая, спокойная и family-friendly атмосфера с хаммамом и массажными программами. Удобная связь через WhatsApp.'
+          title: 'Премиальные SPA-ритуалы в Кемере.',
+          subtitle: 'Приватный хаммам, профессиональный массаж и спокойная атмосфера для глубокого отдыха.'
         },
         buttons: {
-          contact: 'Связаться с нами',
-          services: 'Смотреть услуги',
+          bookNow: 'Забронировать',
+          viewPackages: 'Смотреть пакеты',
           whatsapp: 'WhatsApp',
           maps: 'Открыть карту',
-          getInTouch: 'Написать нам'
+          getInTouch: 'Забронировать сейчас',
+          packageCta: 'Забронировать пакет'
         },
         wa: {
           general: 'Здравствуйте, хочу сделать резервацию.',
@@ -445,7 +491,7 @@
         },
         services: {
           title: 'Услуги',
-          subtitle: 'Все процедуры сгруппированы по категориям для удобного выбора.',
+          subtitle: 'Подробное меню процедур для индивидуального подбора.',
           groups: [
             {
               category: 'Хаммам',
@@ -502,26 +548,34 @@
         },
         packages: {
           title: 'SPA-программы',
-          subtitle: 'Готовые программы для полноценного отдыха и мягкого восстановления.',
+          subtitle: 'Самые востребованные готовые программы с понятной ценностью и быстрым бронированием.',
           items: [
             {
               name: 'Пакет 1',
               note: 'Традиционная программа хаммама',
+              duration: '90 мин',
+              price: 'от €79',
               list: ['Сауна', 'Парная', 'Пилинг', 'Пенный массаж', 'Классический массаж', 'Маска для лица']
             },
             {
               name: 'Пакет 2',
               note: 'Relax пакет',
+              duration: '110 мин',
+              price: 'от €95',
               list: ['Сауна', 'Парная', 'Пилинг', 'Кофейный пилинг', 'Пенный массаж', 'Арома массаж', 'Маска для лица']
             },
             {
               name: 'Пакет 3',
               note: 'Premium care',
+              duration: '120 мин',
+              price: 'от €109',
               list: ['Сауна', 'Парная', 'Пилинг', 'Пилинг с солью', 'Пенный массаж', 'Полный медицинский массаж', 'Маска для лица']
             },
             {
               name: 'VIP Пакет',
               note: 'VIP Experience',
+              duration: '130 мин',
+              price: 'от €129',
               list: ['Сауна', 'Парная', 'Пилинг', 'Пенный массаж', 'Sultan массаж', 'Джакузи / Морская соль', 'Ритуал ухода за лицом']
             }
           ]
@@ -550,21 +604,22 @@
         },
         final: {
           title: 'Готовы расслабиться?',
-          subtitle: 'Свяжитесь с нами для резервации. Мы поможем подобрать подходящую процедуру.'
+          subtitle: 'Одно сообщение — и мы подберем идеальный пакет и удобное время.'
         }
       },
       tr: {
-        nav: { services: 'Hizmetler', packages: 'Paketler', reviews: 'Yorumlar', contact: 'İletişim' },
+        nav: { packages: 'Paketler', why: 'Avantajlar', services: 'Hizmetler', reviews: 'Yorumlar', contact: 'İletişim' },
         hero: {
-          title: 'Kemer’de özel premium SPA deneyimi.',
-          subtitle: 'Temiz, sakin ve aile dostu atmosferde hamam ve masaj programları. WhatsApp ile kolay rezervasyon.'
+          title: 'Kemer’de premium SPA ritüelleri.',
+          subtitle: 'Özel hamam, uzman masaj ve derin rahatlama için sakin atmosfer.'
         },
         buttons: {
-          contact: 'Bize Ulaşın',
-          services: 'Hizmetleri Gör',
+          bookNow: 'Hemen rezervasyon',
+          viewPackages: 'Paketleri gör',
           whatsapp: 'WhatsApp',
           maps: 'Haritada Aç',
-          getInTouch: 'İletişime Geç'
+          getInTouch: 'Şimdi rezervasyon',
+          packageCta: 'Paketi rezerve et'
         },
         wa: {
           general: 'Merhaba, rezervasyon yapmak istiyorum.',
@@ -572,7 +627,7 @@
         },
         services: {
           title: 'Hizmetler',
-          subtitle: 'Tüm işlemler hızlı seçim için kategorilere ayrılmıştır.',
+          subtitle: 'Kişiye özel seçim için detaylı hizmet menüsü.',
           groups: [
             {
               category: 'Hamam',
@@ -629,26 +684,34 @@
         },
         packages: {
           title: 'SPA Programları',
-          subtitle: 'Tam rahatlama ve dengeli bakım için hazır programlar.',
+          subtitle: 'Net değer sunan ve hızlı rezervasyon sağlayan en popüler hazır paketler.',
           items: [
             {
               name: 'Paket 1',
               note: 'Geleneksel Hamam Programı',
+              duration: '90 dk',
+              price: '€79’dan başlayan',
               list: ['Sauna', 'Buhar Odası', 'Peeling', 'Köpük Masajı', 'Klasik Masaj', 'Yüz Maskesi']
             },
             {
               name: 'Paket 2',
               note: 'Relax Paket',
+              duration: '110 dk',
+              price: '€95’ten başlayan',
               list: ['Sauna', 'Buhar Odası', 'Peeling', 'Kahve Peeling', 'Köpük Masajı', 'Aroma Masajı', 'Yüz Maskesi']
             },
             {
               name: 'Paket 3',
               note: 'Premium Care',
+              duration: '120 dk',
+              price: '€109’dan başlayan',
               list: ['Sauna', 'Buhar Odası', 'Peeling', 'Tuzlu Peeling', 'Köpük Masajı', 'Tam Vücut Medikal Masaj', 'Yüz Maskesi']
             },
             {
               name: 'VIP Paket',
               note: 'VIP Experience',
+              duration: '130 dk',
+              price: '€129’dan başlayan',
               list: ['Sauna', 'Buhar Odası', 'Peeling', 'Köpük Masajı', 'Sultan Masajı', 'Jakuzi / Deniz Tuzu', 'Yüz Bakım Ritüeli']
             }
           ]
@@ -677,7 +740,7 @@
         },
         final: {
           title: 'Rahatlamaya hazır mısınız?',
-          subtitle: 'Rezervasyon için bize ulaşın. Size en uygun bakımı seçmenize memnuniyetle yardımcı oluruz.'
+          subtitle: 'Tek mesajla rezervasyon yapın — size en uygun paket ve saati birlikte seçelim.'
         }
       }
     };
@@ -728,13 +791,19 @@
 
     function renderPackages() {
       const items = translations[currentLanguage].packages.items;
+      const t = translations[currentLanguage];
       packagesGrid.innerHTML = items.map((item) => `
         <article class="card package-card">
           <h3 class="package-title">${item.name}</h3>
           <p class="package-note">${item.note}</p>
+          <div class="package-meta">
+            ${item.duration ? `<span class="package-pill">${item.duration}</span>` : ''}
+            ${item.price ? `<span class="package-pill">${item.price}</span>` : ''}
+          </div>
           <ul class="package-list">
-            ${item.list.map((line) => `<li>${line}</li>`).join('')}
+            ${item.list.slice(0, 5).map((line) => `<li>${line}</li>`).join('')}
           </ul>
+          <a class="btn btn-primary wa-link package-cta" data-wa-kind="general">${t.buttons.packageCta}</a>
         </article>
       `).join('');
     }
